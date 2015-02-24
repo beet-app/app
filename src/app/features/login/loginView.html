@@ -1,0 +1,49 @@
+<div id="login" flex-sm="80" flex-md="60" flex-lg="50" flex-gt-lg="30" class="md-whiteframe-z1 color-bg-1" layout-margin layout="column" layout-align="start center">
+
+
+
+  <div layout="row" layout-align="center center" flex class="fill-horizontal">
+    <img src="/assets/images/beet-logo-1.png" style="width:70%" class="m-v-10" ng-click="stagingMode(3)"/>
+  </div>
+
+  <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="rememberPasswordMode">
+    <span flex="80">Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha.</span>
+  </div>
+  <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="signUpMode">
+      <span flex="80">Digite seu e-mail e senha para se cadastrar no Beet.</span>
+  </div>
+
+
+  <div layout="row" flex layout-align="center center" class="fill-horizontal">
+    <attr flex="80" data="emailData" ng-model="emailData.value"></attr>
+  </div>
+  <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="!rememberPasswordMode">
+    <attr flex="80" data="passwordData" ng-model="passwordData.value"></attr>
+  </div>
+  <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="signUpMode">
+    <attr flex="80" data="confirmPasswordData" ng-model="confirmPasswordData.value"></attr>
+  </div>
+
+
+
+  <div layout="row" flex class="fill-horizontal" layout-align="center center" style="margin-bottom:25px;margin-top:25px;">
+    <div layout="column" flex="45" layout-align="start start" >
+      <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
+        <bt-button label="Cadastre-se" bt-class="color-grey s-80" ng-click="showSignUp()"></bt-button>
+      </div>
+      <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
+        <bt-button label="Problemas com o login?"  bt-class="color-grey s-80"  ng-click="showRememberPassword()"></bt-button>
+      </div>
+      <div layout="row" flex layout-align="start center" ng-if="signUpMode || rememberPasswordMode">
+        <bt-button type="fab" label="Voltar" icon="navigation.arrow_back" bt-class="c-black color-bg-2"  ng-click="showLogin()"></bt-button>
+      </div>
+    </div>
+    <div layout="row" flex="40" layout-align="end center">
+      <md-progress-circular md-theme="purple" ng-if="checkingLogin" md-mode="indeterminate"></md-progress-circular>
+      <bt-button ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" type="fab" label="Entrar" icon-color="white" icon="action.done" bt-class="c-white color-bg-4"  ng-click="checkLogin()"></bt-button>
+      <bt-button ng-if="rememberPasswordMode" type="fab" label="Enviar" icon="content.send" bt-class="color-bg-4 c-white"  ng-click="sendPasswordLink()"></bt-button>
+      <bt-button ng-if="signUpMode && !checkingLogin" type="fab" label="Cadastrar" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white"  ng-click="signUp()"></bt-button>
+
+    </div>
+
+  </div>
