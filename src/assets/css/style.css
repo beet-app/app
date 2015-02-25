@@ -3,8 +3,9 @@ body {
     height: 100%;
     margin: 0;
     overflow:hidden;
-    font-family: Lato;
+    font-family: Lato, 'Open Sans', verdana, arial;
 }
+* { min-width:0 ;min-height:0 }
 label{
   margin-bottom:0px !important;
 }
@@ -84,7 +85,7 @@ md-input-group label{
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
   position:absolute;
-  top:36px;
+  top:40px;
   left:10px;
   border-bottom: 22px solid white;
 }

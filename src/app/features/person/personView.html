@@ -21,7 +21,7 @@
       </md-list>
     </md-content>-->
 
-    <div layout="column" layout-align="start center" style="margin-top:8px;margin-left:8px" ui-sref="person/edit({uuid: item.uuid})" flex="20" class="md-whiteframe-z2 pointer fill-vertical" ng-repeat="item in list">
+    <div layout="column" layout-align="start center" ui-sref="person/edit({uuid: item.uuid})" class="md-whiteframe-z2 pointer m-t-8 m-l-8 w-256" ng-repeat="item in list">
 
       <div layout="column">
         <img src="/assets/images/uploads/person/{{item.uuid}}.png" />
@@ -35,18 +35,20 @@
 
   </div>
 
-  <div ng-if="mode=='edit'" layout="row" flex layout-align="start start" layout-margin  class="fill">
+  <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
 
-    <div layout="column" style="width:128px" layout-align="start start" layout-margin class="fill-vertical" >
+    <div layout="row" style="height:72px" layout-align="start start"  class="fill-horizontal bg-grey-dark" >
       <div layout="column">
-        <img src="/assets/images/uploads/person/{{selected}}.png" class="img-responsive"/>
+        <img src="/assets/images/uploads/person/{{selected}}.png" class="m-l-4 m-t-4" style="height:64px;width:48px"/>
       </div>
       <!--<div layout="row" layout-align="start center" style="height:24px;" ng-click="setFocus(attribute.group+'_'+attribute.description)" class="pointer s-80 bold m-v-5 bg-grey-light fill-horizontal" ng-repeat="attribute in data.person_data">
            {{'attributes.person_data.' + attribute.description | translate }}
       </div>-->
     </div>
-    <div layout="row" flex layout-wrap layout-margin class="md-whiteframe-z2 fill-vertical">
-        <attr layout="row" ng-repeat="attribute in data.person_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
+    <div layout="column" flex class="fill-horizontall">
+        <div layout="row" layout-wrap layout-margin>
+          <attr layout="row" ng-repeat="attribute in data.person_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
+        </div>
     </div>
     <bt-button type="fab" label="Salvar dados do atleta" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
 
