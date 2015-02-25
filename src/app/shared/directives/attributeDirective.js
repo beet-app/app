@@ -30,6 +30,7 @@ BeetApp
         object.load(function () {
           var svg = angular.element(this.getSVGDocument().documentElement);
           svg.attr('fill', attr.iconFill);
+          svg.attr('color', attr.iconFill);
         });
       }
     }

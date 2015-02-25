@@ -6,7 +6,9 @@
       }
 
     $scope.changeLeftMenu = function(feature){
-      Common.goTo(feature);
+       $rootScope.session.currentFeature = feature;
+
+      Common.goTo(feature.attributes.sidebar.path);
     }
 
     });
