@@ -12,7 +12,7 @@
           if (!Common.isEmpty(scope.icon)) {
             var arrIcon = scope.icon.split(".");
             var size = (!Common.isEmpty(scope.size)) ? scope.size : "24";
-
+console.log(scope.icon);
             scope.mySize = size;
 
             if (scope.size!=24 && scope.size!=48){

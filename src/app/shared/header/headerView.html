@@ -1,7 +1,6 @@
 <div layout-align="center center" layout="row" flex>
   <div class="w-218" layout-align="start center" layout="row" >
-    <div style="width:48px;height:48px;"><img style="margin-left:8px !important" src="assets/images/logo-222.png" class="img-responsive"></div>
-    <div id="logo2">BEET</div>
+    <img style="margin-left:8px !important;width:66%;height:66%" src="assets/images/header-logo.png" class="img-responsive">
   </div>
   <div flex class="m-l-8 color-1" layout="row" layout-align="start center">
     <label class="s-150 m-l-8" ng-show="session.currentFeature">{{session.currentFeature.attributes.sidebar.title+'.title' | translate}}</label>
@@ -10,20 +9,19 @@
   </div>
   <div class="w-224 m-r-8 relative" layout="row" layout-align="end center" >
       <div class="w-56" layout="row" layout-align="center center">
-        <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="32" bt-class=""></bt-button>
+        <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="28" bt-class=""></bt-button>
         <div ng-show="sidebar.right.feature.selected" class="menu-right-arrow"></div>
       </div>
       <div class="w-56" layout="row" layout-align="center center">
-        <bt-button type="icon" label="Menu" icon="social.notifications" size="48" icon-size="32" icon-color="white" bt-class=""></bt-button>
+        <bt-button type="icon" label="Menu" bt-theme="header.toolbar.notifications"></bt-button>
         <div ng-show="sidebar.right.notifications.selected" class="menu-right-arrow"  style="left:66px"></div>
       </div>
       <div class="w-56" layout="row" layout-align="center center">
-        <bt-button type="icon" label="configs" icon="action.settings" size="48" icon-size="32" icon-color="white" bt-class=""></bt-button>
-        <div ng-show="sidebar.right.configs.selected" class="menu-right-arrow"  style="left:122px"></div>
+        <bt-button type="icon" label="settings" bt-theme="header.toolbar.settings"></bt-button>
+        <div ng-show="sidebar.right.settings.selected" class="menu-right-arrow"  style="left:122px"></div>
       </div>
       <div class="w-56" layout="row" layout-align="center center">
-        <bt-button type="icon" label="configs" icon="action.account_circle" size="48" icon-size="32" icon-color="white" bt-class="">
-
+        <bt-button type="icon" label="account" bt-theme="header.toolbar.account">
         </bt-button>
         <div ng-show="sidebar.right.user.selected" class="menu-right-arrow" style="left:178px;"></div>
       </div>

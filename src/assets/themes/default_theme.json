@@ -1,0 +1,55 @@
+﻿{
+  "body": {
+    "background-color": "",
+    "color": "",
+    "font-family": "Lato"
+  },
+  "header": {
+    "style": {
+      "background-color": "",
+      "color": ""
+    },
+    "logo": {
+      "src": "logo-header.png"
+    },
+    "toolbar": {
+      "notifications": {
+        "icon": "action.extension",
+        "icon-color": "white",
+        "size": "48",
+        "icon-size": "28"
+      },
+      "settings": {
+        "icon": "action.settings",
+        "icon-color": "white",
+        "size": "48",
+        "icon-size": "28"
+      },
+      "account": {
+        "icon": "action.account_circle",
+        "icon-color": "white",
+        "size": "48",
+        "icon-size": "32"
+      }
+    }
+  },
+  "main": {
+    "background-color": "",
+    "color": ""
+  },
+  "menu": {
+    "left": {
+      "background-color": "",
+      "color": ""
+    },
+    "right": {
+      "background-color": "",
+      "color": ""
+    }
+  }
+}
+
+
+
+
+
