@@ -14,7 +14,7 @@
     },
     "toolbar": {
       "notifications": {
-        "icon": "action.extension",
+        "icon": "social.notifications",
         "icon-color": "white",
         "size": "48",
         "icon-size": "28"

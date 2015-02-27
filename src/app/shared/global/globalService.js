@@ -20,8 +20,10 @@
             },
             getTheme : function(name){
                 return Gateway.getLocal("assets/themes/"+name+"_theme.json");
+            },
+            getAllByFilteredAttributes : function(feature, obj){
+                return Gateway.post("/"+feature+"/all-by-attributes", obj);
             }
-
         };
         return service;
     });
