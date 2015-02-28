@@ -17,7 +17,7 @@
       });
     };
 
-    $scope.list = function(){
+    $scope.list = function(uuid){
       GlobalService.get('contract').then(function(response){
         $scope.loadingFeature = false;
         $scope.mode = "listContract";
