@@ -6,15 +6,25 @@
   },
   "header": {
     "style": {
-      "background-color": "",
-      "color": ""
+      "background-color": "color.green.9",
+      "color": "yellow",
+      "height":"56px"
     },
     "logo": {
-      "src": "logo-header.png"
+      "style":{
+        "width":"66%",
+        "height":"66%"
+      },
+      "src": "assets/images/header-logo.png"
+    },
+    "title": {
+      "style":{
+        "color": "color.white"
+      }
     },
     "toolbar": {
       "notifications": {
-        "icon": "action.extension",
+        "icon": "social.notifications",
         "icon-color": "white",
         "size": "48",
         "icon-size": "28"
@@ -39,12 +49,16 @@
   },
   "menu": {
     "left": {
-      "background-color": "",
-      "color": ""
+      "style":{
+        "background-color": "color.red",
+        "color": "color.yellow"
+      }
     },
     "right": {
-      "background-color": "",
-      "color": ""
+      "style":{
+        "background-color": "color.black",
+        "color": "color.white"
+      }
     }
   }
 }

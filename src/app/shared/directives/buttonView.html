@@ -4,13 +4,13 @@
 <md-button ng-if="type=='icon'" style="width:{{mySize}}px;height:{{mySize}}px;border-radius:{{myBorderRadius}}px;" layout="row" layout-align="center center">
     <bt-icon icon="{{myIcon}}" size="{{myIconSize}}" label="{{label}}" color="{{myIconColor}}"></bt-icon>
 </md-button>
-<md-button ng-if="type=='button'" class="{{myClass}}" aria-label="{{label}}" label="{{label}}">
+<md-button ng-if="type=='button'" class="{{myClass}} fill-horizontal" aria-label="{{label}}" label="{{label}}">
     <div ng-if="!myIcon">{{label}}</div>
-    <div ng-if="myIcon" layout="row" layout-align="start center">
-        <div layout="row" layout-align="center center">
+    <div ng-if="myIcon" layout="row" layout-align="start center" class="fill-horizontal">
+        <div layout="row" layout-align="center center" class="w-32 h-32">
             <bt-icon icon="{{myIcon}}" size="{{myIconSize}}" label="{{label}}" color="{{myIconColor}}"></bt-icon>
         </div>
-        <div layout="row" layout-align="start center">
+        <div layout="row" layout-align="start center" class="m-h-4" flex>
             {{label}}
         </div>
     </div>

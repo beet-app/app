@@ -85,6 +85,15 @@ BeetApp
                 }
                 return obj;
             },
+            getColor: function (color) {
+                var obj = $rootScope.colors;
+                var arr = color.split(".");
+                if (arr.length==1){
+                    return obj[arr[0]].value;
+                }else{
+                    return obj[arr[0]].levels[arr[1]];
+                }
+            },
             isValidImage: function (src) {
                 return $http.get(src,{withCredentials : false});
             },

@@ -20,6 +20,9 @@
             },
             getTheme : function(name){
                 return Gateway.getLocal("assets/themes/"+name+"_theme.json");
+            },
+            getColor : function(name){
+                return Gateway.getLocal("assets/colors/"+name+"_color.json");
             }
 
         };

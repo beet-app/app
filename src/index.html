@@ -34,13 +34,13 @@
 
 <div id="container" ng-if="fullViewMode" style="display:none;" layout="column" class="fill color-bg-6" color="orange">
 
-  <header ng-include src="'app/shared/header/headerView.html'" layout="row"  id="header" class="h-56 color-bg-4 fill-horizontal md-whiteframe-z1" ng-controller="HeaderController">
+  <header ng-include src="'app/shared/header/headerView.html'" layout="row"  id="header" bt-theme="header" class="fill-horizontal md-whiteframe-z1" ng-controller="HeaderController">
 
   </header>
 
   <main class="fill-horizontal m-v-8" flex layout="row">
 
-    <div layout="column" hide-sm hide-md ng-include src="'app/shared/sidebar/leftView.html'" class="w-218 m-l-8" ng-controller="LeftController">
+    <div layout="column" hide-sm hide-md ng-include src="'app/shared/sidebar/leftView.html'" class="w-218 m-l-8 color-bg-1"  ng-controller="LeftController">
 
     </div>
     <div ui-view="" flex class="m-h-8" layout="column" style="position: relative">

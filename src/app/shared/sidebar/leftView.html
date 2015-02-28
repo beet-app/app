@@ -1,12 +1,7 @@
-<div layout-align="start start" layout="column" flex class="fill-horizontal scrollable color-bg-1 md-whiteframe-z1">
-  <div class="pointer fill-horizontal color-bg-1 m-b-10 h-48" style="height:48px" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="changeLeftMenu(menuLeftItem)">
-    <div flex="20" layout-align="center center" layout="row">
-      <bt-button type="icon" label="{{menuLeftItem.attributes.sidebar.title+'.title' | translate}}" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
-    </div>
-    <div flex layout-align="start center" layout="row">
-      <label layout="row" layout-align="start center" class="s-100">
-        {{menuLeftItem.attributes.sidebar.title+'.title' | translate}}
-      </label>
+<div layout-align="start start" layout="column" flex class="fill-horizontal scrollable md-whiteframe-z1">
+  <div class="pointer fill-horizontal color-bg-1 m-b-10 h-48" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="changeLeftMenu(menuLeftItem)">
+    <div layout-align="center center" layout="row" class="fill-horizontal">
+      <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.title' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
     </div>
   </div>
 </div>

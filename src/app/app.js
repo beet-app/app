@@ -92,8 +92,12 @@ BeetApp
 
                 GlobalService.getTheme("default").then(function(response){
                     $rootScope.theme = response.data;
+                    GlobalService.getColor("default").then(function(response){
+                        $rootScope.colors = response.data;
 
-                    defer.resolve(true);
+                        defer.resolve(true);
+                    });
+
                 });
 
 
