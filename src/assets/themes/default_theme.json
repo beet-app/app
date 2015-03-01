@@ -1,12 +1,14 @@
 ﻿{
-  "body": {
-    "background-color": "",
-    "color": "",
-    "font-family": "Lato"
+  "container": {
+    "style":{
+      "background-color": "color.grey.2",
+      "color": ""
+    }
+
   },
   "header": {
     "style": {
-      "background-color": "color.purple.9",
+      "background-color": "color.black",
       "color": "yellow",
       "height":"56px"
     },
@@ -43,23 +45,68 @@
       }
     }
   },
-  "main": {
-    "background-color": "",
-    "color": ""
+  "content": {
+    "style":{
+      "background-color": "",
+      "color": "",
+      "margin-top":"8px",
+      "margin-bottom":"8px"
+    }
+
   },
-  "menu": {
+  "main": {
+    "style":{
+      "background-color": "",
+      "color": "",
+      "margin-left":"8px",
+      "margin-right":"8px"
+    }
+
+  },
+  "sidebar": {
     "left": {
       "style":{
-        "background-color": "color.red",
-        "color": "color.yellow"
+        "background-color": "color.white",
+        "color": "color.black",
+        "width":"218px",
+        "margin-left":"8px"
       }
     },
     "right": {
       "style":{
-        "background-color": "color.black",
-        "color": "color.white"
+        "background-color": "color.yellow",
+        "color": "color.blue",
+        "width":"224px",
+        "margin-right":"8px"
       }
     }
+  },
+  "footer":{
+    "style":{
+      "background-color": "color.black"
+    }
+  },
+  "single_view":{
+    "style":{
+      "background-color": "color.yellow"
+    }
+  },
+  "loading":{
+    "style":{
+      "background-color": "color.grey.2"
+    },
+    "box":{
+      "style":{
+        "background-color": "color.white"
+      },
+      "image":{
+        "src": "assets/images/loading.png"
+      },
+      "preloader":{
+        "src": "assets/images/preloader.gif"
+      }
+    }
+
   }
 }
 

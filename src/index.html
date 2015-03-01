@@ -4,60 +4,60 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-language" content="pt-br" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="description" content="Gerenciamento de atletas" />
-  <meta name="author" content="BeetCorp" />
-  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
-  <title>Beet</title>
 
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato&#038;ver=3.9.1' type='text/css' media='all' />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Gerenciamento de atletas" />
+    <meta name="author" content="BeetCorp" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <title>Beet</title>
 
-  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- run `gulp wiredep` to automaticaly populate bower styles dependencies -->
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-  <!-- build:css({.tmp/serve,src}) styles/app.css -->
-  <!-- inject:css -->
-  <!-- css files will be automaticaly insert here -->
-  <!-- endinject -->
-  <!-- endbuild -->
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp wiredep` to automaticaly populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automaticaly insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
 </head>
 
-<body ng-app="BeetApp"  ng-controller="AppController">
+<body ng-app="BeetApp" ng-controller="AppController">
 
-<div id="container" ng-if="fullViewMode" style="display:none;" layout="column" class="fill color-bg-6" color="orange">
+<div bt-theme="container" class="fill" id="container" layout="column" ng-if="fullViewMode" style="display:none;">
 
-  <header ng-include src="'app/shared/header/headerView.html'" layout="row"  id="header" bt-theme="header" class="fill-horizontal md-whiteframe-z1" ng-controller="HeaderController">
-
-  </header>
-
-  <main class="fill-horizontal m-v-8" flex layout="row">
-
-    <div layout="column" hide-sm hide-md ng-include src="'app/shared/sidebar/leftView.html'" class="w-218 m-l-8 color-bg-1"  ng-controller="LeftController">
-
-    </div>
-    <div ui-view="" flex class="m-h-8" layout="column" style="position: relative">
+    <div bt-theme="header" class="fill-horizontal md-whiteframe-z1" layout="row" ng-controller="HeaderController" ng-include src="'app/shared/header/headerView.html'">
 
     </div>
 
-    <div layout="column"  hide-sm hide-md hide-lg ng-include src="'app/shared/sidebar/rightView.html'" ng-show="sidebar.right.opened" class="w-224 m-r-8" ng-controller="RightController">
+    <div bt-theme="content" class="fill-horizontal" flex layout="row">
+
+        <div bt-theme="sidebar.left" class="md-whiteframe-z1" hide-sm hide-md layout="column" ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
+
+        </div>
+
+        <main bt-theme="main" class="relative" flex layout="column" ui-view="">
+
+        </main>
+
+        <div bt-theme="sidebar.right" class="md-whiteframe-z1" hide-sm hide-md hide-lg layout="column" ng-controller="RightController" ng-include src="'app/shared/sidebar/rightView.html'" ng-show="sidebar.right.opened">
+
+        </div>
 
     </div>
 
-  </main>
+    <div bt-theme="footer" class="fill-horizontal" hide-gt-md id="footer" ng-include src="'app/shared/footer/footerView.html'">
 
-
-
-  <footer id="footer" ng-include src="'app/shared/footer/footerView.html'" hide-gt-md class="color-bg-3 fill-horizontal h-56">
-
-  </footer>
+    </div>
 
 </div>
 
@@ -65,27 +65,23 @@
 
 </div>
 
-
-<div id="loadingApp" ng-include src="'app/shared/load/app.html'" layout="column" class="fill color-bg-6" layout-align="center center" >
-
-</div>
-
-<div id="single-view" ng-if="singleViewMode" layout="row" layout-fill class="color-bg-6" layout-align="center center"  ui-view="" style="display:none;">
+<div bt-theme="loading" class="fill" id="loadingApp" layout="column"  layout-align="center center" ng-include src="'app/shared/load/app.html'">
 
 </div>
 
+<div bt-theme="single_view" id="single-view" ng-if="singleViewMode" layout="row" layout-fill  layout-align="center center"  ui-view="" style="display:none;">
+
+</div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-  ga('create','UA-XXXXX-X');ga('send','pageview');
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
 </script>
-
-
 
 <!-- build:js(src) scripts/vendor.js -->
 <!-- bower:js -->
@@ -102,8 +98,6 @@
 <!-- angular templates will be automatically converted in js and inserted here -->
 <!-- endinject -->
 <!-- endbuild -->
-
-
 
 </body>
 </html>

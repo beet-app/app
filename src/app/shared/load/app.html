@@ -1,23 +1,8 @@
-<style>
-  @-webkit-keyframes load {
-    from {-webkit-transform: rotate(0deg);}
-    to {-webkit-transform: rotate(360deg);}
-  }
-
-  .loading {
-    width: 36px;
-    height: 36px;
-    background: url('assets/images/icon36.png') center no-repeat;
-  }
-
-  .loading div {
-    -webkit-animation-name:             load;
-    -webkit-animation-duration:         1s;
-    -webkit-animation-iteration-count:  infinite;
-    -webkit-animation-timing-function:  linear;
-    width: 36px;
-    height: 36px;
-    background: url('assets/images/icon36front.png') center no-repeat;
-  }
-</style>
-<div class="loading"><div></div></div>
+<div bt-theme="loading.box" class="md-whiteframe-z1" layout="column" layout-align="center center">
+    <div>
+        <img bt-theme="loading.box.image" />
+    </div>
+    <div>
+        <img bt-theme="loading.box.preloader" />
+    </div>
+</div>

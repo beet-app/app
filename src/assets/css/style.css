@@ -36,35 +36,16 @@ label{
 .pointer{
     cursor: pointer;
 }
+.relative{
+    position: relative;
+}
 .border{
     border:1px #000 solid;
 }
 .list-none{
     list-style: none;
 }
-#content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.bg-1{
-    background-image: url("../assets/images/background.gif");
-}
-.align-middle {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-.no-gutter > [class*='col-'] {
-    padding-right:0;
-    padding-left:0;
-}
 
-.logo-text{
-  margin-left:10px;font-size:48px;font-weight:bold;letter-spacing: 3px;color:#fff;font-family:neuropol;
-}
 md-input-group label{
   color:#781649 !important;
 }
