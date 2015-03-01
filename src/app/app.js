@@ -95,6 +95,8 @@ BeetApp
                     GlobalService.getColor("default").then(function(response){
                         $rootScope.colors = response.data;
 
+                        $rootScope.ready = true;
+
                         defer.resolve(true);
                     });
 

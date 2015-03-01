@@ -116,7 +116,7 @@
             UserService.save({email:$scope.emailData.value, password:$scope.passwordData.value}).then(function(response){
                 if (Common.isEmpty(response.error)){
                     Common.showMessage("Enviamos um email para confirmar seu cadastro.", "warning");
-                    Common.goTo("login");
+                    Common.goTo("index");
                 }else{
                     if(response.error.error.description==="user_exists"){
                         Common.showMessage("Este usuário já foi cadastrado.")

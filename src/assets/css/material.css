@@ -1,3 +1,16 @@
+.md-button{
+    text-transform: none;
+}
+md-input-container.md-default-theme label, md-input-container.md-default-theme .md-placeholder{
+    color:white;
+}
+md-input-container.md-default-theme .md-input {
+    border-color:white;
+}
+.md-input-focused {
+    border-color:white;
+}
+
 /*
 core-scaffold {
     position: absolute;
