@@ -88,8 +88,12 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: "app/features/contract/contractView.html",
             controller: "ContractController"
         })
-
         .state("contract/list", {
+            url: "/contract/:uuid",
+            templateUrl: "app/features/contract/contractView.html",
+            controller: "ContractController"
+        })
+        .state("contract/edit", {
             url: "/contract/:uuid",
             templateUrl: "app/features/contract/contractView.html",
             controller: "ContractController"

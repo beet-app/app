@@ -67,6 +67,7 @@
 
             }
         };
+
         $scope.setFocus = function(id){
             $("#"+id).find("input").focus();
         };
