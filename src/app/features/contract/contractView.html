@@ -1,71 +1,58 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal color-bg-1 md-whiteframe-z1">
 
-  <div ng-if="mode=='list'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
+    <div ng-if="mode=='list'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
 
-    <div layout="column" layout-align="start center" style="margin-top:8px;margin-left:8px" ui-sref="contract/list({uuid : item.uuid})" flex="20" class="md-whiteframe-z2 pointer fill-vertical" ng-repeat="item in list">
+        <div layout="column" layout-align="start center" style="margin-top:8px;margin-left:8px" ui-sref="contract/list({uuid : item.uuid})" flex="20" class="md-whiteframe-z2 pointer fill-vertical" ng-repeat="item in list">
 
-      <div layout="column">
-        <img src="/assets/images/uploads/person/{{item.uuid}}.png" />
-      </div>
-      <div layout="column" layout-align="center center" style="height:36px" class="color-bg-5 color-1 s-110 bold fill-horizontal">
-        {{item.attributes.person_data.name}}
-      </div>
-
-    </div>
-
-  </div>
-
-  <div ng-if="mode=='listContract'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
-
-      <md-content>
-      <md-list>
-        <md-item ng-repeat="item in listContract">
-          <md-item-content ui-sref="" class="pointer">
-            <div class="md-tile-left">
-              <img ng-src="/assets/images/uploads/person/{{item.uuid}}.png" class="face" alt="{{item.attributes.person_data.name}}">
+            <div layout="column">
+                <img src="/assets/images/uploads/person/{{item.uuid}}.png" />
             </div>
-            <div class="md-tile-content">
-              <h3>{{item.attributes.contract_data.identification}}</h3>
-              <h4>{{item.attributes.person_data.name}}</h4>
-              <p>
-                {{item.notes}}
-              </p>
+            <div layout="column" layout-align="center center" style="height:36px" class="color-bg-5 color-1 s-110 bold fill-horizontal">
+                {{item.attributes.person_data.name}}
             </div>
-          </md-item-content>
-        </md-item>
-      </md-list>
-    </md-content>
 
-    <!--<div layout="column" layout-align="start center" style="margin-top:8px;margin-left:8px" ui-sref="" flex="20" class="md-whiteframe-z2 pointer fill-vertical" ng-repeat="item in listContract">
+        </div>
 
-      <div layout="column">
-        <img src="/assets/images/uploads/person/{{item.uuid}}.png" />
-      </div>
-      <div layout="column" layout-align="center center" style="height:36px" class="color-bg-5 color-1 s-110 bold fill-horizontal">
-        {{item.attributes.contract_data.identification}}
-      </div>
-
-    </div>-->
-
-    <bt-button type="fab" label="Cadastrar contrato" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="edit()"></bt-button>
-  </div>
-
-  <div ng-if="mode=='edit'" layout="row" flex layout-align="start start" layout-margin layout-wrap class="fill">
-
-    <div layout="column" style="width:128px" layout-align="start start" layout-margin >
-      <div layout="column">
-        <img src="/assets/images/uploads/person/{{selected}}.png" class="img-responsive"/>
-      </div>
-      <div layout="row" layout-align="start center" style="height:24px;" ng-click="setFocus(attribute.group+'_'+attribute.description)" class="pointer s-80 bold m-v-5 bg-grey-light fill-horizontal" ng-repeat="attribute in data.person_data">
-        {{'attributes.person_data.' + attribute.description | translate }}
-      </div>
-    </div>
-    <div layout="row" flex layout-wrap layout-margin class="md-whiteframe-z2">
-      <attr layout="row" ng-repeat="attribute in data.person_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
     </div>
 
-  </div>
+    <div ng-if="mode=='listContract'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
+        <md-content>
+            <md-list>
+                <md-item ng-repeat="item in listContract">
+                    <md-item-content ui-sref="contract/edit({uuid : item.uuid})" class="pointer">
+                        <div class="md-tile-left">
+                            <img ng-src="/assets/images/uploads/person/{{item.uuid}}.png" class="face" alt="{{item.attributes.person_data.name}}">
+                        </div>
+                        <div class="md-tile-content">
+                            <h3>{{item.attributes.contract_data.identification}}</h3>
+                            <h4>{{item.attributes.contract_data.type}}</h4>
+                            <p>
+                                {{item.notes}}
+                            </p>
+                        </div>
+                    </md-item-content>
+                </md-item>
+            </md-list>
+        </md-content>
+        <bt-button type="fab" label="Cadastrar contrato" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="edit()"></bt-button>
+    </div>
 
-  <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/load/app.html'">
-  </div>
+    <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
+
+        <!--<div layout="row" style="height:72px" layout-align="start start"  class="fill-horizontal bg-grey-dark" >
+            <div layout="column">
+                <img src="/assets/images/uploads/person/{{selected}}.png" class="m-l-4 m-t-4" style="height:64px;width:64px"/>
+            </div>
+        </div>-->
+        <div layout="column" flex class="fill-horizontall">
+            <div layout="row" layout-wrap layout-margin>
+                <attr layout="row" ng-repeat="attribute in dataContract.contract_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
+            </div>
+        </div>
+        <bt-button type="fab" label="Salvar dados do contrato" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
+
+    </div>
+
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/load/app.html'">
+    </div>
 </div>
