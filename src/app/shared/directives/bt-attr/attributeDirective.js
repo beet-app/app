@@ -3,7 +3,7 @@
 
         var linker = function(scope, element, attrs) {
 
-            element.html("<bt-"+scope.data.type.description+" class='fill-horizontal'></bt-"+scope.data.type.description+">").show() ;
+            element.html("<bt-"+scope.data.type.description.replace("_","-")+" class='fill-horizontal'></bt-"+scope.data.type.description.replace("_","-")+">").show() ;
 
             $compile(element.contents())(scope);
         };

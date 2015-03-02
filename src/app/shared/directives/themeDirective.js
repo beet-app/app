@@ -4,7 +4,6 @@
             restrict: 'A',
             link: function(scope, element, attr) {
                 var object = element[0];
-console.log(attr.btTheme);
                 var theme = Common.getTheme(attr.btTheme);
 
                 var check_value = function(v){

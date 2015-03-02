@@ -10,7 +10,9 @@ md-input-container.md-default-theme .md-input {
 .md-input-focused {
     border-color:white;
 }
-
+.picker__select--year{
+    height:40px
+}
 /*
 core-scaffold {
     position: absolute;
