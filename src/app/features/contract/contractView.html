@@ -16,7 +16,6 @@
     </div>
 
     <div ng-if="mode=='listContract'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
-
         <md-content>
             <md-list>
                 <md-item ng-repeat="item in listContract">
@@ -26,7 +25,7 @@
                         </div>
                         <div class="md-tile-content">
                             <h3>{{item.attributes.contract_data.identification}}</h3>
-                            <h4>{{item.attributes.person_data.name}}</h4>
+                            <h4>{{item.attributes.contract_data.type}}</h4>
                             <p>
                                 {{item.notes}}
                             </p>

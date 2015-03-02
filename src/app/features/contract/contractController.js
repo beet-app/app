@@ -26,7 +26,7 @@
 
                 $scope.loadingFeature = false;
                 $scope.mode = "listContract";
-                $scope.person = uuid;
+                $rootScope.personSelected = uuid;
                 $rootScope.editContract = true;
                 if (!response.error){
                     $scope.listContract = response.data;
@@ -71,10 +71,10 @@
                     objSave.uuid = $scope.uuid;
                 }
                 objSave.attribute = Common.getAttributeObj($scope.dataContract.contract_data);
-                objSave.person = $scope.person;
+                objSave.person = $rootScope.personSelected;
                 objSave.company = $rootScope.session.user.company;
 
-                GlobalService.save("contract", mode, objSave).then(function (response) {
+                GlobalService.save('contract', mode, objSave).then(function (response) {
 
                     if (Common.isEmpty(response.error)) {
                         var message = mode === "create" ? "Contrato cadastrado com sucesso!" : "Contrato atualizado com sucesso!";
