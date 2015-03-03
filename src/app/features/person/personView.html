@@ -1,4 +1,4 @@
-<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
+<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1 color-bg-1">
 
     <div ng-if="mode=='list'" class="fill" layout="column" flex layout-align="start start" class="fill">
         <div layout="row" class="fill-horizontal h-56 color-bg-4">
@@ -41,9 +41,12 @@
     </div>
     <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
 
-        <div layout="row" style="height:72px" layout-align="start start"  class="fill-horizontal bg-grey-dark" >
-            <div layout="column">
-                <img src="/assets/images/uploads/person/{{selected}}.png" class="m-l-4 m-t-4" style="height:64px;width:64px"/>
+        <div layout="row" style="height:72px" layout-align="start center"  class="fill-horizontal color-bg-2">
+            <div class="w-64 m-h-4">
+                <img src="/assets/images/uploads/person/{{selected}}.png" class="face" style="height:64px;width:64px"/>
+            </div>
+            <div layout="column"layout-align="center center" flex>
+
             </div>
         </div>
         <div layout="column" flex class="fill-horizontall">

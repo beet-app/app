@@ -37,7 +37,7 @@
 
 
             },
-            templateUrl: Common.getDirectiveTemplateUrl("icon")
+            templateUrl: Common.getDirectiveTemplateUrl("bt-image/icon")
         };
 
     });

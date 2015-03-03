@@ -17,7 +17,7 @@
           }
         }
       },
-      templateUrl: Common.getDirectiveTemplateUrl("text")
+      templateUrl: Common.getDirectiveTemplateUrl("bt-attr/text")
     };
 
   });
