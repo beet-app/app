@@ -14,8 +14,8 @@
     },
     "logo": {
       "style":{
-        "width":"66%",
-        "height":"66%"
+        "width":"50%",
+        "height":"50%"
       },
       "src": "assets/images/header-logo.png"
     },

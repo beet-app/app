@@ -10,15 +10,10 @@
                 return {
                     pre: function(scope, element, attributes, controller, transcludeFn){
                         scope.label = scope.data.description;
-                        //scope.type = "password";
-                        scope.timestamp = Common.getTimestamp();
-                        console.log(scope.timestamp);
                     },
                     post: function(scope, element, attributes, controller, transcludeFn){
-                        console.log(scope.timestamp);
-                        $compile(element.contents())(scope);
                         $timeout(function(){
-                            $("#date"+scope.timestamp).pickadate({
+                            $("#"+scope.data.group+'_'+ scope.data.description).find("input").pickadate({
                                 format: 'dd/mm/yyyy',
                                 formatSubmit: 'yyyy-mm-dd',
                                 selectYears: true,
@@ -28,7 +23,14 @@
                                 weekdaysShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab' ],
                                 today: 'hoje',
                                 clear: 'limpar',
-                                close: 'fechar'
+                                close: 'fechar',
+                                onOpen: function() {
+                                    $("#"+scope.data.group+'_'+ scope.data.description).find("input").val(".");
+                                    $("#"+scope.data.group+'_'+ scope.data.description).find("input").trigger("focus");
+                                }
+                            });
+                            $("#" + scope.data.group+'_'+ scope.data.description).click(function(){
+                                $(this).val(Common.isEmpty($(this).val()) ? "teste" : $(this).val());
                             });
                         });
 
