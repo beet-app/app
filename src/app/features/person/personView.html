@@ -41,16 +41,16 @@
     </div>
     <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
 
-        <div layout="row" style="height:72px" layout-align="start center"  class="fill-horizontal color-bg-4">
-            <div class="w-64 m-h-4">
-                <img src="/assets/images/uploads/person/{{selected}}.png" class="face" style="height:64px;width:64px"/>
+        <div layout="row" layout-align="start center"  class="fill-horizontal color-bg-4 h-56">
+            <div class="w-48 m-h-4">
+                <img src="/assets/images/uploads/person/{{selected}}.png" class="face" style="height:48px;width:48px"/>
             </div>
             <div layout="column"layout-align="center center" flex>
 
             </div>
         </div>
 
-        <md-tabs md-selected="selectedIndex" flex>
+        <md-tabs md-selected="selectedIndex" flex md-stretch-tabs="always">
             <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontall scrollable">
                     <div layout="row" layout-wrap layout-margin>

@@ -135,18 +135,22 @@ BeetApp
 
 
 BeetApp
-    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService) {
+    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, $translate) {
 
 
         var factory = {
 
-            getTranslation: function (translation) {
-
-                if (typeof(translation)=="object"){
-                    return translation.description;
-                }else{
-                    return translation;
+            getTranslation: function (str) {
+                var translation = $translate.instant(str);
+                if (str==translation){
+                    translation = $translate.instant(str+".description");
                 }
+                if (typeof(translation)=="object"){
+                    translation = translation.description;
+                }else{
+                    translation = translation;
+                }
+                return translation;
 
             }
         };
