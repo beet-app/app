@@ -1,5 +1,5 @@
 ﻿BeetApp
-  .directive("btGender", function (Common, $compile) {
+  .directive("btDropdown", function (Common, $compile) {
 
 
     return {

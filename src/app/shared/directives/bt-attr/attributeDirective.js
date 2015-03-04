@@ -13,7 +13,8 @@
             link: linker,
             scope: {
                 data:'=',
-                ngModel:'='
+                ngModel:'=',
+                label:'@'
             }
         };
 

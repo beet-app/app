@@ -1,7 +1,12 @@
-<div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
-  <div class="pointer fill-horizontal m-b-10 h-48" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="changeLeftMenu(menuLeftItem)">
-    <div layout-align="center center" layout="row" class="fill-horizontal">
-      <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.title' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
+<div layout-align="start start" layout="column" flex class="fill-horizontal">
+    <!--<div layout-align="center center" layout="column" class="fill-horizontal h-56 s-110 color-bg-4 color-1">
+        Menu Principal
+    </div>-->
+    <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
+      <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="changeLeftMenu(menuLeftItem)">
+        <div layout-align="center center" layout="row" class="fill-horizontal">
+          <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.description' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
+        </div>
+      </div>
     </div>
-  </div>
 </div>

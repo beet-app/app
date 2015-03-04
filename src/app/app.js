@@ -52,8 +52,11 @@ BeetApp
                  },1000);
                  */
             }else{
-                $rootScope.singleViewMode = true;
-                Common.goTo("login");
+                btApp.loadDefaults().then(function(){
+                    $rootScope.singleViewMode = true;
+                    Common.goTo("login");
+                });
+
             }
 
 
@@ -62,7 +65,7 @@ BeetApp
     });
 
 BeetApp
-    .factory("btApp", function($rootScope, $q, Common, UserService, CompanyService, GlobalService) {
+    .factory("btApp", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, btFn) {
 
 
         var factory = {
@@ -89,6 +92,20 @@ BeetApp
                         }
                     }
                 };
+                $rootScope.btFn = btFn;
+                factory.loadDefaults().then(function(response){
+                    defer.resolve(response);
+                });
+
+
+
+
+                return defer.promise;
+
+            },
+            loadDefaults: function () {
+                var defer = $q.defer();
+
 
                 GlobalService.getTheme("default").then(function(response){
                     $rootScope.theme = response.data;
@@ -96,6 +113,8 @@ BeetApp
                         $rootScope.colors = response.data;
 
                         $rootScope.ready = true;
+
+
 
                         defer.resolve(true);
                     });
@@ -108,7 +127,29 @@ BeetApp
                 return defer.promise;
 
             }
-        }
+        };
+        return factory;
+
+    });
+
+
+
+BeetApp
+    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService) {
+
+
+        var factory = {
+
+            getTranslation: function (translation) {
+
+                if (typeof(translation)=="object"){
+                    return translation.description;
+                }else{
+                    return translation;
+                }
+
+            }
+        };
         return factory;
 
     });

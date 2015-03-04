@@ -3,10 +3,9 @@
         $rootScope.fullViewMode = false;
         $rootScope.singleViewMode = true;
         setTimeout(function(){
-
             $("#loadingApp").hide();
             $("#single-view").fadeIn("slow");
-        },1000);
+        },3000);
 
         $scope.password = "";
         $scope.email = "";

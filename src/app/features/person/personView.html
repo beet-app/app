@@ -41,7 +41,7 @@
     </div>
     <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
 
-        <div layout="row" style="height:72px" layout-align="start center"  class="fill-horizontal color-bg-2">
+        <div layout="row" style="height:72px" layout-align="start center"  class="fill-horizontal color-bg-4">
             <div class="w-64 m-h-4">
                 <img src="/assets/images/uploads/person/{{selected}}.png" class="face" style="height:64px;width:64px"/>
             </div>
@@ -49,15 +49,21 @@
 
             </div>
         </div>
-        <div layout="column" flex class="fill-horizontall">
-            <div layout="row" layout-wrap layout-margin>
-                <attr layout="row" ng-repeat="attribute in data.person_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
-            </div>
-        </div>
+
+        <md-tabs md-selected="selectedIndex" flex>
+            <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
+                <div layout="column" flex class="fill-horizontall scrollable">
+                    <div layout="row" layout-wrap layout-margin>
+                        <attr layout="row" ng-repeat="attribute in group" label="{{btFn.getTranslation('person.'+attribute.group+'.attributes.'+attribute.description) | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
+                    </div>
+                </div>
+            </md-tab>
+        </md-tabs>
+
         <bt-button type="fab" label="Salvar dados do atleta" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
 
     </div>
 
-    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/load/app.html'">
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/app.html'">
     </div>
 </div>

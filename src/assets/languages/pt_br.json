@@ -1,5 +1,4 @@
-﻿
-{
+﻿{
 
   "global": {
 
@@ -22,108 +21,142 @@
     "pt_br" : "Portugûes(BR)"
 
   },
-  "attributes" : {
+  "login" : {
     "login_data": {
-      "mail" : "E-mail",
-      "password" :"Senha",
-      "password_confirm" :"Confirmar Senha"
-    },
+      "attributes":{
+        "mail" : "E-mail",
+        "password" :"Senha",
+        "password_confirm" :"Confirmar Senha"
+      }
+    }
+  },
+  "person":{
+    "description":"Atletas",
     "person_data": {
-
-      "name" : "Nome",
-      "gender" :"Sexo",
-      "gender_options" : {
-        "description":"Sexo",
-        "options" : {
-          "male" : "Masculino",
-          "female" : "Feminino"
-        }
-      },
-      "cpf" : "CPF",
-      "rg" : "RG",
-      "postcode" : "CEP",
-      "street" : "Rua",
-      "number" : "Numero",
-      "complement" : "Complemento",
-      "neighborhood" : "Bairro",
-      "city" : "Cidade",
-      "state" : "Estado",
-      "birth_date" : "Data de Nascimento",
-      "email" : "E-mail",
-      "video_link" : "Link do Video"
-
+      "description": "Dados Pessoais",
+      "attributes": {
+        "name": "Nome",
+        "gender": {
+          "description": "Sexo",
+          "options": {
+            "male": "Masculino",
+            "female": "Feminino"
+          }
+        },
+        "cpf": "CPF",
+        "rg": "RG",
+        "postcode": "CEP",
+        "street": "Rua",
+        "number": "Numero",
+        "complement": "Complemento",
+        "neighborhood": "Bairro",
+        "city": "Cidade",
+        "state": "Estado",
+        "birth_date": "Data de Nascimento",
+        "email": "E-mail",
+        "video_link": "Link do Video"
+      }
     },
+    "technical_data": {
+      "description":"Dados Técnicos",
+      "attributes":{
+        "position" : "Posição"
+      }
+    }
 
+  },
+  "contract": {
+    "description":"Contratos",
     "contract_data": {
+      "attributes":{
+        "type" : "Tipo",
+        "identification" :"Identificação"
+      }
 
-      "type" : "Tipo",
-      "identification" :"Identificação"
     },
-
-    "training_contract" : {
-
-      "initial_date" : "Data inicial",
-      "final_date" : "Data final",
-      "number" : "Número do contrato",
-      "percentage_athlete" : "Porcentagem do Atleta (%)",
-      "percentage_representative" : "Porcentagem do Representante (%)",
-      "percentage_club" : "Porcentagem do Clube (%)",
-      "professional_training" : "Formação Profissional (R$)",
-      "transport" : "Transporte (R$)",
-      "feeding" : "Alimentação (R$)",
-      "accommodation" : "Alojamento (R$)",
-      "clothing" : "Vestuário (R$)",
-      "health_care" : "Assistência Médica (R$)",
-      "dental_care" : "Assistência Odontológica (R$)",
-      "psychological_assistance" : "Assistência Psicológica (R$)",
-      "school_supplies" : "Material Escolar (R$)",
-      "sport_supplies" : "Material Esportivo (R$)",
-      "leisure" : "Recreação e Lazer (R$)",
-      "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
-      "computer_science_classes" : "Aulas de Informática (R$)"
-    },
-
     "professional_contract" : {
+      "attributes":{
+        "initial_date" : "Data inicial",
+        "final_date" : "Data final",
+        "number" : "Número do contrato",
+        "federative_rights" : "Direitos Federativos",
+        "percentage_athlete" : "Porcentagem do Atleta (%)",
+        "percentage_representative" : "Porcentagem do Representante (%)",
+        "percentage_club" : "Porcentagem do Clube (%)",
+        "percentage_investor" : "Porcentagem do Investidor (%)",
+        "salary" : "Salário (R$)"
+      }
 
-      "initial_date" : "Data inicial",
-      "final_date" : "Data final",
-      "number" : "Número do contrato",
-      "federative_rights" : "Direitos Federativos",
-      "percentage_athlete" : "Porcentagem do Atleta (%)",
-      "percentage_representative" : "Porcentagem do Representante (%)",
-      "percentage_club" : "Porcentagem do Clube (%)",
-      "percentage_investor" : "Porcentagem do Investidor (%)",
-      "salary" : "Salário (R$)"
     },
 
     "imaging_contract" : {
+      "attributes":{
+        "initial_date" : "Data inicial",
+        "final_date" : "Data final",
+        "value" : "Valor (R$)",
+        "notes" : "Observações"
+      }
 
-      "initial_date" : "Data inicial",
-      "final_date" : "Data final",
-      "value" : "Valor (R$)",
-      "notes" : "Observações"
     },
 
     "representative_contract" : {
+      "attributes":{
+        "initial_date" : "Data inicial",
+        "final_date" : "Data final",
+        "notes" : "Observações"
+      }
 
-      "initial_date" : "Data inicial",
-      "final_date" : "Data final",
-      "notes" : "Observações"
-    },
+    }
+  },
 
+  "training": {
+    "training_contract" : {
+      "attributes":{
+        "initial_date" : "Data inicial",
+        "final_date" : "Data final",
+        "number" : "Número do contrato",
+        "percentage_athlete" : "Porcentagem do Atleta (%)",
+        "percentage_representative" : "Porcentagem do Representante (%)",
+        "percentage_club" : "Porcentagem do Clube (%)",
+        "professional_training" : "Formação Profissional (R$)",
+        "transport" : "Transporte (R$)",
+        "feeding" : "Alimentação (R$)",
+        "accommodation" : "Alojamento (R$)",
+        "clothing" : "Vestuário (R$)",
+        "health_care" : "Assistência Médica (R$)",
+        "dental_care" : "Assistência Odontológica (R$)",
+        "psychological_assistance" : "Assistência Psicológica (R$)",
+        "school_supplies" : "Material Escolar (R$)",
+        "sport_supplies" : "Material Esportivo (R$)",
+        "leisure" : "Recreação e Lazer (R$)",
+        "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
+        "computer_science_classes" : "Aulas de Informática (R$)"
+      }
+    }
+
+
+  },
+
+
+  "company":{
     "company_data" : {
+      "attributes":{
+        "name" : "Nome",
+        "cnpj" : "CNPJ",
+        "postcode" : "CEP",
+        "street" : "Rua",
+        "number" : "Número",
+        "complement" : "Complemento",
+        "neighborhood" : "Bairro",
+        "city" : "Cidade",
+        "state" : "Estado"
+      }
 
-      "name" : "Nome",
-      "cnpj" : "CNPJ",
-      "postcode" : "CEP",
-      "street" : "Rua",
-      "number" : "Número",
-      "complement" : "Complemento",
-      "neighborhood" : "Bairro",
-      "city" : "Cidade",
-      "state" : "Estado"
-    },
+    }
+  },
 
+  "expense": {
+    "description":"Despesas",
     "expense_data" : {
       "category" : {
         "description":"Categoria",
@@ -138,8 +171,9 @@
       "value" : "Valor",
       "date" : "Data",
       "observation" : "Observação"
-    },
-
+    }
+  },
+  "user": {
     "user_data" : {
 
       "name" : "Nome",
@@ -159,23 +193,7 @@
       "state" : "Estado",
       "birth_date" : "Data de Nascimento"
     }
-  },
-  "person" : {
-    "create" : "Novo Atleta",
-    "title" : "Atletas",
-    "person_data" : "Dados Pessoais",
-    "professional_contract" : "Contrato Profissional",
-    "training_contract" : "Contrato de Formação",
-    "imaging_contract" : "Contrato de Imagem",
-    "representative_contract" : "Contrato de Representação"
-  },
-  "expense" : {
-    "title" : "Despesas"
-  },
-  "contract" : {
-    "title" : "Contratos"
-  },
-  "user" : {
-    "user_data" : "Dados do Usuário"
   }
 }
+        
+

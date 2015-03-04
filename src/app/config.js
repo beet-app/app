@@ -1,11 +1,21 @@
 ﻿"use strict";
-BeetApp.config(function($translateProvider) {
+BeetApp.config(function($translateProvider, $mdThemingProvider) {
   $translateProvider.useStaticFilesLoader({
       prefix: "/assets/languages/",
       suffix: ".json"
     }
   );
   $translateProvider.preferredLanguage("pt_br");
+
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue-grey', {
+            'default': '900'
+        })
+        // If you specify less than all of the keys, it will inherit from the
+        // default shades
+        .accentPalette('brown', {
+            'default': '900' // use shade 200 for default, and keep all other shades the same
+        });
 });
 
 BeetApp
