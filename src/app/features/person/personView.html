@@ -54,7 +54,7 @@
             <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontall scrollable">
                     <div layout="row" layout-wrap layout-margin>
-                        <attr layout="row" ng-repeat="attribute in group" label="{{btFn.getTranslation('person.'+attribute.group+'.attributes.'+attribute.description) | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></attr>
+                        <bt-attribute layout="row" ng-repeat="attribute in group" label="{{'person.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
                     </div>
                 </div>
             </md-tab>

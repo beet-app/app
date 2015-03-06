@@ -15,13 +15,13 @@
 
 
   <div layout="row" flex layout-align="center center" class="fill-horizontal">
-    <attr flex="80" data="emailData" label="{{'login.login_data.attributes.mail' | translate}}" ng-model="emailData.value"></attr>
+    <bt-attribute flex="80" data="emailData" label="{{'login.login_data.attributes.mail' | translate}}" ng-model="emailData.value"></bt-attribute>
   </div>
   <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="!rememberPasswordMode">
-    <attr flex="80" data="passwordData" label="{{'login.login_data.attributes.password' | translate}}" ng-model="passwordData.value"></attr>
+    <bt-attribute flex="80" data="passwordData" label="{{'login.login_data.attributes.password' | translate}}" ng-model="passwordData.value"></bt-attribute>
   </div>
   <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="signUpMode">
-    <attr flex="80" data="confirmPasswordData" label="{{'login.login_data.attributes.password_confirm' | translate}}" ng-model="confirmPasswordData.value"></attr>
+    <bt-attribute flex="80" data="confirmPasswordData" label="{{'login.login_data.attributes.password_confirm' | translate}}" ng-model="confirmPasswordData.value"></bt-attribute>
   </div>
 
 

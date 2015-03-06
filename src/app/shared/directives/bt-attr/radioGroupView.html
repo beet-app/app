@@ -1,0 +1,6 @@
+<div layout="column">
+    <div>{{label+'.description' | translate}}</div>
+    <md-radio-group layout="row" ng-model="ngModel">
+        <md-radio-button class="m-t-8 m-l-0" ng-repeat="option in options" value="{{option.value}}">{{label+'.options.'+option.value | translate}}</md-radio-button>
+    </md-radio-group>
+</div>

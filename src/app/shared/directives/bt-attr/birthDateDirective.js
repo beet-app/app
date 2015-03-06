@@ -17,8 +17,8 @@
                                 formatSubmit: 'yyyy-mm-dd',
                                 labelYearSelect: 'Pick a year from the dropdown',
                                 selectMonths: true,
-                                selectYears: true,
-
+                                selectYears: 100,
+                                hiddenName: true,
                                 today: 'hoje',
                                 clear: 'limpar',
                                 close: 'fechar',
@@ -26,9 +26,6 @@
                                     $("#"+scope.data.group+'_'+ scope.data.description).find("input").val(".");
                                     $("#"+scope.data.group+'_'+ scope.data.description).find("input").trigger("focus");
                                 }
-                            });
-                            $("#" + scope.data.group+'_'+ scope.data.description).click(function(){
-                                $(this).val(Common.isEmpty($(this).val()) ? "teste" : $(this).val());
                             });
                         });
 

@@ -6,10 +6,10 @@
       //replace: true,
       restrict: 'E',
       link: function(scope, element) {
-        //scope.label = scope.data.description;
-        scope.type = "text";
+          scope.options = scope.data.type.options ? scope.data.type.options : [];
+
       },
-      templateUrl: Common.getDirectiveTemplateUrl("bt-attr/text")
+      templateUrl: Common.getDirectiveTemplateUrl("bt-attr/radioGroup")
     };
 
   });

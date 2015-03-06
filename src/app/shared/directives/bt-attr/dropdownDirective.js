@@ -9,7 +9,7 @@
         scope.label = scope.data.description;
         scope.type = "text";
       },
-      templateUrl: Common.getDirectiveTemplateUrl("bt-attr/text")
+      templateUrl: Common.getDirectiveTemplateUrl("bt-attr/dropdown")
     };
 
   });

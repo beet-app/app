@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .directive("attr", function ($compile) {
+    .directive("btAttribute", function ($compile) {
 
         var linker = function(scope, element, attrs) {
 

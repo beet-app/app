@@ -1,8 +1,14 @@
+<md-input-container class="color-1 fill-horizontal text-left" >
+    <label>{{label}}</label>
+    <input id="{{data.group+'_'+ data.description}}" type="{{type}}" ng-model="ngModel" tab-next/>
+</md-input-container>
 
-<md-text-float id="{{data.group+'_'+ data.description}}" label="{{label}}" type="{{type}}"  id="date{{timestamp}}" tab-next class="md-purple-theme fill-horizontal text-left" ng-model="ngModel"> </md-text-float>
-<!--
-<div>
-    <div>Data de Nascimento</div>
-    <div><input style="margin-top:4px;border-left:0;border-right:0;border-top:0;border-bottom:1px #000 solid;background-color: transparent" type="text" id="date{{timestamp}}" ng-model="ngModel" value="Escolha a data" /></div>
+<!--<div>
+<md-text-float id="{{data.group+'_'+ data.description}}" label="{{label}}" type="{{type}}"  id="date{{timestamp}}" tab-next class="md-purple-theme fill-horizontal text-left"> </md-text-float>
+<input type="hidden">
+</div>
+v>
+<div>Data de Nascimento</div>
+<div><input style="margin-top:4px;border-left:0;border-right:0;border-top:0;border-bottom:1px #000 solid;background-color: transparent" type="text" id="date{{timestamp}}" ng-model="ngModel" value="Escolha a data" /></div>
 </div>
 -->

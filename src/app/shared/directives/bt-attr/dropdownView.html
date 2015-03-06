@@ -1,0 +1,6 @@
+<div layout="column" class="fill-horizontal">
+    <div>{{label+'.description' | translate}}</div>
+    <md-select class="fill-horizontal" ng-model="ngModel" placeholder="{{label+'.instruction' | translate}}">
+        <md-option ng-value="option.value" ng-repeat="option in options">{{label+'.options.'+option.value | translate}}</md-option>
+    </md-select>
+</div>

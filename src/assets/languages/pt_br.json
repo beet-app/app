@@ -60,7 +60,18 @@
     "technical_data": {
       "description":"Dados Técnicos",
       "attributes":{
-        "position" : "Posição"
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione a Posição",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "left_right": "Lateral-direito",
+            "midfielder": "Meia",
+            "forward": "Atacante"
+          }
+        }
       }
     }
 
