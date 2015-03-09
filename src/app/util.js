@@ -217,6 +217,10 @@ BeetApp
                     name:feature,
                     items:data
                 };
+            },
+            clearRightMenu : function(){
+                $rootScope.sidebar.right.opened = false;
+                delete $rootScope.sidebar.right.feature;
             }
 
         };

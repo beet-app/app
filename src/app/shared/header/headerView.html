@@ -8,7 +8,7 @@
 
   </div>
   <div class="w-224 m-r-8 relative" layout="row" layout-align="end center" >
-      <div class="w-56" layout="row" layout-align="center center">
+      <div ng-if="sidebar.right.feature" class="w-56" layout="row" layout-align="center center">
         <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="28" bt-class=""></bt-button>
         <div ng-show="sidebar.right.feature.selected" class="menu-right-arrow"></div>
       </div>
@@ -20,8 +20,8 @@
         <bt-button type="icon" label="settings" bt-theme="header.toolbar.settings"></bt-button>
         <div ng-show="sidebar.right.settings.selected" class="menu-right-arrow"  style="left:122px"></div>
       </div>
-      <div class="w-56" layout="row" layout-align="center center">
-        <bt-button type="icon" label="account" bt-theme="header.toolbar.account">
+      <div class="w-56" layout="row" layout-align="center center" ng-click="openRightMenu('user')">
+        <bt-button type="icon" label="account" bt-theme="header.toolbar.account" >
         </bt-button>
         <div ng-show="sidebar.right.user.selected" class="menu-right-arrow" style="left:178px;"></div>
       </div>

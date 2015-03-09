@@ -135,7 +135,7 @@ BeetApp
 
 
 BeetApp
-    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, $translate) {
+    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, $translate, $timeout) {
 
 
         var factory = {
@@ -152,6 +152,43 @@ BeetApp
                 }
                 return translation;
 
+            },
+            changeCompany : function(intIndex) {
+                $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;
+                $rootScope.session.company = $rootScope.session.companies[intIndex];
+                $("#modal-companies-close").trigger("click");
+                $scope.toggleDialog();
+                $location.path('home');
+
+            },
+            changeMenu : function(menu) {
+                $rootScope.session.menu = menu;
+                $location.path(menu.url);
+            },
+            changeLanguage : function (key) {
+                $translate.use(key);
+            },
+            toggleDialog : function(strDialog){
+                if ($rootScope.dialogCompany){
+                    $rootScope.dialogCompany = false;
+                }else{
+                    $rootScope.dialogCompany = true;
+                }
+
+                //var d = document.querySelector("#" + strDialog);
+                //d.toggle();
+            },
+            changeViewMode : function(mode){
+                if (mode=="simple_item"){
+                    $rootScope.session.currentFeature.viewMode = "card";
+                }else if (mode=="post_card"){
+                    $rootScope.session.currentFeature.viewMode = "simple_item";
+                }else{
+                    $rootScope.session.currentFeature.viewMode = "post_card";
+                }
+                $timeout(function(){
+                    $rootScope.$apply();
+                });
             }
         };
         return factory;

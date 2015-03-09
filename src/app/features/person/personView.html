@@ -13,14 +13,14 @@
                 </md-input-container>
             </div>
             <div layout="row" layout-align="start center">
-                <div layout="row" class="m-l-16"   layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_list" ng-click="listMode='post_card'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('post_card');" ng-if="!session.currentFeature.viewMode || session.currentFeature.viewMode=='post_card'">
+                    <bt-button type="icon" label="Menu" icon="action.view_list" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
-                <div layout="row" class="m-l-16"   layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_headline" ng-click="listMode='simple_item'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('simple_item')" ng-if="session.currentFeature.viewMode=='simple_item'">
+                    <bt-button type="icon" label="Menu" icon="action.view_headline" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
-                <div layout="row" class="m-l-16" layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_module" ng-click="listMode='card'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('card')" ng-if="session.currentFeature.viewMode=='card'">
+                    <bt-button type="icon" label="Menu" icon="action.view_module" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
                 <div layout="row" class="m-h-16"  layout-align="center center">
                     <bt-button type="icon" label="Menu" icon="navigation.more_vert" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
@@ -54,7 +54,7 @@
             <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontall scrollable">
                     <div layout="row" layout-wrap layout-margin>
-                        <bt-attribute layout="row" ng-repeat="attribute in group" label="{{'person.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
+                        <bt-attribute style="height:56px;" layout="row" ng-repeat="attribute in group" label="{{'person.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
                     </div>
                 </div>
             </md-tab>

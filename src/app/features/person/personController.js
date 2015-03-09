@@ -8,6 +8,7 @@
         });
 
         $scope.list = function(){
+            Common.clearRightMenu();
             GlobalService.get('person').then(function(response){
                 $scope.loadingFeature = false;
                 $scope.mode = "list";

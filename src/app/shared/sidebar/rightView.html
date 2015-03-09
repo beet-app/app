@@ -1,4 +1,4 @@
-<div flex layout-align="start center" layout="column">
+<div flex layout-align="start center" layout="column" ng-if="sidebar.right.feature.selected">
 
   <md-content>
     <md-list>
@@ -19,18 +19,16 @@
     </md-list>
   </md-content>
 
-
-  <!--<div class="pointer md-whiteframe-z1" style="height:48px;margin-top:8px"  layout-align="center center" layout="row" ng-repeat="item in sidebar.right.items" ui-sref-active="bg-grey-light" ui-sref="{{sidebar.right.feature}}/edit({uuid: item.uuid})" ng-claick="executeAction(item)">
-
-    <div flex="20" layout-align="center center" layout="row">
-      <img src="/assets/images/uploads/person/{{item.uuid}}.png" class="img-responsive"/>
-    </div>
-    <div flex layout-align="start center" layout="row">
-      <label layout="row" layout-align="start center" class="s-100 bold pointer">
-        {{item.attributes.person_data.name}}
-      </label>
-    </div>
-
-  </div>-->
-
 </div>
+
+<div layout-align="start start" layout="column" flex class="fill-horizontal" ng-if="sidebar.right.user.selected">
+    <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
+        <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row" ng-click="logout()">
+            <div layout-align="center center" layout="row" class="fill-horizontal">
+                <bt-button type="button" label="Desconectar" class="fill-horizontal" icon="action.exit_to_app" icon-color="black"></bt-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
