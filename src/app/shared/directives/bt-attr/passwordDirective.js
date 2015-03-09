@@ -9,7 +9,6 @@
 
         return {
           pre: function(scope, element, attributes, controller, transcludeFn){
-            scope.label = scope.data.description;
             scope.type = "password";
           },
           post: function(scope, element, attributes, controller, transcludeFn){

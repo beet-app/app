@@ -29,17 +29,17 @@
   <div layout="row" flex class="fill-horizontal" layout-align="center center" style="margin-bottom:25px;margin-top:25px;">
     <div layout="column" flex="45" layout-align="start start" >
       <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
-        <bt-button label="Cadastre-se" bt-class="color-grey s-80" ng-click="showSignUp()"></bt-button>
+        <bt-button label="Cadastre-se" bt-class="color-grey s-80 uppercase" ng-click="showSignUp()"></bt-button>
       </div>
       <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
-        <bt-button label="Problemas com o login?"  bt-class="color-grey s-80"  ng-click="showRememberPassword()"></bt-button>
+        <bt-button label="Problemas com o login?"  bt-class="color-grey s-80 uppercase"  ng-click="showRememberPassword()"></bt-button>
       </div>
       <div layout="row" flex layout-align="start center" ng-if="signUpMode || rememberPasswordMode">
-        <bt-button type="fab" label="Voltar" icon="navigation.arrow_back" bt-class="c-black color-bg-2"  ng-click="showLogin()"></bt-button>
+        <bt-button type="fab" label="Voltar" icon="navigation.arrow_back" bt-class="c-white color-bg-2"  ng-click="showLogin()"></bt-button>
       </div>
     </div>
     <div layout="row" flex="40" layout-align="end center">
-      <md-progress-circular md-theme="purple" ng-if="checkingLogin" md-mode="indeterminate"></md-progress-circular>
+      <md-progress-circular ng-if="checkingLogin" md-mode="indeterminate"></md-progress-circular>
       <bt-button ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" type="fab" label="Entrar" icon-color="white" icon="action.done" bt-class="c-white color-bg-4"  ng-click="checkLogin()"></bt-button>
       <bt-button ng-if="rememberPasswordMode" type="fab" label="Enviar" icon="content.send" bt-class="color-bg-4 c-white"  ng-click="sendPasswordLink()"></bt-button>
       <bt-button ng-if="signUpMode && !checkingLogin" type="fab" label="Cadastrar" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white"  ng-click="signUp()"></bt-button>
