@@ -1,0 +1,43 @@
+<div layout="row" class="fill-horizontal color-bg-4">
+    <div layout="row" layout-align="start center" flex show-sm show-md hide-gt-md>
+        <div layout="row" class="w-48" ng-click="openLeftMenu()">
+            <bt-button type="icon" label="Menu" icon="navigation.menu" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+        <div  layout="row" layout-align="start center" flex>
+            <label class="s-120 m-l-8 color-1 bold" ng-show="session.currentFeature">{{session.currentFeature.attributes.sidebar.title+'.description' | translate}}</label>
+            <label class="s-120 m-l-8 color-1 bold" ng-show="!session.currentFeature">Página Principal</label>
+        </div>
+    </div>
+
+
+    <div layout="row" layout-align="end center" flex>
+        <div layout="row" class="m-l-16"   layout-align="center center">
+            <bt-button type="icon" label="Procurar" icon="action.search" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+        <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('post_card');" ng-if="!session.currentFeature.viewMode || session.currentFeature.viewMode=='post_card'">
+            <bt-button type="icon" label="Menu" icon="action.view_list" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+        <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('simple_item')" ng-if="session.currentFeature.viewMode=='simple_item'">
+            <bt-button type="icon" label="Menu" icon="action.view_headline" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+        <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('card')" ng-if="session.currentFeature.viewMode=='card'">
+            <bt-button type="icon" label="Menu" icon="action.view_module" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+        <div layout="row" class="m-h-16"  layout-align="center center">
+            <bt-button type="icon" label="Menu" icon="navigation.more_vert" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+
+        <div layout="row" layout-align="end center" class="m-l-8" hide>
+            <div layout="row" layout-align="start center" class="w-32">
+                <bt-button type="icon" label="Menu" icon="action.search" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+            </div>
+            <div layout="row" layout-align="start center" class="m-l-8" flex>
+                <input type="text" class="color-bg-4 color-1" style="border-top:0;border-left:0;border-right:0"/>
+                <md-input-container hide class="fill-vertical color-1" >
+                    <label>Color</label>
+                    <input type="text" ng-model="color">
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+</div> 

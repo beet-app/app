@@ -41,21 +41,30 @@
 
     <div bt-theme="content" class="fill-horizontal" flex layout="row">
 
-        <div bt-theme="sidebar.left" class="md-whiteframe-z1" hide-sm hide-md layout="column" ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
+        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
+
+        </md-sidenav>
+
+
+        <div flex layout="column">
+
+            <div layout="row" class="fill-horizontal h-64" ng-include src="'app/shared/toolbar/toolbarView.html'">
+
+            </div>
+
+            <main bt-theme="main" class="relative" flex layout="column" ui-view="">
+
+            </main>
 
         </div>
 
-        <main bt-theme="main" class="relative" flex layout="column" ui-view="">
+        <md-sidenav bt-theme="sidebar.right" ng-show="sidebar.right.opened" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-controller="RightController" ng-include src="'app/shared/sidebar/rightView.html'" md-is-locked-open="$mdMedia('gt-lg')"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
 
-        </main>
-
-        <div bt-theme="sidebar.right" class="md-whiteframe-z1" hide-sm hide-md hide-lg layout="column" ng-controller="RightController" ng-include src="'app/shared/sidebar/rightView.html'" ng-show="sidebar.right.opened">
-
-        </div>
+        </md-sidenav>
 
     </div>
 
-    <div bt-theme="footer" class="fill-horizontal" hide-gt-md id="footer" ng-include src="'app/shared/footer/footerView.html'">
+    <div bt-theme="footer" class="fill-horizontal" hide id="footer" ng-include src="'app/shared/footer/footerView.html'">
 
     </div>
 

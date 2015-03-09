@@ -1,34 +1,8 @@
-<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1 color-bg-1">
+<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
     <div ng-if="mode=='list'" class="fill" layout="column" flex layout-align="start start" class="fill">
-        <div layout="row" class="fill-horizontal h-56 color-bg-4">
-            <div layout="row" layout-align="start center" class="w-32">
-                <bt-button type="icon" label="Menu" icon="action.search" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-            </div>
-            <div layout="row" layout-align="start center" class="m-l-8" flex>
-                <input type="text" class="color-bg-4 color-1" style="border-top:0;border-left:0;border-right:0"/>
-                <md-input-container hide class="fill-vertical color-1" >
-                    <label>Color</label>
-                    <input type="text" ng-model="color">
-                </md-input-container>
-            </div>
-            <div layout="row" layout-align="start center">
-                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('post_card');" ng-if="!session.currentFeature.viewMode || session.currentFeature.viewMode=='post_card'">
-                    <bt-button type="icon" label="Menu" icon="action.view_list" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('simple_item')" ng-if="session.currentFeature.viewMode=='simple_item'">
-                    <bt-button type="icon" label="Menu" icon="action.view_headline" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-l-16"   layout-align="center center" ng-click="btFn.changeViewMode('card')" ng-if="session.currentFeature.viewMode=='card'">
-                    <bt-button type="icon" label="Menu" icon="action.view_module" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-h-16"  layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="navigation.more_vert" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-            </div>
-        </div>
-        <div layout="row" layout-wrap class="scrollable">
-            <div layout="column" ui-sref="person/edit({uuid: item.uuid})" ng-repeat="item in list">
+        <div layout="row" layout-wrap class="scrollable" style="padding-bottom:18px;">
+            <div layout="column" ui-sref="person/edit({uuid: item.uuid})" ng-repeat="item in list" >
 
                 <bt-post-card ng-if="!listMode || listMode=='post_card'" item="item"></bt-post-card>
                 <bt-card ng-if="listMode=='card'" item="item"></bt-card>
@@ -41,7 +15,7 @@
     </div>
     <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
 
-        <div layout="row" layout-align="start center"  class="fill-horizontal color-bg-4 h-56">
+        <div layout="row" layout-align="start center"  class="fill-horizontal h-56" style="background-color: #F5F5F5">
             <div class="w-48 m-h-4">
                 <img src="/assets/images/uploads/person/{{selected}}.png" class="face" style="height:48px;width:48px"/>
             </div>
@@ -50,7 +24,7 @@
             </div>
         </div>
 
-        <md-tabs md-selected="selectedIndex" flex md-stretch-tabs="always">
+        <md-tabs md-selected="selectedIndex" flex md-stretch-tabs="always" class="color-bg-1">
             <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontall scrollable">
                     <div layout="row" layout-wrap layout-margin>

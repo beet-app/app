@@ -2,7 +2,7 @@
 var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","pascalprecht.translate","ngAnimate", "ngMaterial", "ngAnimate"]);
 
 BeetApp
-    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp) {
+    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav) {
 
         UserService.getActiveUser().then(function(response){
 
@@ -59,7 +59,13 @@ BeetApp
 
             }
 
+	        $rootScope.openLeftMenu = function(){
+		        $mdSidenav('left').toggle()
+			        .then(function(){
+				        //$log.debug("toggle left is done");
+			        });
 
+	        };
 
         });
     });
