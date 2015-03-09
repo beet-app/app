@@ -1,9 +1,8 @@
 ﻿{
-
   "global": {
 
     "choose_company"  : "Escolha a companhia:" ,
-    "choose_language" : "Escolha a Linguagem"  ,
+    "choose_language" : "Escolha a linguagem"  ,
     "suggest_language" : "Sugira uma linguagem" ,
     "notifications"   : "Notificações",
     "all_notifications"   : "Ver todas as notificações",
@@ -47,14 +46,14 @@
         "rg": "RG",
         "postcode": "CEP",
         "street": "Rua",
-        "number": "Numero",
+        "number": "Número",
         "complement": "Complemento",
         "neighborhood": "Bairro",
         "city": "Cidade",
         "state": "Estado",
-        "birth_date": "Data de Nascimento",
+        "birth_date": "Data de nascimento",
         "email": "E-mail",
-        "video_link": "Link do Video"
+        "video_link": "Link do vídeo"
       }
     },
     "technical_data": {
@@ -62,14 +61,24 @@
       "attributes":{
         "position": {
           "description": "Posição",
-          "instruction": "Selecione a Posição",
+          "instruction": "Selecione",
           "options": {
             "goalkeeper": "Goleiro",
             "defender": "Zagueiro",
             "left_back": "Lateral-esquerdo",
-            "left_right": "Lateral-direito",
-            "midfielder": "Meia",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
             "forward": "Atacante"
+          }
+        },
+        "laterality": {
+          "description": "Lateralidade",
+          "instruction": "Selecione",
+          "options": {
+            "right_handed":"Destro",
+            "left_handed":"Canhoto",
+            "two_handed" : "Ambidestro"
           }
         }
       }
@@ -206,5 +215,3 @@
     }
   }
 }
-        
-
