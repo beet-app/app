@@ -89,7 +89,8 @@
   },
   "single_view":{
     "style":{
-      "background-color": "color.grey.3"
+      "background-color1": "color.grey.3",
+      "background-color": "#009688"
     }
   },
   "loading":{

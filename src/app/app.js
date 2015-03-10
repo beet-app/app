@@ -2,7 +2,7 @@
 var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","pascalprecht.translate","ngAnimate", "ngMaterial", "ngAnimate"]);
 
 BeetApp
-    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav) {
+    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia) {
 
         UserService.getActiveUser().then(function(response){
 
@@ -59,11 +59,17 @@ BeetApp
 
             }
 
-	        $rootScope.openLeftMenu = function(){
-		        $mdSidenav('left').toggle()
-			        .then(function(){
-				        //$log.debug("toggle left is done");
-			        });
+	        $rootScope.toogleLeftMenu = function(){
+		        if ($mdMedia("gt-md")){
+			        $rootScope.session
+		        }else{
+			        $mdSidenav('left').toggle()
+				        .then(function(){
+					        //$log.debug("toggle left is done");
+				        });
+		        }
+
+
 
 	        };
 
@@ -79,24 +85,27 @@ BeetApp
             init: function () {
                 var defer = $q.defer();
 
-                $rootScope.sidebar = {
-                    left:{
+                $rootScope._app = {
 
-                    },
-                    right:{
-                        feature:{
-                            selected:false
-                        },
-                        notifications:{
-                            selected:false
-                        },
-                        configs:{
-                            selected:false
-                        },
-                        user:{
-                            selected:false
-                        }
-                    }
+					sidebar : {
+						left: {
+							opened: true
+						},
+						right: {
+							feature: {
+								selected: false
+							},
+							notifications: {
+								selected: false
+							},
+							configs: {
+								selected: false
+							},
+							user: {
+								selected: false
+							}
+						}
+					}
                 };
                 $rootScope.btFn = btFn;
                 factory.loadDefaults().then(function(response){

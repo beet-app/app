@@ -41,7 +41,7 @@
 
     <div bt-theme="content" class="fill-horizontal" flex layout="row">
 
-        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
+        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show="_app.sidebar.left.opened"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
 
         </md-sidenav>
 
