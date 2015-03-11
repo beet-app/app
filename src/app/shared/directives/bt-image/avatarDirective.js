@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .directive("btAvatar", function (Common, $compile) {
+    .directive("btAvatar2", function (Common, $compile) {
 
         var linker = function(scope, element, attrs) {
           console.log("asdasd");

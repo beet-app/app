@@ -6,12 +6,12 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-language" content="pt-br" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="description" content="Gerenciamento de atletas" />
-    <meta name="author" content="BeetCorp" />
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="pt-br" http-equiv="content-language" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="Gerenciamento de atletas" name="description" />
+    <meta content="BeetCorp" name="author"/>
+    <meta content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" name="viewport">
 
     <title>Beet</title>
 
@@ -35,52 +35,51 @@
 
 <div bt-theme="container" class="fill" id="container" layout="column" ng-if="fullViewMode" style="display:none;">
 
-    <div bt-theme="header" class="fill-horizontal md-whiteframe-z1" layout="row" ng-controller="HeaderController" ng-include src="'app/shared/header/headerView.html'">
-
-    </div>
+    <!-- Header -->
+    <ng-include src="'app/shared/header/headerView.html'"></ng-include>
+    <!-- Header -->
 
     <div bt-theme="content" class="fill-horizontal" flex layout="row">
 
-        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show="_app.sidebar.left.opened"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'">
-
-        </md-sidenav>
-
+        <!-- Left Sidebar -->
+        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show="_app.sidebar.left.opened"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'"></md-sidenav>
+        <!-- Left Sidebar -->
 
         <div flex layout="column">
 
-            <div layout="row" class="fill-horizontal h-64" ng-include src="'app/shared/toolbar/toolbarView.html'">
+            <!-- Toolbar -->
+            <ng-include src="'app/shared/toolbar/toolbarView.html'"></ng-include>
+            <!-- Toolbar -->
 
-            </div>
-
-            <main bt-theme="main" class="relative" flex layout="column" ui-view="">
-
-            </main>
-
+            <!-- Main -->
+            <main bt-theme="main" class="relative" flex layout="column" ui-view=""></main>
+            <!-- Main -->
         </div>
 
-        <md-sidenav bt-theme="sidebar.right" ng-show="_app.sidebar.right.opened" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-controller="RightController" ng-include src="'app/shared/sidebar/rightView.html'" md-is-locked-open="$mdMedia('gt-lg')">
-
-        </md-sidenav>
-
-    </div>
-
-    <div bt-theme="footer" class="fill-horizontal" hide id="footer" ng-include src="'app/shared/footer/footerView.html'">
+        <!-- Right Sidebar -->
+        <md-sidenav bt-theme="sidebar.right" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-controller="RightController" md-is-locked-open="$mdMedia('gt-lg')" ng-include src="'app/shared/sidebar/rightView.html'" ng-show="_app.sidebar.right.opened"></md-sidenav>
+        <!-- Right Sidebar -->
 
     </div>
 
-</div>
+    <!-- Footer -->
+    <ng-include src="'app/shared/footer/footerView.html'"></ng-include>
+    <!-- Footer -->
 
-<div class="overlay-transparent" style="display:none;">
-
-</div>
-
-<div bt-theme="loading" ng-if="ready" class="fill" id="loadingApp" layout="column"  layout-align="center center" ng-include src="'app/shared/loading/app.html'">
 
 </div>
 
-<div bt-theme="single_view" id="single-view" ng-if="singleViewMode" layout="row" layout-fill  layout-align="center center"  ui-view="" style="display:none;">
+<!-- Overlay Transparent -->
+<div class="overlay-transparent" style="display:none;"></div>
+<!-- Overlay Transparent -->
 
-</div>
+<!-- Loading App -->
+<ng-include src="'app/shared/loading/app.html'"></ng-include>
+<!-- Loading App -->
+
+<!-- Single View -->
+<div bt-theme="single_view" class="fill" id="single_view" ng-if="singleViewMode" layout="row" layout-align="center center"  ui-view="" style="display:none;"></div>
+<!-- Single View -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

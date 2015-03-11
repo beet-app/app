@@ -17,10 +17,10 @@
         </div>
     </div>
     <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
-      <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="_app.feature.change(menuLeftItem)">
-        <div layout-align="center center" layout="row" class="fill-horizontal">
-          <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.description' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
+        <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="_app.feature.change(menuLeftItem)">
+            <div layout-align="center center" layout="row" class="fill-horizontal">
+                <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.description' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
+            </div>
         </div>
-      </div>
     </div>
 </div>

@@ -6,7 +6,7 @@
 
     setTimeout(function(){
       $("#loadingApp").hide();
-      $("#single-view").fadeIn("slow");
+      $("#single_view").fadeIn("slow");
       $("#login-validate").fadeIn("slow");
     },1000);
 

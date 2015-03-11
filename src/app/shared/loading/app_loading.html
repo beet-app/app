@@ -1,8 +1,10 @@
-<div bt-theme="loading.box" layout="column" layout-align="center center">
-    <div class="fill-horizontal" layout="column" layout-align="center center">
-        <img bt-theme="loading.box.image" />
-    </div>
-    <div class="fill-horizontal" layout="column" layout-align="center center">
-        <img bt-theme="loading.box.preloader" />
+<div bt-theme="loading" ng-if="ready" class="fill" id="loadingApp" layout="column"  layout-align="center center">
+    <div bt-theme="loading.box" layout="column" layout-align="center center">
+        <div class="fill-horizontal" layout="column" layout-align="center center">
+            <img bt-theme="loading.box.image" />
+        </div>
+        <div class="fill-horizontal" layout="column" layout-align="center center">
+            <img bt-theme="loading.box.preloader" />
+        </div>
     </div>
 </div>

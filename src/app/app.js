@@ -28,29 +28,6 @@ BeetApp
                     }
                 });
 
-
-
-                /*
-                 $rootScope.session = {user:response.data};
-
-
-
-                 $rootScope.singleViewMode = true;
-
-                 $location.path($state.current.url);
-                 setTimeout(function(){
-                 $("#loadingApp").fadeOut("fast");
-                 $("#single-view").fadeIn("slow");
-                 },1000);
-                 }else{
-
-
-                 Common.goTo("login");
-                 setTimeout(function(){
-                 $("#loadingApp").fadeOut("fast");
-                 $("#single-view").fadeIn("slow");
-                 },1000);
-                 */
             }else{
                 btApp.loadDefaults().then(function(){
                     $rootScope.singleViewMode = true;

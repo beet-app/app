@@ -4,7 +4,7 @@
         $rootScope.singleViewMode = true;
         setTimeout(function(){
             $("#loadingApp").hide();
-            $("#single-view").fadeIn("slow");
+            $("#single_view").fadeIn("slow");
         },3000);
 
         $scope.password = "";
