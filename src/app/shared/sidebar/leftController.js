@@ -5,10 +5,6 @@
             $scope.menuLeft = $rootScope.session.features;
         }
 
-        $scope.changeLeftMenu = function(feature){
-            $rootScope.session.currentFeature = feature;
-            Common.clearRightMenu();
-            Common.goTo(feature.attributes.sidebar.path);
-        }
+
 
     });

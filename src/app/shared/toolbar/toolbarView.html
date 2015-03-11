@@ -1,9 +1,9 @@
 <div layout="row" class="fill-horizontal color-bg-4">
-    <div layout="row" layout-align="start center" flex show-sm show-md hide-gt-md>
-        <div layout="row" class="w-64" ng-click="openLeftMenu()" layout-align="center center">
+    <div layout="row" layout-align="start center" flex>
+        <div layout="row" class="w-64" ng-click="_app.sidebar.left.toogle()" ng-show="!_fn.checkScreen('gt-md') || (_fn.checkScreen('gt-md') && !_app.sidebar.left.opened)" layout-align="center center">
             <bt-button type="icon" label="Menu" icon="navigation.menu" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
         </div>
-        <div  layout="row" layout-align="start center" flex>
+        <div  layout="row" layout-align="start center" flex show-sm show-md hide-gt-md>
             <label class="s-120 m-l-8 color-1 bold" ng-show="session.currentFeature">{{session.currentFeature.attributes.sidebar.title+'.description' | translate}}</label>
             <label class="s-120 m-l-8 color-1 bold" ng-show="!session.currentFeature">Página Principal</label>
         </div>

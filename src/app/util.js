@@ -209,18 +209,6 @@ BeetApp
             },
             getUploadUrl: function() {
                 return Config.getUploadUrl();
-            },
-            openFeatureRightMenu : function(feature, data){
-                $rootScope.sidebar.right.opened = true;
-                $rootScope.sidebar.right.feature = {
-                    selected:true,
-                    name:feature,
-                    items:data
-                };
-            },
-            clearRightMenu : function(){
-                $rootScope.sidebar.right.opened = false;
-                delete $rootScope.sidebar.right.feature;
             }
 
         };

@@ -2,7 +2,7 @@
 
     <div ng-if="mode=='list'" class="fill" layout="column" flex layout-align="start start" class="fill">
         <div layout="row" layout-wrap class="scrollable" style="padding-bottom:18px;">
-            <div layout="column" ui-sref="person/edit({uuid: item.uuid})" ng-repeat="item in list" >
+            <div layout="column" ui-sref="person/edit({uuid: item.uuid})" ng-repeat="item in data" >
 
                 <bt-post-card ng-if="!listMode || listMode=='post_card'" item="item"></bt-post-card>
                 <bt-card ng-if="listMode=='card'" item="item"></bt-card>
@@ -25,7 +25,7 @@
         </div>
 
         <md-tabs md-selected="selectedIndex" flex md-stretch-tabs="always" class="color-bg-1">
-            <md-tab ng-repeat="(key, group) in data" label="{{'person.'+key+'.description' | translate}}">
+            <md-tab ng-repeat="(key, group) in formData" label="{{'person.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontall scrollable">
                     <div layout="row" layout-wrap layout-margin>
                         <bt-attribute style="height:80px;" layout="row" ng-repeat="attribute in group" label="{{'person.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>

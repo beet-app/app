@@ -1,0 +1,16 @@
+<div class="w-192 m-r-8 relative" layout="row" layout-align="end center">
+    <div ng-if="_app.sidebar.right.feature.items.length>0"  ng-click="_app.sidebar.right.toogle('feature')" class="w-64" layout="row" layout-align="center center">
+        <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="28" bt-class=""></bt-button>
+        <div ng-show="_app.sidebar.right.feature.selected" class="menu-right-arrow" style="left:14px"></div>
+    </div>
+    <div class="w-64" layout="row" layout-align="center center"  ng-click="_app.sidebar.right.toogle('notifications')">
+        <bt-button type="icon" label="Menu" bt-theme="header.toolbar.notifications"></bt-button>
+        <div ng-show="_app.sidebar.right.notifications.selected" class="menu-right-arrow"  style="left:78px"></div>
+    </div>
+    <div class="w-64" layout="row" layout-align="center center" ng-click="_app.sidebar.right.toogle('user')">
+        <bt-button type="icon" label="account" bt-theme="header.toolbar.account" >
+        </bt-button>
+        <div ng-show="_app.sidebar.right.user.selected" class="menu-right-arrow" style="left:142px;"></div>
+    </div>
+</div>
+

@@ -1,20 +1,7 @@
 ﻿BeetApp
     .controller('HeaderController', function($scope, $rootScope,$sce, $http, $location, $translate, Common,$state) {
 
-        $scope.openRightMenu = function(menu){
-            if ($rootScope.sidebar.right.opened){
-                $rootScope.sidebar.right.opened = false;
-                $rootScope.sidebar.right[menu] = {
-                    selected:false
-                };
-            }else{
-                $rootScope.sidebar.right.opened = true;
-                $rootScope.sidebar.right[menu] = {
-                    selected:true
-                };
-            }
 
-        };
         $rootScope.languages = new Array("pt_br", "en", "es");
         setTimeout(function(){
             $("#loadingApp").hide();

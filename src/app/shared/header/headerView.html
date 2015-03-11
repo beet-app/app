@@ -1,6 +1,6 @@
 <div layout-align="start center" layout="row" flex>
   <div class="w-256" layout-align="start center" layout="row" >
-    <img src="" style="margin-left:8px !important;" bt-theme="header.logo">
+    <img src="" class="m-l-8" bt-theme="header.logo">
   </div>
   <div flex class="m-l-8" layout="column" layout-align="start center" bt-theme="header.title">
     <div class="fill-horizontal" layout="row" layout-align="start center" show-gt-sm hide-sm hide-md>
@@ -8,31 +8,7 @@
         <label class="s-150 m-l-8" ng-show="!session.currentFeature">Página Principal</label>
     </div>
   </div>
-  <div class="w-192 m-r-8 relative" layout="row" layout-align="end center" >
-      <div ng-if="sidebar.right.feature" class="w-64" layout="row" layout-align="center center">
-        <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="28" bt-class=""></bt-button>
-        <div ng-show="sidebar.right.feature.selected" class="menu-right-arrow" style="left:14px"></div>
-      </div>
-      <div class="w-64" layout="row" layout-align="center center">
-        <bt-button type="icon" label="Menu" bt-theme="header.toolbar.notifications"></bt-button>
-        <div ng-show="sidebar.right.notifications.selected" class="menu-right-arrow"  style="left:78px"></div>
-      </div>
-
-      <div class="w-64" layout="row" layout-align="center center" ng-click="openRightMenu('user')">
-        <bt-button type="icon" label="account" bt-theme="header.toolbar.account" >
-        </bt-button>
-        <div ng-show="sidebar.right.user.selected" class="menu-right-arrow" style="left:142px;"></div>
-      </div>
-
-
-
-      <!--
-      <div class="w-64" layout="row" layout-align="center center" hide>
-          <bt-button type="icon" label="settings" bt-theme="header.toolbar.settings"></bt-button>
-          <div ng-show="sidebar.right.settings.selected" class="menu-right-arrow"  style="left:122px"></div>
-      </div>
-      -->
-  </div>
+  <ng-include src="'app/shared/header/headerToolbarView.html'"></ng-include>
 
 </div>
 

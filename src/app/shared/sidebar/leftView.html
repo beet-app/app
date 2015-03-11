@@ -1,11 +1,11 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal">
     <div layout-align="start center" layout="row" hide-gt-md style="height:60px" class="w-256">
-        <img src="" style="margin-left:8px !important;" bt-theme="header.logo">
+        <img src="" class="m-l-8" bt-theme="sidebar.left.logo">
     </div>
 
 
     <div layout-align="center center" layout="row" class="fill-horizontal h-64 s-110 color-bg-4 color-1" >
-        <div layout="row" class="w-48" ng-click="toogleLeftMenu()">
+        <div layout="row" class="w-48" ng-click="_app.sidebar.left.toogle()">
             <bt-button type="icon" label="Menu" icon="navigation.chevron_left" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
         </div>
         <div  layout="row" layout-align="start center" flex hide-gt-md>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
-      <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="changeLeftMenu(menuLeftItem)">
+      <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="_app.feature.change(menuLeftItem)">
         <div layout-align="center center" layout="row" class="fill-horizontal">
           <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.description' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
         </div>

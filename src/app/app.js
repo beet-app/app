@@ -59,25 +59,12 @@ BeetApp
 
             }
 
-	        $rootScope.toogleLeftMenu = function(){
-		        if ($mdMedia("gt-md")){
-			        $rootScope.session
-		        }else{
-			        $mdSidenav('left').toggle()
-				        .then(function(){
-					        //$log.debug("toggle left is done");
-				        });
-		        }
-
-
-
-	        };
 
         });
     });
 
 BeetApp
-    .factory("btApp", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, btFn) {
+    .factory("btApp", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, btFn,$timeout, $mdSidenav) {
 
 
         var factory = {
@@ -86,28 +73,107 @@ BeetApp
                 var defer = $q.defer();
 
                 $rootScope._app = {
+                    sidebar : {
+                        left: {
+                            opened: true,
+                            toogle : function(){
+                                if (btFn.checkScreen("gt-md")){
+                                    this.opened = !this.opened;
+                                }else{
+                                    $mdSidenav('left').toggle()
+                                        .then(function(){
 
-					sidebar : {
-						left: {
-							opened: true
-						},
-						right: {
-							feature: {
-								selected: false
-							},
-							notifications: {
-								selected: false
-							},
-							configs: {
-								selected: false
-							},
-							user: {
-								selected: false
-							}
-						}
-					}
+                                        });
+                                }
+                            }
+                        },
+                        right: {
+                            opened:false,
+                            toogle : function(item){
+                                if (this[item].selected){
+                                    this[item].selected = false;
+                                    if (btFn.checkScreen("gt-md")){
+                                        this.opened = false;
+                                    }else{
+                                        this.opened = false;
+                                        $mdSidenav('right').close()
+                                            .then(function(){
+
+                                            });
+                                    }
+                                }else{
+                                    if (!this.opened){
+                                        if (btFn.checkScreen("gt-md")){
+                                            this.opened = true;
+                                        }else{
+                                            this.opened = true;
+                                            $timeout(function(){
+                                                $rootScope.$watch($mdSidenav('right').isOpen, function(opened){
+                                                    if (!opened){
+                                                        $rootScope._app.sidebar.right.opened = false;
+                                                        $rootScope._app.sidebar.right["feature"].selected = false;
+                                                        $rootScope._app.sidebar.right["notifications"].selected = false;
+                                                        $rootScope._app.sidebar.right["user"].selected = false;
+                                                    }
+                                                });
+                                                $mdSidenav('right').open()
+                                                    .then(function(){
+
+                                                    });
+                                            });
+
+                                        }
+                                    }
+                                    this["feature"].selected = false;
+                                    this["notifications"].selected = false;
+                                    this["user"].selected = false;
+                                    this[item].selected = true;
+                                }
+
+
+
+                            },
+                            load: function(feature, data){
+                                this.feature = {
+                                    selected:false,
+                                    name:feature,
+                                    items:data
+                                };
+                                this.toogle("feature");
+                            },
+                            unLoad: function(feature, data){
+                                this.feature = {
+                                    selected:true,
+                                    name:null,
+                                    items:[]
+                                };
+                                this.toogle("feature");
+                            },
+                            feature: {
+                                selected: false
+                            },
+                            notifications: {
+                                selected: false
+                            },
+                            user: {
+                                selected: false
+                            }
+                        }
+                    },
+                    feature : {
+                        change: function (feature) {
+                            $rootScope._app.sidebar.right.unLoad();
+                            $rootScope._app.feature.current = feature;
+                            btFn.goTo(feature.attributes.sidebar.path);
+                        }
+                    }
                 };
-                $rootScope.btFn = btFn;
+
+
+
+
+
+                $rootScope._fn = btFn;
                 factory.loadDefaults().then(function(response){
                     defer.resolve(response);
                 });
@@ -150,7 +216,7 @@ BeetApp
 
 
 BeetApp
-    .factory("btFn", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, $translate, $timeout) {
+    .factory("btFn", function($rootScope, $q,$state, Common, UserService, CompanyService,$mdMedia, GlobalService, $translate, $timeout) {
 
 
         var factory = {
@@ -204,7 +270,15 @@ BeetApp
                 $timeout(function(){
                     $rootScope.$apply();
                 });
+            },
+            checkScreen : function(screen){
+                return $mdMedia(screen);
+            },
+            goTo : function (url){
+                $state.transitionTo(url);
             }
+
+
         };
         return factory;
 

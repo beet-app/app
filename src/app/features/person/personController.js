@@ -1,19 +1,18 @@
 ﻿BeetApp
-    .controller('PersonController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService) {
+    .controller('PersonController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
         $scope.loadingFeature = true;
-        GlobalService.get('person').then(function(response){
-            if (!response.error){
-                $scope.list = response.data;
-            }
-        });
 
         $scope.list = function(){
-            Common.clearRightMenu();
             GlobalService.get('person').then(function(response){
-                $scope.loadingFeature = false;
-                $scope.mode = "list";
+
                 if (!response.error){
-                    $scope.list = response.data;
+                    $scope.data = response.data;
+                    if (Common.isEmpty($stateParams.uuid)){
+                        $scope.loadingFeature = false;
+                        $scope.mode = "list";
+                    }else{
+                        $scope.edit($stateParams.uuid);
+                    }
                 }
             });
         };
@@ -21,14 +20,14 @@
         $scope.edit = function(uuid){
             $scope.loadingFeature = true;
             GlobalService.getAttributes('person', uuid).then(function(response){
-                Common.openFeatureRightMenu("person", $scope.list);
+                $rootScope._app.sidebar.right.load("person", $scope.data);
 
                 $scope.uuid = uuid;
                 $scope.loadingFeature = false;
                 $scope.selected = uuid;
                 if (!response.error){
                     $scope.mode = "edit";
-                    $scope.data = response.data;
+                    $scope.formData = response.data;
                 }
             });
         };
@@ -69,13 +68,6 @@
             }
         };
 
-        $scope.setFocus = function(id){
-            $("#"+id).find("input").focus();
-        };
 
-        if (Common.isEmpty($stateParams.uuid)){
-            $scope.list();
-        }else{
-            $scope.edit($stateParams.uuid);
-        }
+        $scope.list();
     });
