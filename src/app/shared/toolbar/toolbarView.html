@@ -4,8 +4,8 @@
             <bt-button type="icon" label="Menu" icon="navigation.menu" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
         </div>
         <div  layout="row" layout-align="start center" flex show-sm show-md hide-gt-md>
-            <label class="s-120 m-l-8 color-1 bold" ng-show="session.currentFeature">{{session.currentFeature.attributes.sidebar.title+'.description' | translate}}</label>
-            <label class="s-120 m-l-8 color-1 bold" ng-show="!session.currentFeature">Página Principal</label>
+            <label class="s-120 m-l-8 color-1 bold" ng-show="_app.feature.current">{{_app.feature.current.attributes.sidebar.title+'.description' | translate}}</label>
+            <label class="s-120 m-l-8 color-1 bold" ng-show="!_app.feature.current">Página Principal</label>
         </div>
     </div>
 

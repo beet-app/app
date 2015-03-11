@@ -1,32 +1,6 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
     <div ng-if="mode=='list'" class="fill" layout="column" flex layout-align="start start" class="fill">
-        <div layout="row" class="fill-horizontal h-56 color-bg-4">
-            <div layout="row" layout-align="start center" class="w-32">
-                <bt-button type="icon" label="Menu" icon="action.search" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-            </div>
-            <div layout="row" layout-align="start center" class="m-l-8" flex>
-                <input type="text" class="color-bg-4 color-1" style="border-top:0;border-left:0;border-right:0"/>
-                <md-input-container hide class="fill-vertical color-1" >
-                    <label>Color</label>
-                    <input type="text" ng-model="color">
-                </md-input-container>
-            </div>
-            <div layout="row" layout-align="start center">
-                <div layout="row" class="m-l-16"   layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_list" ng-click="listMode='post_card'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-l-16"   layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_headline" ng-click="listMode='simple_item'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-l-16" layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="action.view_module" ng-click="listMode='card'" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div layout="row" class="m-h-16"  layout-align="center center">
-                    <bt-button type="icon" label="Menu" icon="navigation.more_vert" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-            </div>
-        </div>
         <div layout="row" layout-wrap class="scrollable">
             <div layout="column" ui-sref="contract/list({uuid : item.uuid})" ng-repeat="item in list">
 

@@ -139,7 +139,9 @@ BeetApp
                                     name:feature,
                                     items:data
                                 };
-                                this.toogle("feature");
+	                            if (btFn.checkScreen("gt-md")){
+		                            this.toogle("feature");
+	                            }
                             },
                             unLoad: function(feature, data){
                                 this.feature = {
@@ -162,6 +164,9 @@ BeetApp
                     },
                     feature : {
                         change: function (feature) {
+	                        if (!btFn.checkScreen("gt-md")){
+		                        $rootScope._app.sidebar.left.toogle();
+	                        }
                             $rootScope._app.sidebar.right.unLoad();
                             $rootScope._app.feature.current = feature;
                             btFn.goTo(feature.attributes.sidebar.path);

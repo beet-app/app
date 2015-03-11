@@ -33,10 +33,12 @@
         };
 
         $scope.save = function(){
+	        $scope.loadingFeature = true;
             var blnSave = true;
             angular.forEach($scope.data.person_data, function(attribute){
                 if (blnSave){
                     if (attribute.required===1 && Common.isEmpty(attribute.value)){
+	                    $scope.loadingFeature = false;
                         Common.showMessage("Preencha o campo "+attribute.description+" !", "warning");
                         blnSave = false;
                         $scope.creatingCompany = false;
@@ -51,7 +53,7 @@
                     mode = "update";
                     objSave.uuid = $scope.uuid;
                 }
-                objSave.attribute = Common.getAttributeObj($scope.data.person_data);
+                objSave.attribute = Common.getAttributeObj($scope.formData.person_data);
                 objSave.company = $rootScope.session.user.company;
 
                 GlobalService.save("person", mode, objSave).then(function (response) {
