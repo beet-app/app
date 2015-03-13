@@ -38,6 +38,37 @@
                 "name" : "Nome",
                 "cpf" :"CPF"
             }
+        "cpf": "CPF",
+        "rg": "RG",
+        "postcode": "CEP",
+        "street": "Rua",
+        "number": "Número",
+        "complement": "Complemento",
+        "neighborhood": "Bairro",
+        "city": "Cidade",
+        "state": "Estado",
+        "birth_date": "Data de nascimento",
+        "mail": "E-mail",
+        "education": "Escolaridade",
+        "video_link": "Link do vídeo"
+      }
+    },
+    "technical_data": {
+      "description":"Dados Técnicos",
+      "attributes":{
+        "height": "Altura",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
         },
         "corporate_data": {
             "description":"Pessoa Jurídica",
@@ -47,6 +78,17 @@
                 "cnpj" :"CNPJ"
             }
         }
+      }
+    }
+  },
+  "contract": {
+    "description":"Contratos",
+    "contract_data": {
+      "attributes":{
+        "type" : "Tipo",
+        "identification" :"Identificação"
+      }
+
     },
     "person":{
         "description":"Alunos",
