@@ -94,8 +94,7 @@
     },
     "single_view":{
         "style":{
-            "background-color": "color.grey.3",
-            "background-color1": "#009688"
+            "background-color": "color.grey.2"
         }
     },
     "loading":{
@@ -123,6 +122,76 @@
             }
         }
 
+    },
+    "feature":{
+        "login":{
+            "style":{
+                "background-color":"color.white",
+                "border-radius":"8%"
+            },
+            "flex-sm":"80",
+            "flex-md":"50",
+            "flex-lg":"40",
+            "flex-gt-lg":"30",
+            "logo_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "height":"64px"
+                },
+                "image":{
+                    "style":{
+                        "width":"50%"
+                    },
+                    "src":"assets/images/loading.png"
+                }
+
+            },
+            "social_box":{
+                "style":{
+                    "margin-top" : "8px",
+                    "margin-bottom" : "8px",
+                    "height":"64px"
+                },
+                "google":{
+                    "style":{
+                        "width":"64px",
+                        "margin-right":"16px",
+                        "cursor":"pointer"
+                    },
+                    "src":"assets/images/google_plus.png"
+                },
+                "facebook":{
+                    "style":{
+                        "width":"64px",
+                        "margin-left":"16px",
+                        "cursor":"pointer"
+                    },
+                    "src":"assets/images/facebook.png"
+                }
+
+            },
+            "info_box":{
+                "style":{
+                    "margin-top" : "8px",
+                    "margin-bottom" : "8px",
+                    "height":"64px"
+                },
+                "message":{
+                    "flex":"80"
+                }
+            }
+
+        }
+
+    },
+    "button":{
+        "save":{
+            "bt-class":"bg-green",
+            "icon":"action.done",
+            "type":"fab",
+            "icon-color":"white"
+        }
     }
 }
 

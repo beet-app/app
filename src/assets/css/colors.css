@@ -13,8 +13,8 @@
     background-color:#B9F6CA !important;
 }
 .color-bg-4{
-    --background-color:#009688 !important;
-    background-color:#781649 !important;
+    background-color:#009688 !important;
+    --background-color:#781649 !important;
     --background-color:#375B5F !important;
 }
 .color-bg-5{
@@ -129,3 +129,79 @@
 .border-color-5{
     border:1px solid #000000;
 }
+
+.bg-black{
+    background-color:#000000;
+}
+.bg-blue{
+    background-color:#2196F3;
+}
+.bg-brown{
+    background-color:#795548;
+}
+.bg-green{
+    background-color:#4CAF50;
+}
+.bg-grey{
+    background-color:#9E9E9E;
+}
+.bg-pink{
+    background-color:#E91E63;
+}
+.bg-purple{
+    background-color:#9C27B0;
+}
+.bg-orange{
+    background-color:#FF9800;
+}
+.bg-red{
+    background-color:#F44336;
+}
+.bg-teal{
+    background-color:#009688;
+}
+.bg-white{
+    background-color:#FFFFFF;
+}
+.bg-yellow{
+    background-color:#FFEB3B;
+}
+
+.color-black{
+    color:#000000;
+}
+.color-blue{
+    color:#2196F3;
+}
+.color-brown{
+    color:#795548;
+}
+.color-green{
+    color:#4CAF50;
+}
+.color-grey{
+    color:#9E9E9E;
+}
+.color-pink{
+    color:#E91E63;
+}
+.color-purple{
+    color:#9C27B0;
+}
+.color-orange{
+    color:#FF9800;
+}
+.color-red{
+    color:#F44336;
+}
+.color-teal{
+    color:#009688;
+}
+.color-white{
+    color:#FFFFFF;
+}
+.color-yellow{
+    color:#FFEB3B;
+}
+
+

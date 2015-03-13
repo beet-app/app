@@ -2,6 +2,7 @@
     .controller('LoginController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, UserService, $state, btApp) {
         $rootScope.fullViewMode = false;
         $rootScope.singleViewMode = true;
+        $rootScope.loginMode = true;
         setTimeout(function(){
             $("#loadingApp").hide();
             $("#single_view").fadeIn("slow");

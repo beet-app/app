@@ -1,22 +1,20 @@
- <div id="login" flex-sm="80" flex-md="60" flex-lg="50" flex-gt-lg="30" class="md-whiteframe-z1 color-bg-1" layout-margin layout="column" layout-align="start center">
+ <div id="login" bt-theme="feature.login" class="md-whiteframe-z1" layout="column" layout-align="start center">
 
-    <div layout="row" layout-align="center center" class="fill-horizontal m-v-16 h-64">
-        <img src="/assets/images/loading.png" style="width:50%"  ng-click="stagingMode(3)"/>
+    <div bt-theme="feature.login.logo_box" layout="row" layout-align="center center" class="fill-horizontal">
+        <img bt-theme="feature.login.logo_box.image"  ng-click="stagingMode(3)"/>
     </div>
 
-    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="rememberPasswordMode">
-        <span flex="80">Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha.</span>
-    </div>
-    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="signUpMode">
-        <span flex="80">Digite seu e-mail e senha para se cadastrar no Beet.</span>
+    <div layout="row" bt-theme="login.info_box" layout-align="center center" class="fill-horizontal" ng-if="!loginMode">
+        <span bt-theme="login.info_box.message" ng-if="rememberPasswordMode" translate="login.password_redefine_message"></span>
+        <span bt-theme="login.info_box.message" ng-if="signUpMode" translate="login.sign_up_message"></span>
     </div>
 
-     <div layout="row" layout-align="center center" class="fill-horizontal h-64 m-v-8" ng-if="!rememberPasswordMode">
+     <div bt-theme="feature.login.social_box" layout="row" layout-align="center center" class="fill-horizontal" ng-if="!rememberPasswordMode">
          <div layout="row" flex layout-align="end center" >
-             <img src="assets/images/google_plus.png" class="w-64 m-r-16 pointer" ng-click="stagingMode(4)"/>
+             <img bt-theme="feature.login.social_box.google" ng-click="stagingMode(4)"/>
          </div>
          <div layout="row" flex layout-align="start center">
-             <img src="assets/images/facebook.png" class="w-64 m-l-16 pointer"/>
+             <img bt-theme="feature.login.social_box.facebook" />
          </div>
 
      </div>
@@ -48,7 +46,7 @@
         </div>
         <div layout="row" flex="40" layout-align="end center">
             <md-progress-circular ng-if="checkingLogin" md-mode="indeterminate"></md-progress-circular>
-            <bt-button ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" type="fab" label="Entrar" icon-color="white" icon="action.done" bt-class="c-white color-bg-4"  ng-click="checkLogin()"></bt-button>
+            <bt-button bt-theme="button.save" ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" label="Entrar" type="fab" ng-click="checkLogin()"></bt-button>
             <bt-button ng-if="rememberPasswordMode" type="fab" label="Enviar" icon="content.send" bt-class="color-bg-4 c-white"  ng-click="sendPasswordLink()"></bt-button>
             <bt-button ng-if="signUpMode && !checkingLogin" type="fab" label="Cadastrar" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white"  ng-click="signUp()"></bt-button>
 
