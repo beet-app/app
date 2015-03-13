@@ -29,6 +29,23 @@
       }
     }
   },
+  "company" : {
+    "individual_data": {
+      "description":"Pessoa Física",
+      "attributes":{
+        "name" : "Nome",
+        "cpf" :"CPF"
+      }
+    },
+    "corporate_data": {
+      "description":"Pessoa Jurídica",
+      "attributes":{
+        "name" : "Razão social",
+        "corporate_name" :"Nome fantasia",
+        "cnpj" :"CNPJ"
+      }
+    }
+  },
   "person":{
     "description":"Atletas",
     "person_data": {
@@ -156,25 +173,6 @@
 
 
   },
-
-
-  "company":{
-    "company_data" : {
-      "attributes":{
-        "name" : "Nome",
-        "cnpj" : "CNPJ",
-        "postcode" : "CEP",
-        "street" : "Rua",
-        "number" : "Número",
-        "complement" : "Complemento",
-        "neighborhood" : "Bairro",
-        "city" : "Cidade",
-        "state" : "Estado"
-      }
-
-    }
-  },
-
   "expense": {
     "description":"Despesas",
     "expense_data" : {

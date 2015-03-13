@@ -2,7 +2,6 @@
     .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService) {
 
         $scope.companies = $rootScope.session.user.companies;
-
         function chooseCompany(company_uuid){
             CompanyService.choose({company:company_uuid}).then(function(response){
                 $rootScope.session.features = response.data;
@@ -14,6 +13,9 @@
             });
         }
 
+        if (Common.isEmpty($scope.companies)){
+            $scope.companies = [];
+        }
         if ($scope.companies.length===0){
             Common.goTo("company/create");
         }else if($scope.companies.length===1){

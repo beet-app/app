@@ -4,4 +4,7 @@
       $("#loadingApp").hide();
       $("#container").fadeIn("slow");
     },1000);
+
+
+        console.log($rootScope.session);
   });

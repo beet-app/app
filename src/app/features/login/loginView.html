@@ -1,15 +1,8 @@
  <div id="login" flex-sm="80" flex-md="60" flex-lg="50" flex-gt-lg="30" class="md-whiteframe-z1 color-bg-1" layout-margin layout="column" layout-align="start center">
 
-
-
     <div layout="row" layout-align="center center" class="fill-horizontal m-v-16 h-64">
         <img src="/assets/images/loading.png" style="width:50%"  ng-click="stagingMode(3)"/>
     </div>
-
-
-
-
-
 
     <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="rememberPasswordMode">
         <span flex="80">Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha.</span>
@@ -20,7 +13,7 @@
 
      <div layout="row" layout-align="center center" class="fill-horizontal h-64 m-v-8" ng-if="!rememberPasswordMode">
          <div layout="row" flex layout-align="end center" >
-             <img src="assets/images/google_plus.png" class="w-64 m-r-16 pointer"/>
+             <img src="assets/images/google_plus.png" class="w-64 m-r-16 pointer" ng-click="stagingMode(4)"/>
          </div>
          <div layout="row" flex layout-align="start center">
              <img src="assets/images/facebook.png" class="w-64 m-l-16 pointer"/>

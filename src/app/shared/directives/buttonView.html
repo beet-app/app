@@ -7,10 +7,10 @@
 <md-button ng-if="type=='button'" class="{{myClass}} fill-horizontal" aria-label="{{label}}" label="{{label}}">
     <div ng-if="!myIcon">{{label}}</div>
     <div ng-if="myIcon" layout="row" layout-align="start center" class="fill-horizontal">
-        <div layout="row" layout-align="center center" class="w-32 h-32">
+        <div layout="row" layout-align="center center" class="w-48 h-48">
             <bt-icon icon="{{myIcon}}" size="{{myIconSize}}" label="{{label}}" color="{{myIconColor}}"></bt-icon>
         </div>
-        <div layout="row" layout-align="start center" class="m-h-4" flex>
+        <div layout="row" layout-align="start center" class="m-h-4 s-100 bold" style="letter-spacing: 0.1em" flex>
             {{label}}
         </div>
     </div>

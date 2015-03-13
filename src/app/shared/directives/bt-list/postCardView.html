@@ -1,8 +1,8 @@
-<div layout="row" class="md-whiteframe-z2 color-bg-1 pointer m-t-8 m-l-8" style="width:300px" flex>
-    <div layout="column" flex="50">
-        <bt-avatar feature="person" scale="128px" photo="{{item.uuid}}"></bt-avatar>
+<div layout="row" class="md-whiteframe-z1 color-bg-1 pointer m-t-8 m-l-8" style="width:360px;height:144px;" flex>
+    <div layout="column" layout-align="center center" style="height:144px;width:144px">
+        <bt-avatar feature="person" scale="128px" photo="{{item.uuid}}" bt-class="face m-v-8 m-h-8"></bt-avatar>
     </div>
-    <div layout="column" layout-align="start start" >
+    <div layout="column" layout-align="start start" flex class="m-8">
         <h4>{{item.attributes.person_data.name}}</h4>
     </div>
 </div>

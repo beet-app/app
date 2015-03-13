@@ -3,10 +3,12 @@
         $scope.loadingFeature = true;
 
         $scope.list = function(){
+            $rootScope._app.sidebar.right.unLoad();
             GlobalService.get('person').then(function(response){
 
                 if (!response.error){
                     $scope.data = response.data;
+
                     if (Common.isEmpty($stateParams.uuid)){
                         $scope.loadingFeature = false;
                         $scope.mode = "list";
@@ -53,8 +55,8 @@
                     mode = "update";
                     objSave.uuid = $scope.uuid;
                 }
-                objSave.attribute = Common.getAttributeObj($scope.formData.person_data);
-                objSave.company = $rootScope.session.user.company;
+                objSave.attribute = Common.getAttributeObj($scope.formData);
+                objSave.company = Common.isEmpty($rootScope.session.user.company) ? $rootScope.session.user.companies[0].uuid : $rootScope.session.user.company;
 
                 GlobalService.save("person", mode, objSave).then(function (response) {
 

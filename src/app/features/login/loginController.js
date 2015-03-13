@@ -117,6 +117,7 @@
                     Common.showMessage("Enviamos um email para confirmar seu cadastro.", "warning");
                     Common.goTo("index");
                 }else{
+                    //alterarr !!
                     if(response.error.error.description==="user_exists"){
                         Common.showMessage("Este usuário já foi cadastrado.")
                     } else {
@@ -130,7 +131,7 @@
         /*
          STAGING MODE
          */
-        $scope.stagingMode = function(x){
+        $scope.stagingModex = function(x){
             if (x==1){
                 $scope.emailData.value = "gustavo.ferreira08@gmail.com";
                 $scope.passwordData.value = "123";
@@ -139,6 +140,9 @@
                 $scope.passwordData.value = "123";
             }else if(x==3){
                 $scope.emailData.value = "gustavo@beet.cc";
+                $scope.passwordData.value = "123";
+            }else if(x==4){
+                $scope.emailData.value = "thiago@beet.cc";
                 $scope.passwordData.value = "123";
             }
 

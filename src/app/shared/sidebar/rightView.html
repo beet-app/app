@@ -16,11 +16,13 @@
                     <md-item ng-repeat="item in _app.sidebar.right.feature.items">
                         <md-item-content ui-sref="person/edit({uuid: item.uuid})" class="pointer fill-horizontal" ui-sref-active="bg-grey-light" ui-sref="{{sidebar.right.feature}}/edit({uuid: item.uuid})" ng-claick="executeAction(item)">
                             <div class="md-tile-left">
-                                <img ng-src="/assets/images/uploads/person/{{item.uuid}}.png" class="face" alt="{{item.attributes.person_data.name}}">
+                                <bt-avatar feature="person" scale="48px" photo="{{item.uuid}}" bt-class="face"></bt-avatar>
                             </div>
-                            <div class="md-tile-content">
+                            <div class="md-tile-content m-l-8">
                                 <h3>{{item.attributes.person_data.name}}</h3>
-                                <h4>{{item.attributes.person_data.name}}</h4>
+                                <h4 ng-if="item.attributes.technical_data.position">{{'person.technical_data.attributes.position.options.'+item.attributes.technical_data.position | translate}}</h4>
+                                <h4 ng-if="!item.attributes.technical_data.position">Sem Posição</h4>
+
                                 <p>
                                     {{item.notes}}
                                 </p>

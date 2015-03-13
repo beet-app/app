@@ -1,44 +1,98 @@
-<div id="company-create"  class="fill" style="display:none;" layout="column" layout-align="center center">
-  <div ng-if="type" class="md-whiteframe-z2 color-bg-1 col-xs-10 col-sm-6 col-md-4 col-lg-3 text-center p-15" layout="column" layout-align="center center">
-    <div class="row">
-      <div class="col-xs-12 col-xs-offset-0 text-center m-t-15">
-        <span class="s-150">Cadastro</span>
-      </div>
+<div id="company-create" flex-sm="80" flex-md="60" flex-lg="50" flex-gt-lg="30" class="" layout="column" layout-align="start center">
+    <div ng-if="type" class="md-whiteframe-z1 color-bg-1 fill-horizontal" layout="column" layout-align="start center">
+        <div class="fill-horizontal h-64" layout="row" layout-align="center center">
+            <span class="s-150">Cadastro</span>
+        </div>
+        <div layout="row" flex layout-align="center center" class="fill-horizontal h-64" ng-repeat="attribute in data.company_data">
+            <bt-attribute flex="80" data="attribute" ng-model="attribute.value" label="{{'company.'+attribute.group+'.attributes.'+attribute.description | translate}}"></bt-attribute>
+        </div>
+        <div layout="row" flex class="fill-horizontal" layout-align="center center" style="margin-bottom:25px;margin-top:25px;">
+            <div layout="column" flex="45" layout-align="start start" >
+                <div layout="row" flex layout-align="start center">
+                    <bt-button type="fab" label="Voltar" icon="navigation.arrow_back" bt-class="c-white color-bg-2"  ng-click="back()"></bt-button>
+                </div>
+            </div>
+            <div layout="row" flex="40" layout-align="end center">
+                <bt-button ng-if="!creatingCompany" type="fab" label="Entrar" icon-color="white" icon="action.done" bt-class="c-white color-bg-4" ng-click="createCompany()"></bt-button>
+                <md-progress-circular md-theme="purple" ng-if="creatingCompany" md-mode="indeterminate"></md-progress-circular>
+            </div>
+
+        </div>
 
     </div>
-    <hr>
-    <div class="row fill m-v-15" >
-      <div class="col-xs-12" ng-repeat="attribute in data">
-        <bt-attribute data="attribute" ng-model="attribute.value"></bt-attribute>
-      </div>
+
+
+    <div layout="column" flex class="fill-horizontal" ng-if="!type">
+        <div class="fill-horizontal h-64">
+            <span class="s-150 m-h-16">Escolha a opcão</span>
+        </div>
+        <div class="fill-horizontal" flex layout="row" layout-align="center center">
+            <div flex ng-click="chooseType(item)" ng-repeat="item in types" class="md-whiteframe-z1 h-64 m-h-16 color-bg-1 pointer" layout="column" layout-align="center center">
+                <span class="s-120">{{'company.'+item.description+'_data.description' | translate}}</span>
+            </div>
+        </div>
     </div>
-    <div class="row fill m-v-15">
-      <div class="col-xs-6 text-left">
-        <bt-button type="fab" label="Voltar" icon="glyphicon glyphicon-arrow-left" bt-class="c-white color-bg-4"  ng-click="back();"></bt-button>
-      </div>
-      <div class="col-xs-6 text-right">
-        <bt-button type="fab" label="Cadastrar" ng-if="!creatingCompany" icon="glyphicon glyphicon-ok" bt-class="c-white color-bg-4"  ng-click="createCompany()"></bt-button>
-        <md-progress-circular md-theme="purple" ng-if="creatingCompany" md-mode="indeterminate"></md-progress-circular>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="row fill" ng-if="!type" layout="column" layout-align="center center">
-    <div class="row fill-horizontal">
-      <div class="col-xs-8 col-xs-offset-2 md-whiteframe-z1 text-center p-15 color-bg-1" layout="column" layout-align="center center">
-          <span class="s-150">Escolha a opcão</span>
-      </div>
-    </div>
-
-    <div class="row m-t-60 fill-horizontal">
-      <div ng-click="chooseType(item)" ng-repeat="item in types" class="col-xs-3 col-xs-offset-2 md-whiteframe-z1 text-center p-15 color-bg-1 pointer" layout="column" layout-align="center center">
-          <span class="s-150">{{item.description}}</span>
-      </div>
-    </div>
-  </div>
-
-
 
 
 </div>
+
+<!--
+<div id="login" flex-sm="80" flex-md="60" flex-lg="50" flex-gt-lg="30" class="md-whiteframe-z1 color-bg-1" layout-margin layout="column" layout-align="start center">
+
+    <div layout="row" layout-align="center center" class="fill-horizontal m-v-16 h-64">
+        <img src="/assets/images/loading.png" style="width:50%"  ng-click="stagingMode(3)"/>
+    </div>
+
+    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="rememberPasswordMode">
+        <span flex="80">Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha.</span>
+    </div>
+    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-if="signUpMode">
+        <span flex="80">Digite seu e-mail e senha para se cadastrar no Beet.</span>
+    </div>
+
+    <div layout="row" layout-align="center center" class="fill-horizontal h-64 m-v-8" ng-if="!rememberPasswordMode">
+        <div layout="row" flex layout-align="end center" >
+            <img src="assets/images/google_plus.png" class="w-64 m-r-16 pointer"/>
+        </div>
+        <div layout="row" flex layout-align="start center">
+            <img src="assets/images/facebook.png" class="w-64 m-l-16 pointer"/>
+        </div>
+
+    </div>
+
+    <div layout="row" flex layout-align="center center" class="fill-horizontal">
+        <bt-attribute flex="80" data="emailData" label="{{'login.login_data.attributes.mail' | translate}}" ng-model="emailData.value"></bt-attribute>
+    </div>
+    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="!rememberPasswordMode">
+        <bt-attribute flex="80" data="passwordData" label="{{'login.login_data.attributes.password' | translate}}" ng-model="passwordData.value"></bt-attribute>
+    </div>
+    <div layout="row" flex layout-align="center center" class="fill-horizontal" ng-show="signUpMode">
+        <bt-attribute flex="80" data="confirmPasswordData" label="{{'login.login_data.attributes.password_confirm' | translate}}" ng-model="confirmPasswordData.value"></bt-attribute>
+    </div>
+
+
+
+
+    <div layout="row" flex class="fill-horizontal" layout-align="center center" style="margin-bottom:25px;margin-top:25px;">
+        <div layout="column" flex="45" layout-align="start start" >
+            <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
+                <bt-button label="Cadastre-se" bt-class="color-grey s-80 uppercase" ng-click="showSignUp()"></bt-button>
+            </div>
+            <div layout="row" flex layout-align="start center" ng-if="!signUpMode && !rememberPasswordMode">
+                <bt-button label="Problemas com o login?"  bt-class="color-grey s-80 uppercase"  ng-click="showRememberPassword()"></bt-button>
+            </div>
+            <div layout="row" flex layout-align="start center" ng-if="signUpMode || rememberPasswordMode">
+                <bt-button type="fab" label="Voltar" icon="navigation.arrow_back" bt-class="c-white color-bg-2"  ng-click="showLogin()"></bt-button>
+            </div>
+        </div>
+        <div layout="row" flex="40" layout-align="end center">
+            <md-progress-circular ng-if="checkingLogin" md-mode="indeterminate"></md-progress-circular>
+            <bt-button ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" type="fab" label="Entrar" icon-color="white" icon="action.done" bt-class="c-white color-bg-4"  ng-click="checkLogin()"></bt-button>
+            <bt-button ng-if="rememberPasswordMode" type="fab" label="Enviar" icon="content.send" bt-class="color-bg-4 c-white"  ng-click="sendPasswordLink()"></bt-button>
+            <bt-button ng-if="signUpMode && !checkingLogin" type="fab" label="Cadastrar" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white"  ng-click="signUp()"></bt-button>
+
+        </div>
+
+    </div>
+</div>
+-->

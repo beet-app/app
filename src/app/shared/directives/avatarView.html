@@ -1,5 +1,4 @@
-<img
-    ng-src='{{url}}'
-    class='{{class}}'
-    style='width:{{scale}};height:{{scale}};'
-/>
+<div>
+    <img ng-if="!url" src="assets/images/loading-image.gif"  style="width:32px;height:10px" />
+    <img ng-if="url" ng-src='{{url}}' class='{{btClass}}' style='width:{{scale}};height:{{scale}};' />
+</div>
