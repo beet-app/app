@@ -69,13 +69,15 @@
         "city": "Cidade",
         "state": "Estado",
         "birth_date": "Data de nascimento",
-        "email": "E-mail",
+        "mail": "E-mail",
+        "education": "Escolaridade",
         "video_link": "Link do vídeo"
       }
     },
     "technical_data": {
       "description":"Dados Técnicos",
       "attributes":{
+        "height": "Altura",
         "position": {
           "description": "Posição",
           "instruction": "Selecione",
@@ -100,7 +102,6 @@
         }
       }
     }
-
   },
   "contract": {
     "description":"Contratos",
