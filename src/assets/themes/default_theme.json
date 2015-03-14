@@ -180,8 +180,17 @@
                 "message":{
                     "flex":"80"
                 }
+            },
+            "command_box":{
+                "flex":"80",
+                "style":{
+                    "margin-top" : "24px",
+                    "margin-bottom" : "24px"
+                },
+                "sign_up":{
+                    "bt-class":"color-grey s-80 uppercase"
+                }
             }
-
         }
 
     },

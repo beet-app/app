@@ -28,14 +28,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 .color-1{
     color:#FFFFFF;
 }
@@ -180,6 +172,9 @@
     color:#4CAF50;
 }
 .color-grey{
+    color:#999999;
+}
+.color-grey-light{
     color:#9E9E9E;
 }
 .color-pink{

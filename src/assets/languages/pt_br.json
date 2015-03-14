@@ -38,19 +38,6 @@
                 "name" : "Nome",
                 "cpf" :"CPF"
             }
-        "cpf": "CPF",
-        "rg": "RG",
-        "postcode": "CEP",
-        "street": "Rua",
-        "number": "Número",
-        "complement": "Complemento",
-        "neighborhood": "Bairro",
-        "city": "Cidade",
-        "state": "Estado",
-        "birth_date": "Data de nascimento",
-        "mail": "E-mail",
-        "education": "Escolaridade",
-        "video_link": "Link do vídeo"
       }
     },
     "technical_data": {
@@ -79,16 +66,15 @@
             }
         }
       }
-    }
-  },
-  "contract": {
-    "description":"Contratos",
-    "contract_data": {
-      "attributes":{
-        "type" : "Tipo",
-        "identification" :"Identificação"
+    },
+    "contract": {
+      "description": "Contratos",
+      "contract_data": {
+        "attributes": {
+          "type": "Tipo",
+          "identification": "Identificação"
+        }
       }
-
     },
     "person":{
         "description":"Alunos",
