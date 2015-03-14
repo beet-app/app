@@ -54,7 +54,7 @@
         </div>-->
         <div layout="column" flex class="fill-horizontall">
             <div layout="row" layout-wrap layout-margin>
-                <bt-attr layout="row" ng-repeat="attribute in dataContract.contract_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
+                <bt-attribute layout="row" ng-repeat="attribute in dataContract.contract_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
             </div>
         </div>
         <bt-button type="fab" label="Salvar dados do contrato" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
