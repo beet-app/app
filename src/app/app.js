@@ -2,7 +2,7 @@
 var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","pascalprecht.translate","ngAnimate", "ngMaterial", "ngAnimate"]);
 
 BeetApp
-    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia) {
+    .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia, $state) {
 
         UserService.getActiveUser().then(function(response){
 
@@ -31,9 +31,17 @@ BeetApp
             }else{
                 btApp.loadDefaults().then(function(){
                     $rootScope.singleViewMode = true;
-                    Common.goTo("login");
+                    console.log($state.current.name);
+                    if (!($state.current.name=="signup" || $state.current.name=="user/validate")){
+                        Common.goTo("login");
+                    }
+
+
                 });
 
+                /*
+
+                */
             }
 
 

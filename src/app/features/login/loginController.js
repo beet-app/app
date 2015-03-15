@@ -1,12 +1,18 @@
 ﻿BeetApp
-    .controller('LoginController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, UserService, $state, btApp) {
+    .controller('LoginController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, UserService, $state, btApp, viewMode) {
         $rootScope.fullViewMode = false;
         $rootScope.singleViewMode = true;
-        $rootScope.loginMode = true;
+
+        if (viewMode=="signup"){
+            $scope.signUpMode = true;
+        }else{
+            $scope.loginMode = true;
+        }
+
         setTimeout(function(){
             $("#loadingApp").hide();
             $("#single_view").fadeIn("slow");
-        },3000);
+        },1000);
 
         $scope.password = "";
         $scope.email = "";

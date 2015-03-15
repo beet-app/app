@@ -129,6 +129,7 @@
                 "background-color":"color.white",
                 "border-radius":"8%"
             },
+            "class":"md-whiteframe-z1",
             "flex-sm":"80",
             "flex-md":"50",
             "flex-lg":"40",
@@ -188,19 +189,126 @@
                     "margin-bottom" : "24px"
                 },
                 "sign_up":{
-                    "bt-class":"color-grey s-80 uppercase"
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                },
+                "login_problems":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                }
+            }
+        },
+        "login_validate":{
+            "style":{
+                "background-color":"color.white",
+                "border-radius":"8%"
+            },
+            "class":"md-whiteframe-z1",
+            "flex-sm":"80",
+            "flex-md":"50",
+            "flex-lg":"40",
+            "flex-gt-lg":"30",
+            "logo_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "height":"64px"
+                },
+                "image":{
+                    "style":{
+                        "width":"50%"
+                    },
+                    "src":"assets/images/loading.png"
+                }
+
+            },
+            "info_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "margin-left" : "16px",
+                    "margin-right" : "16px",
+                    "height":"64px"
+                },
+                "message":{
+
+                }
+            },
+            "command_box":{
+                "flex":"80",
+                "style":{
+                    "margin-top" : "24px",
+                    "margin-bottom" : "24px"
+                },
+                "sign_up":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                },
+                "login_problems":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
                 }
             }
         }
 
     },
     "button":{
-        "save":{
-            "bt-class":"bg-green",
-            "icon":"action.done",
-            "type":"fab",
-            "icon-color":"white"
+        "fab":{
+            "add":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"content.add",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "back":{
+                "bt-style":{
+                    "background-color":"color.grey"
+                },
+                "icon":"navigation.arrow_back",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "save":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"action.done",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "send":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"content.send",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "sign_in":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"action.done",
+                "type":"fab",
+                "icon-color":"color.white"
+            }
+
         }
+
     }
 }
 

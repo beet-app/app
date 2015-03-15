@@ -7,13 +7,14 @@
                 var theme = Common.getTheme(attr.btTheme);
 
                 var check_value = function(v){
-                    if (v.indexOf("color.")>-1){
-                        return Common.getColor(v.replace("color.",""));
-                    }else{
-                        return v;
+                    if (typeof (v)!="object"){
+                        if (v.indexOf("color.")>-1){
+                            return Common.getColor(v.replace("color.",""));
+                        }
                     }
-
+                    return v;
                 };
+
                 angular.forEach(theme, function(value, key){
                     if (key=="style"){
                         var style = (object.getAttribute("style")) ? object.getAttribute("style") : "";
@@ -21,6 +22,12 @@
                             style += cssKey+":"+check_value(cssValue)+";";
                         });
                         object.setAttribute("style" ,style);
+                    }else if (key=="bt-style") {
+                        var style = "";
+                        angular.forEach(value, function(v, key){
+                            style += key + ":" + check_value(v) + ";";
+                        });
+                        object.setAttribute(key, style);
                     }else if (typeof (value)!="object"){
                         object.setAttribute(key, check_value(value));
                     }

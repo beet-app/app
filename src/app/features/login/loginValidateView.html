@@ -1,18 +1,17 @@
-<div id="login-validate" class="md-whiteframe-z2 color-bg-1 col-xs-10 col-sm-6 col-md-4 col-lg-3 text-center p-15" layout="column" layout-align="center center">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 text-center m-t-15">
-      <img src="assets/images/loading.png" class="img-responsive"/>
-    </div>
-  </div>
-  <div class="row fill m-t-25">
-    <div class="col-xs-12 text-left">
-      <span>{{message}}</span>
-    </div>
-  </div>
+<div bt-theme="feature.login_validate" id="login-validate" layout="column" layout-align="start center">
 
-  <div class="row fill-horizontal m-v-15">
-    <div class="col-xs-8 text-left">
-      <bt-button type="fab" label="Voltar" icon="glyphicon glyphicon-arrow-left" bt-class="c-black color-bg-2"  ui-sref="login"></bt-button>
+    <div bt-theme="feature.login_validate.logo_box" fill layout="row" layout-align="center center">
+        <img bt-theme="feature.login_validate.logo_box.image" />
     </div>
-  </div>
+
+    <div bt-theme="feature.login_validate.info_box" layout="row" layout-align="center center">
+        <span bt-theme="feature.login_validate.message" layout="row" layout-align="start center">{{"login_validate."+message | translate}}</span>
+    </div>
+
+    <div fill layout="row" layout-align="center center">
+        <div bt-theme="feature.login_validate.command_box" layout="row" layout-align="start start">
+            <bt-button bt-theme="button.fab.back" label="{{'button.back' | translate}}" ui-sref="login"></bt-button>
+        </div>
+    </div>
+
 </div>

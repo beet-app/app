@@ -24,9 +24,9 @@
  };
  }]);
  */
-BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $httpProvider.defaults.withCredentials = true;
-    //$locationProvider.html5Mode(true);
+
 
 
     $urlRouterProvider.otherwise("/login");
@@ -36,8 +36,24 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         .state("login", {
             url: "/login",
             templateUrl: "app/features/login/loginView.html",
-            controller: "LoginController"
+            controller: "LoginController",
+            resolve:{
+                viewMode:  function(){
+                    return "login";
+                }
+            }
         })
+        .state("signup", {
+            url: "/signup",
+            templateUrl: "app/features/login/loginView.html",
+            controller: "LoginController",
+            resolve:{
+                viewMode:  function(){
+                    return "signup";
+                }
+            }
+        })
+
         .state("index", {
             url: "/login",
             templateUrl: "app/features/login/loginView.html",

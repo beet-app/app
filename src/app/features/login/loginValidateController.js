@@ -12,11 +12,10 @@
 
     UserService.validateUser({uuid:$state.params.uuid}).then(function(response){
       if (Common.isEmpty(response.error)){
-        $scope.message = "Seu cadastro foi efetuado com sucesso! Clique no botão abaixo para acessar sua conta.";
+        $scope.message = "user_validated";
       }else{
-        $scope.message = "Usuário não encontrado.";
+        $scope.message = "user_not_found";
       }
-      console.log($scope.message);
     });
 
   });

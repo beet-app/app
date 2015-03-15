@@ -45,12 +45,6 @@ label{
 .list-none{
     list-style: none;
 }
-.uppercase{
-    text-transform: uppercase;
-}
-md-input-group label{
-  color:#781649 !important;
-}
 .img-responsive{
   max-width:100%;
   height:auto;
@@ -67,14 +61,4 @@ md-input-group label{
   top:40px;
   left:10px;
   border-bottom: 22px solid #781649;
-}
-.relative {
-  position:relative;
-}
-#logo2{
-  font-size: 48px;
-  margin-left:16px !important;
-  margin-top:8px;
-  font-family:beaver;
-  color:#fff;
 }
