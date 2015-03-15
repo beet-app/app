@@ -103,19 +103,6 @@
             "female": "Feminino"
           }
         },
-        "sign_up":"Cadastre-se",
-        "login_problems":"Problemas com o Login ?",
-        "sign_up_message":"Digite seu e-mail e senha para se cadastrar no Beet.",
-        "password_redefine_message" : "Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha."
-    },
-    "company" : {
-        "individual_data": {
-            "description": "Pessoa Física",
-            "attributes": {
-                "name": "Nome",
-                "cpf": "CPF"
-            }
-        },
         "cpf": "CPF",
         "rg": "RG",
         "postcode": "CEP",
@@ -126,13 +113,15 @@
         "city": "Cidade",
         "state": "Estado",
         "birth_date": "Data de nascimento",
-        "email": "E-mail",
+        "mail": "E-mail",
+        "education": "Escolaridade",
         "video_link": "Link do vídeo"
       }
     },
     "technical_data": {
       "description":"Dados Técnicos",
       "attributes":{
+        "height": "Altura (cm)",
         "position": {
           "description": "Posição",
           "instruction": "Selecione",
@@ -156,15 +145,6 @@
           }
         }
       }
-    },
-    "contract": {
-      "description": "Contratos",
-      "contract_data": {
-          "attributes": {
-              "type": "Tipo",
-              "identification": "Identificação"
-          }
-      }
     }
 
   },
@@ -175,6 +155,7 @@
         "type" : "Tipo",
         "identification" :"Identificação"
       }
+
     },
     "professional_contract" : {
       "attributes":{
