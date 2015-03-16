@@ -6,5 +6,4 @@
     },1000);
 
 
-        console.log($rootScope.session);
   });

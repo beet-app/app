@@ -97,8 +97,19 @@ BeetApp
             isValidImage: function (src) {
                 return $http.get(src,{withCredentials : false});
             },
+            isArray:function(obj){
+                if (typeof(obj)=="object"){
+                    if (obj.length!=undefined){
+                        return true;
+                    }
+                }
+                return false;
+            },
             getAttributeObj: function(data){
                 var arr = [];
+                if (Common.isArray(data)){
+                    data = {data:data};
+                }
                 angular.forEach(data, function(group){
 
                     for (var x=0 ; x<group.length ; x++){

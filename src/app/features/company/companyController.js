@@ -1,11 +1,15 @@
 ﻿BeetApp
     .controller('CompanyController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, GlobalService) {
+        $rootScope.fullViewMode = false;
+        $rootScope.singleViewMode = true;
+
         GlobalService.getAll('company_type').then(function(response){
             $scope.types = response.data;
             GlobalService.getAttributes('company').then(function(response){
 
                 if (!response.error){
                     $scope.allData = response.data;
+                    $("#loadingApp").hide();
                     $("#single_view").fadeIn();
                     $("#company-create").fadeIn();
                 }
@@ -19,7 +23,8 @@
 
             setTimeout(function(){
                 $scope.formData = {};
-                $scope.formData[type.description += "_data"] = $scope.allData[type.description += "_data"];
+
+                $scope.formData = $scope.allData[type.description + "_data"];
                 $scope.type=type;
                 $scope.$apply();
                 $("#company-create").fadeIn();
@@ -36,7 +41,7 @@
         $scope.createCompany = function(){
             $scope.creatingCompany = true;
             var blnSave = true;
-            angular.forEach($scope.data, function(attribute){
+            angular.forEach($scope.formData, function(attribute){
                 if (blnSave){
                     if (attribute.required===1 && Common.isEmpty(attribute.value)){
                         Common.showMessage("Preencha o campo "+attribute.description+" !", "warning");
@@ -47,7 +52,8 @@
 
             });
             var objSave = {};
-            objSave.attribute = Common.getAttributeObj($scope.data);
+            console.log($scope.formData);
+            objSave.attribute = Common.getAttributeObj($scope.formData);
             objSave.company_type =  $scope.type.uuid;
             if (blnSave){
                 GlobalService.save("company", "create", objSave).then(function(response){
@@ -57,6 +63,7 @@
                         GlobalService.getAllByUser("company").then(function(companyResponse){
 
                             if (Common.isEmpty(response.error)){
+                                console.log(companyResponse.data);
                                 $rootScope.session.user.companies = companyResponse.data;
                                 Common.goTo("company/select");
                             }else{

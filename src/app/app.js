@@ -29,19 +29,16 @@ BeetApp
                 });
 
             }else{
+                console.log("passa 0");
                 btApp.loadDefaults().then(function(){
-                    $rootScope.singleViewMode = true;
-                    console.log($state.current.name);
-                    if (!($state.current.name=="signup" || $state.current.name=="user/validate")){
+                    console.log("passa 1");
+                    if (!($state.current.name=="signup" || $state.current.name=="user/validate" || $state.current.name=="company/create")){
+                        console.log("passa 2");
                         Common.goTo("login");
                     }
 
 
                 });
-
-                /*
-
-                */
             }
 
 

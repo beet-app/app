@@ -12,7 +12,7 @@
 
             });
         }
-
+        console.log($scope.companies);
         if (Common.isEmpty($scope.companies)){
             $scope.companies = [];
         }
