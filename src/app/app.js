@@ -4,6 +4,9 @@ var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","p
 BeetApp
     .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia, $state) {
 
+		$rootScope.fullViewMode = false;
+		$rootScope.singleViewMode = false;
+
         UserService.getActiveUser().then(function(response){
 
             if (Common.isEmpty(response.error)){
@@ -29,15 +32,14 @@ BeetApp
                 });
 
             }else{
-                console.log("passa 0");
                 btApp.loadDefaults().then(function(){
-                    console.log("passa 1");
                     if (!($state.current.name=="signup" || $state.current.name=="user/validate" || $state.current.name=="company/create")){
-                        console.log("passa 2");
+	                    $rootScope.singleViewMode = true;
                         Common.goTo("login");
+
+                    }else{
+	                    $rootScope.singleViewMode = true;
                     }
-
-
                 });
             }
 
@@ -62,10 +64,16 @@ BeetApp
                                 if (btFn.checkScreen("gt-md")){
                                     this.opened = !this.opened;
                                 }else{
-                                    $mdSidenav('left').toggle()
-                                        .then(function(){
+	                                if (!$mdSidenav('left').isOpen()){
+		                                setTimeout(function(){
+			                                $mdSidenav('left').open();
+		                                },200);
+	                                }else{
+		                                setTimeout(function(){
+			                                $mdSidenav('left').close();
+		                                },200);
+	                                }
 
-                                        });
                                 }
                             }
                         },
@@ -98,10 +106,12 @@ BeetApp
                                                         $rootScope._app.sidebar.right["user"].selected = false;
                                                     }
                                                 });
-                                                $mdSidenav('right').open()
-                                                    .then(function(){
 
-                                                    });
+	                                            $mdSidenav('right').open();
+	                                            setTimeout(function(){
+		                                            $mdSidenav('right').open();
+	                                            },300);
+
                                             });
 
                                         }

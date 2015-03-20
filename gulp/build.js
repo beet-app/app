@@ -67,6 +67,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest(paths.dist + '/assets/images/'));
 });
 
+gulp.task('jsons', function () {
+	return gulp.src(paths.src + '/assets/**/*.json')
+		.pipe(gulp.dest(paths.dist + '/assets'));
+});
+
 gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
