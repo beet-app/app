@@ -5,6 +5,10 @@
                 uuid = (!uuid) ? "" : "/" + uuid;
                 return Gateway.get("/attribute/" + feature + uuid);
             },
+	        getAllAttributes : function(feature){
+		        var uuid =  "/sadsasdds";
+		        return Gateway.get("/attribute/" + feature + uuid);
+	        },
             save : function(feature, mode, obj){
                 return Gateway.post("/"+feature+"/"+mode, obj);
             },
@@ -14,6 +18,9 @@
             get : function(feature){
                 return Gateway.get("/"+feature);
             },
+	        getOne : function(feature, uuid){
+		        return Gateway.get("/"+feature+"/"+uuid);
+	        },
             getAllByUser : function(feature, uuid){
                 uuid = (!uuid) ? "" : "/" + uuid;
                 return Gateway.get("/"+feature+"/all-by-user" + uuid);

@@ -14,7 +14,7 @@
             <md-content>
                 <md-list>
                     <md-item ng-repeat="item in _app.sidebar.right.feature.items">
-                        <md-item-content ui-sref="person/edit({uuid: item.uuid})" class="pointer fill-horizontal" ui-sref-active="bg-grey-light" ui-sref="{{sidebar.right.feature}}/edit({uuid: item.uuid})" ng-claick="executeAction(item)">
+                        <md-item-content ui-sref="{{_app.sidebar.right.feature.name}}/edit({uuid: item.uuid})" class="pointer fill-horizontal" ui-sref-active="bg-grey-light" ui-sref="{{sidebar.right.feature}}/edit({uuid: item.uuid})" ng-claick="executeAction(item)">
                             <div class="md-tile-left">
                                 <bt-avatar feature="person" scale="48px" photo="{{item.uuid}}" bt-class="face"></bt-avatar>
                             </div>

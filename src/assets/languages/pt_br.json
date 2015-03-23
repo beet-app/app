@@ -185,24 +185,21 @@
     "expense": {
         "description":"Despesas",
         "expense_data" : {
-            "category" : {
-                "description":"Categoria",
-                "selection" : {
-                    "travel":"Viagem",
-                    "sporting_goods":"Material Esportivo",
-                    "food":"Alimentação",
-                    "other":"Outros"
-                }
-            },
-            "description" : "Descrição",
-            "value" : "Valor",
-            "date" : "Data",
-            "observation" : "Observação"
+            "attributes":{
+                "description" : "Descrição",
+                "date" : "Data"
+            }
+        },
+        "expense_detail_data" : {
+            "attributes":{
+                "description" : "Descrição",
+                "quantity" : "Qtd",
+                "value" : "Valor"
+            }
         }
     },
     "user": {
         "user_data" : {
-
             "name" : "Nome",
             "gender" : {
                 "description":"Sexo",

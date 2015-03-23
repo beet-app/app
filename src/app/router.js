@@ -98,6 +98,11 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loca
             templateUrl: "app/features/expense/expenseView.html",
             controller: "ExpenseController"
         })
+	    .state("expense/edit", {
+		    url: "/expense/:uuid",
+		    templateUrl: "app/features/expense/expenseView.html",
+		    controller: "ExpenseController"
+	    })
 
         .state("contract", {
             url: "/contract",

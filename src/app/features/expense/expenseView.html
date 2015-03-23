@@ -1,49 +1,63 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
-    <div ng-if="mode=='list'" class="fill" layout="column" flex layout-align="start start" class="fill">
-        <div layout="row" layout-wrap class="scrollable">
-            <div layout="column" ui-sref="expense/list({uuid : item.uuid})" ng-repeat="item in list">
+    <div ng-if="mode=='list' && !loadingFeature" class="fill" layout="column" flex layout-align="start start" class="fill">
+        <div layout="row" layout-wrap class="scrollable" style="padding-bottom:8px;">
+            <div layout="column" ui-sref="expense/edit({uuid: item.uuid})" ng-repeat="item in data" >
 
                 <bt-post-card ng-if="!listMode || listMode=='post_card'" item="item"></bt-post-card>
                 <bt-card ng-if="listMode=='card'" item="item"></bt-card>
                 <bt-simple-item ng-if="listMode=='simple_item'" item="item" class="fill-horizontal"></bt-simple-item>
 
             </div>
+
         </div>
     </div>
+    <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
 
-    <div ng-if="mode=='listExpense'" layout="row" flex layout-align="start start" class="fill" layout-wrap>
-        <md-content>
-            <md-list>
-                <md-item ng-repeat="item in listExpense">
-                    <md-item-content ui-sref="expense/edit({uuid : item.uuid})" class="pointer">
-                        <div class="md-tile-left">
-                            <img ng-src="/assets/images/uploads/person/{{item.uuid}}.png" class="face" alt="{{item.attributes.person_data.name}}">
-                        </div>
-                        <div class="md-tile-content">
-                            <h3>{{item.attributes.contract_data.identification}}</h3>
-                            <h4>{{item.attributes.contract_data.type}}</h4>
-                            <p>
-                                {{item.notes}}
-                            </p>
-                        </div>
-                    </md-item-content>
-                </md-item>
-            </md-list>
-        </md-content>
-        <bt-button type="fab" label="Cadastrar despesa" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="edit()"></bt-button>
-    </div>
-
-    <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
-        <div layout="column" flex class="fill-horizontall">
-            <div layout="row" layout-wrap layout-margin>
-                <bt-attribute layout="row" ng-repeat="attribute in dataContract.contract_data"  data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
+        <div layout="row" layout-align="start center"  class="fill-horizontal h-64" style="background-color: #F5F5F5">
+            <div class="w-56" layout="row" layout-align="center center">
+                <bt-button type="icon" label="Voltar" icon="navigation.arrow_back" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+            </div>
+            <div flex layout="row" layout-align="center center" class="bold">
+                {{formatDateToLabel(initialDate)}}
+            </div>
+            <div class="w-56" layout="row" layout-align="center center">
+                <bt-button type="icon" label="Avançar" icon="navigation.arrow_forward" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
             </div>
         </div>
-        <bt-button type="fab" label="Salvar dados do contrato" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
+
+        <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0">
+            <div layout="column" layout-align="start center" flex class="m-h-16 color-bg-1 md-whiteframe-z1">
+                <div layout="row" layout-align="start center" class="fill-horizontal h-64 bold">
+                    <div flex="20" class="m-l-16 ">Data</div>
+                    <div flex="50">Descrição</div>
+                    <div flex="10">Valor</div>
+                    <div flex="20"></div>
+                </div>
+                <div layout="row" layout-align="start center"  class="fill-horizontal m-h-8  h-48" ng-repeat="item in expenses">
+                    <div flex="20"class="m-l-16 ">{{item.attributes.expense_data.date | date:"dd/MM/yyyy"}}</div>
+                    <div flex="50">{{item.attributes.expense_data.description}}</div>
+                    <div flex="10">{{getExpenseValue(item) | currency : "R$" : 2}}</div>
+                    <div flex="10" layout="row" layout-align="center center">
+                        <bt-button type="icon" label="Remove" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                    </div>
+                    <div class="m-r-16" flex="10" layout="row" layout-align="start center" ng-click="editExpense(item, $event)">
+                        <bt-button type="icon" label="Editar" icon="content.create" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length==0">
+            <div layout="column" layout-align="center center" flex class="m-h-16 color-bg-1 md-whiteframe-z1">
+                Ainda não existem despesas cadastradas para este mês
+            </div>
+        </div>
+
+        <bt-button type="fab" label="Adicionar despesa" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="editExpense({}, $event)"></bt-button>
 
     </div>
 
-    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/load/app.html'">
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/content.html'">
     </div>
 </div>

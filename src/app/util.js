@@ -125,20 +125,28 @@ BeetApp
 
                 return arr;
             },
+	        getNewAttributeObj: function(mold, obj){
+		        var arr = [];
+		        if (Common.isArray(mold)){
+			        mold = {data:mold};
+		        }
+		        //console.log(mold);
+		        //console.log(obj);
+		        angular.forEach(mold, function(group){
 
-            setPolymerMirror: function(data){
-                var mirror = data.type.properties.mirror;
-                var id     = data.group.description + "." + data.description;
+			        for (var x=0 ; x<group.length ; x++){
+				        if (!Common.isEmpty(obj.attributes[group[x].group][group[x].description])){
+					        arr.push({
+						        uuid:group[x].uuid,
+						        value:obj.attributes[group[x].group][group[x].description]
+					        });
+				        }
+			        }
 
-                if (mirror==="label" || mirror==="span"){
-                    mirror = mirror + "." + id;
-                }
+		        });
 
-                document.querySelector("[id='"+id+"']").addEventListener("input", function(event) {
-                    $("[id='"+mirror+"']").text(event.target.value);
-                });
-
-            },
+		        return arr;
+	        },
             showMessage: function(text, type) {
                 $mdToast.show({
                     template: "<md-toast class='color-bg-4'>"+text+"</md-toast>",
