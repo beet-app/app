@@ -82,7 +82,10 @@
 				if (Common.isEmpty(detail.attributes.expense_detail_data.value)){
 					detail.attributes.expense_detail_data.value = 0;
 				}
-				value += parseFloat(detail.attributes.expense_detail_data.value);
+				if (Common.isEmpty(detail.attributes.expense_detail_data.quantity)){
+					detail.attributes.expense_detail_data.quantity = 1;
+				}
+				value += parseFloat(detail.attributes.expense_detail_data.value.replace(",",".")) * parseFloat(detail.attributes.expense_detail_data.quantity);
 			});
 			return value;
 		};
@@ -171,7 +174,9 @@
 				mode = "update";
 				objSave.uuid = $scope.expense.uuid;
 			}
+			console.log($scope.expense.attributes.expense_data.date);
 			$scope.expense.attributes.expense_data.date = formatDate($scope.expense.attributes.expense_data.date);
+			console.log($scope.expense.attributes.expense_data.date);
 			objSave.attribute = Common.getNewAttributeObj($scope.formData.expense_data, $scope.expense);
 			objSave.person = $scope.person.uuid;
 
@@ -212,8 +217,13 @@
 				arr = date.split("-");
 				return arr[2] + "/" + arr[1] + "/" + arr[0];
 			}else{
-				arr = date.split("/");
-				return arr[2] + "-" + arr[1] + "-" + arr[0];
+				if (date.indexOf("/")>0){
+					arr = date.split("/");
+					return arr[2] + "-" + arr[1] + "-" + arr[0];
+				}else{
+					return date;
+				}
+
 			}
 
 		}
@@ -244,5 +254,88 @@
 			return arr[arrDate[1]-1] + " / " + arrDate[0];
 		};
 
+		$scope.visibleDate = function(date){
+			arrDate = date.split("-");
+			arrInitialDate = $scope.initialDate.split("-");
+			return (arrDate[0] == arrInitialDate[0] && arrDate[1] == arrInitialDate[1]);
+		};
+		$scope.next = function() {
+			var arr;
+
+			var initialDate = $scope.initialDate;
+			arr = initialDate.split("-");
+			if (parseInt(arr[1])==12){
+				arr[1] = "01";
+				arr[0] = (parseInt(arr[0]) + 1).toString();
+			}else{
+				arr[1] = (parseInt(arr[1]) + 1).toString();
+			}
+			initialDate = arr[0];
+			if ((arr[1]).toString().length==1){
+				initialDate = initialDate + "-" + "0" + (parseInt(arr[1])).toString();
+			}else{
+				initialDate = initialDate + "-" + (parseInt(arr[1])).toString();
+			}
+			initialDate = initialDate + "-01";
+
+
+			var finalDate = $scope.finalDate;
+			arr = finalDate.split("-");
+			if (parseInt(arr[1])==12){
+				arr[1] = "01";
+				arr[0] = (parseInt(arr[0]) + 1).toString();
+			}else{
+				arr[1] = (parseInt(arr[1]) + 1).toString();
+			}
+			finalDate = arr[0];
+			if ((arr[1]).toString().length==1){
+				finalDate = finalDate + "-" + "0" + (parseInt(arr[1])).toString();
+			}else{
+				finalDate = finalDate + "-" + (parseInt(arr[1])).toString();
+			}
+			finalDate = finalDate + "-01";
+
+			$scope.initialDate = initialDate;
+			$scope.finalDate = finalDate;
+		};
+		$scope.prev = function() {
+			var arr;
+
+			var initialDate = $scope.initialDate;
+			arr = initialDate.split("-");
+			if (parseInt(arr[1])==1){
+				arr[1] = "12";
+				arr[0] = (parseInt(arr[0]) - 1).toString();
+			}else{
+				arr[1] = (parseInt(arr[1]) - 1).toString();
+			}
+			initialDate = arr[0];
+			if ((arr[1]).toString().length==1){
+				initialDate = initialDate + "-" + "0" + (parseInt(arr[1])).toString();
+			}else{
+				initialDate = initialDate + "-" + (parseInt(arr[1])).toString();
+			}
+			initialDate = initialDate + "-01";
+
+
+			var finalDate = $scope.finalDate;
+			arr = finalDate.split("-");
+			if (parseInt(arr[1])==1){
+				arr[1] = "12";
+				arr[0] = (parseInt(arr[0]) - 1).toString();
+			}else{
+				arr[1] = (parseInt(arr[1]) - 1).toString();
+			}
+			finalDate = arr[0];
+			if ((arr[1]).toString().length==1){
+				finalDate = finalDate + "-" + "0" + (parseInt(arr[1])).toString();
+			}else{
+				finalDate = finalDate + "-" + (parseInt(arr[1])).toString();
+			}
+			finalDate = finalDate + "-01";
+
+			$scope.initialDate = initialDate;
+			$scope.finalDate = finalDate;
+		};
         $scope.list();
     });

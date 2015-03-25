@@ -15,26 +15,26 @@
     <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
 
         <div layout="row" layout-align="start center"  class="fill-horizontal h-64" style="background-color: #F5F5F5">
-            <div class="w-56" layout="row" layout-align="center center">
+            <div class="w-56" layout="row" layout-align="center center" ng-click="prev()">
                 <bt-button type="icon" label="Voltar" icon="navigation.arrow_back" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
             </div>
             <div flex layout="row" layout-align="center center" class="bold">
                 {{formatDateToLabel(initialDate)}}
             </div>
-            <div class="w-56" layout="row" layout-align="center center">
+            <div class="w-56" layout="row" layout-align="center center" ng-click="next()">
                 <bt-button type="icon" label="Avançar" icon="navigation.arrow_forward" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
             </div>
         </div>
 
-        <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0">
-            <div layout="column" layout-align="start center" flex class="m-h-16 color-bg-1 md-whiteframe-z1 scrollable" layout-wrap style="padding-bottom:8px;">
-                <div layout="row" layout-align="start center" class="fill-horizontal h-64 bold">
+        <div layout="column" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0" style="padding-left:8px;padding-right:8px">
+            <div layout="row" layout-align="start center" class="m-h-16 color-bg-1 fill-horizontal md-whiteframe-z1 scrollable" layout-wrap>
+                <div layout="row" layout-align="start center" flex class="fill-horizontal h-64 bold">
                     <div flex="20" class="m-l-16 ">Data</div>
                     <div flex="50">Descrição</div>
                     <div flex="10">Valor</div>
                     <div flex="20"></div>
                 </div>
-                <div layout="row" layout-align="start center"  class="fill-horizontal m-h-8  h-48" ng-repeat="item in expenses">
+                <div layout="row" layout-align="start center"  class="fill-horizontal m-h-8  h-48" ng-show="visibleDate(item.attributes.expense_data.date)" ng-repeat="item in expenses">
                     <div flex="20"class="m-l-16 ">{{item.attributes.expense_data.date | date:"dd/MM/yyyy"}}</div>
                     <div flex="50">{{item.attributes.expense_data.description}}</div>
                     <div flex="10">{{getExpenseValue(item) | currency : "R$" : 2}}</div>

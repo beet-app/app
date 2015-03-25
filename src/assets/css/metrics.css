@@ -27,6 +27,7 @@
 }
 .h-64 {
   height:64px;
+  min-height:64px;
 }
 .h-96 {
   height:96px;

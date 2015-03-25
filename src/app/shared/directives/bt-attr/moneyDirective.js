@@ -13,8 +13,9 @@
                     },
                     post: function (scope, element, attributes, controller, transcludeFn) {
                         $timeout(function () {
-                            $("#" + scope.data.group + '_' + scope.data.description).attr("maxlength","14");
-                            $("#" + scope.data.group + '_' + scope.data.description).keyup(function(){
+	                        var el = (angular.element(element).find("input"));
+	                        el.attr("maxlength","15");
+	                        el.keyup(function(){
                                 var v = $(this).val();
 	                            v=v.replace(/\D/g,"");//Remove tudo o que não é dígito
 	                            v=v.replace(/(\d)(\d{8})$/,"$1.$2");//coloca o ponto dos milhões

@@ -5,7 +5,11 @@
         <div layout="column" flex class="fill-horizontal" style="background-color: #F5F5F5">
             <div layout="row" layout-wrap>
                 <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.expense_data" label="{{'expense.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="expense.attributes.expense_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+                <div class="w-56" layout="row" layout-align="start center" ng-if="expense.detail.length==0" ng-click="add()">
+                    <bt-button type="icon" label="Adicionar" icon="content.add" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                </div>
             </div>
+
         </div>
         <div layout="row" layout-align="start center" flex class="fill-horizontal s-120 h-64 bold">
             Items
