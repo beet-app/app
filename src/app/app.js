@@ -3,7 +3,7 @@ var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","p
 
 BeetApp
     .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia, $state) {
-PAREI NO "AINDA NAO TEM DESPESAS CADASTRADAS PARA ESTE MES"
+//PAREI NO "AINDA NAO TEM DESPESAS CADASTRADAS PARA ESTE MES"
 		$rootScope.fullViewMode = false;
 		$rootScope.singleViewMode = false;
 

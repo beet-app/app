@@ -21,7 +21,10 @@
 
         $scope.edit = function(uuid){
             $scope.loadingFeature = true;
-            GlobalService.getAttributes('person', uuid).then(function(response){
+	        var id = (Common.isEmpty(uuid)) ? 333 : uuid;
+
+
+            GlobalService.getAttributes('person', id).then(function(response){
                 $rootScope._app.sidebar.right.load("person", $scope.data);
 
                 $scope.uuid = uuid;

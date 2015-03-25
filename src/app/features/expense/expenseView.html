@@ -1,6 +1,6 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
-    <div ng-if="mode=='list' && !loadingFeature" class="fill" layout="column" flex layout-align="start start" class="fill">
+    <div ng-if="mode=='list' && !loadingFeature" class="fill" layout="column" flex layout-align="start start">
         <div layout="row" layout-wrap class="scrollable" style="padding-bottom:8px;">
             <div layout="column" ui-sref="expense/edit({uuid: item.uuid})" ng-repeat="item in data" >
 
@@ -27,7 +27,7 @@
         </div>
 
         <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0">
-            <div layout="column" layout-align="start center" flex class="m-h-16 color-bg-1 md-whiteframe-z1">
+            <div layout="column" layout-align="start center" flex class="m-h-16 color-bg-1 md-whiteframe-z1 scrollable" layout-wrap style="padding-bottom:8px;">
                 <div layout="row" layout-align="start center" class="fill-horizontal h-64 bold">
                     <div flex="20" class="m-l-16 ">Data</div>
                     <div flex="50">Descrição</div>
@@ -49,7 +49,7 @@
         </div>
 
         <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length==0">
-            <div layout="column" layout-align="center center" flex class="m-h-16 color-bg-1 md-whiteframe-z1">
+            <div layout="column" layout-align="center center" flex class="m-h-16 h-128 s-100 bold color-bg-1 md-whiteframe-z1">
                 Ainda não existem despesas cadastradas para este mês
             </div>
         </div>

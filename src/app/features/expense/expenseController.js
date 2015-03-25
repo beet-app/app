@@ -175,19 +175,35 @@
 			objSave.attribute = Common.getNewAttributeObj($scope.formData.expense_data, $scope.expense);
 			objSave.person = $scope.person.uuid;
 
-			console.log(objSave);
+
 
 
 			GlobalService.save("expense_person", mode, objSave).then(function (response) {
 
 				if (Common.isEmpty(response.error)) {
-					Common.showMessage("Despesa cadastrado com sucesso !", "success");
-					$scope.list();
+
+					angular.forEach($scope.expense.detail, function(detail){
+						detail.attribute = Common.getNewAttributeObj($scope.formData.detail.expense_detail_data, detail);
+						delete detail.attributes;
+						detail.expense_person = response.data.uuid[0];
+					});
+
+					GlobalService.save("expense_person_detail", "save", $scope.expense.detail).then(function (responseDetail) {
+						if (Common.isEmpty(responseDetail.error)) {
+							Common.showMessage("Despesa cadastrada com sucesso !", "success");
+							$scope.list();
+						} else {
+							console.log("Ocorreu um erro ao cadastrar o detalhe da despesa.");
+							$scope.list();
+						}
+					});
 
 				} else {
-					alert("Ocorreu um erro ao cadastrar a despesa.");
+					console.log("Ocorreu um erro ao cadastrar a despesa.");
+					$scope.list();
 				}
 			});
+
 
 
 		};
