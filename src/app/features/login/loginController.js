@@ -18,9 +18,9 @@
         $scope.email = "";
         $scope.emailData = {
             "value" : "",
-            "description" : "mail",
+            "description" : "email",
             "type" : {
-                "description":"simpletext",
+                "description":"email",
                 "template" :"text"
             },
             "group" :"login_data",
@@ -95,14 +95,12 @@
                         Common.goTo("company/select");
                     });
                 }else{
-                    alert("nao foi");
+                    $scope.checkingLogin = false;
+                    Common.showMessage("Dados incorretos!", "warning");
+                    return;
                 }
-
-
-
             });
         };
-
 
         $scope.signUp = function(){
             if (Common.isEmpty($scope.emailData.value)){
