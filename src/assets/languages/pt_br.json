@@ -16,7 +16,7 @@
     "login" : {
         "login_data": {
             "attributes":{
-                "mail" : "E-mail",
+                "email" : "E-mail",
                 "password" :"Senha",
                 "password_confirm" :"Confirmar Senha"
             }
