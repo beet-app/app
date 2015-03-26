@@ -138,7 +138,7 @@
         /*
          STAGING MODE
          */
-        $scope.stagingMode = function(x){
+        $scope.stagingModex = function(x){
             if (x==1){
                 $scope.emailData.value = "gustavo.ferreira08@gmail.com";
                 $scope.passwordData.value = "123";

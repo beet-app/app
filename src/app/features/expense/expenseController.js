@@ -174,9 +174,7 @@
 				mode = "update";
 				objSave.uuid = $scope.expense.uuid;
 			}
-			console.log($scope.expense.attributes.expense_data.date);
 			$scope.expense.attributes.expense_data.date = formatDate($scope.expense.attributes.expense_data.date);
-			console.log($scope.expense.attributes.expense_data.date);
 			objSave.attribute = Common.getNewAttributeObj($scope.formData.expense_data, $scope.expense);
 			objSave.person = $scope.person.uuid;
 
@@ -188,6 +186,9 @@
 				if (Common.isEmpty(response.error)) {
 
 					angular.forEach($scope.expense.detail, function(detail){
+						console.log(detail.attributes.expense_detail_data.value);
+						detail.attributes.expense_detail_data.value = formatCurrency(detail.attributes.expense_detail_data.value);
+						console.log(detail.attributes.expense_detail_data.value);
 						detail.attribute = Common.getNewAttributeObj($scope.formData.detail.expense_detail_data, detail);
 						delete detail.attributes;
 						detail.expense_person = response.data.uuid[0];
@@ -214,11 +215,11 @@
 		};
 		function formatDate(date, format){
 			if (format=="dd/mm/yyyy"){
-				arr = date.split("-");
+				var arr = date.split("-");
 				return arr[2] + "/" + arr[1] + "/" + arr[0];
 			}else{
 				if (date.indexOf("/")>0){
-					arr = date.split("/");
+					var arr = date.split("/");
 					return arr[2] + "-" + arr[1] + "-" + arr[0];
 				}else{
 					return date;
@@ -227,10 +228,29 @@
 			}
 
 		}
-		function DialogController($scope, $mdDialog, expense, formData) {
+		function formatCurrency(value){
+			if (Common.isEmpty(value)){
+				value = "0";
+			}
+			value = value.toString().replace(".","").replace(",", "");
+
+			if (value.length==1 || value.length==2){
+				value += ".00";
+			}else if (value.length==3){
+				value = value.substr(0, 1) + "." + value.substr(1, 2);
+			}else{
+				value = value.substr(0, value.length-2) + "." + value.substr(value.length-2, value.length-1);
+			}
+			return value;
+		}
+
+		function DialogController($scope, $mdDialog, expense, formData, $timeout) {
 			$scope.formData = formData;
 			$scope.expense = expense;
 			$scope.save = function() {
+				$timeout(function(){
+					$scope.$apply();
+				});
 				$mdDialog.hide(true);
 			};
 			$scope.cancel = function() {
@@ -249,14 +269,14 @@
 		}
 
 		$scope.formatDateToLabel = function(date){
-			arrDate = date.split("-");
+			var arrDate = date.split("-");
 			var arr = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 			return arr[arrDate[1]-1] + " / " + arrDate[0];
 		};
 
 		$scope.visibleDate = function(date){
-			arrDate = date.split("-");
-			arrInitialDate = $scope.initialDate.split("-");
+			var arrDate = date.split("-");
+			var arrInitialDate = $scope.initialDate.split("-");
 			return (arrDate[0] == arrInitialDate[0] && arrDate[1] == arrInitialDate[1]);
 		};
 		$scope.next = function() {

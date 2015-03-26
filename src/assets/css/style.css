@@ -16,7 +16,8 @@ label{
     font-weight: bold;
 }
 .scrollable{
-    overflow-y: auto !important
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 .fill-vertical {

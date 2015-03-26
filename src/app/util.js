@@ -130,10 +130,6 @@ BeetApp
 		        if (Common.isArray(mold)){
 			        mold = {data:mold};
 		        }
-		        //console.log(mold);
-		        //console.log(obj);
-		        console.log(obj);
-		        console.log(mold);
 		        angular.forEach(mold, function(group){
 
 			        for (var x=0 ; x<group.length ; x++){
