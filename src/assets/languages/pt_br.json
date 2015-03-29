@@ -115,7 +115,8 @@
                 "birth_date": "Data de nascimento",
                 "mail": "E-mail",
                 "education": "Escolaridade",
-                "video_link": "Link do vídeo"
+                "video_link": "Link do vídeo",
+                "origin": "Naturalidade"
             }
         },
         "technical_data": {
