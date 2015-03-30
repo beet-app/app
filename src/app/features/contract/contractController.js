@@ -22,7 +22,7 @@
             $scope.loadingFeature = true;
             var obj = {person:uuid, company:$rootScope.session.user.company};
             GlobalService.getAllByFilteredAttributes("contract", obj).then(function (response){
-                Common.openFeatureRightMenu("person", $scope.list);
+                //Common.openFeatureRightMenu("person", $scope.list);
 
                 $scope.loadingFeature = false;
                 $scope.mode = "listContract";
