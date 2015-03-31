@@ -123,6 +123,9 @@
             "description": "Dados Técnicos",
             "attributes": {
                 "height": "Altura (cm)",
+                "current_team": "Clube atual",
+                "shoe_size": "Número da chuteira",
+                "number_glove": "Número da luva",
                 "position": {
                     "description": "Posição",
                     "instruction": "Selecione",
