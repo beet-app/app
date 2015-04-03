@@ -4,7 +4,13 @@
         $scope.companies = $rootScope.session.user.companies;
         function chooseCompany(company_uuid){
             CompanyService.choose({company:company_uuid}).then(function(response){
-                $rootScope.session.features = response.data;
+                $rootScope.session.user.company = company_uuid;
+                $rootScope.session.features = [];
+                angular.forEach(response.data, function(feature){
+                    if (!Common.isEmpty(feature)){
+                        $rootScope.session.features.push(feature);
+                    }
+                });
                 $("#company-select").fadeOut();
                 $rootScope.fullViewMode = true;
                 $rootScope.singleViewMode = false;

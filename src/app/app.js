@@ -25,7 +25,12 @@ BeetApp
                     }else{
 
                         CompanyService.choose({company:user.company}).then(function(response){
-                            $rootScope.session.features = response.data;
+                            $rootScope.session.features = [];
+                            angular.forEach(response.data, function(feature){
+                                if (!Common.isEmpty(feature)){
+                                    $rootScope.session.features.push(feature);
+                                }
+                            });
                             $rootScope.fullViewMode = true;
                         });
                     }

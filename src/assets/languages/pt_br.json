@@ -187,7 +187,23 @@
 
     },
     "expense": {
-        "description":"Despesas",
+        "description":"Despesas de Atletas",
+        "expense_data" : {
+            "attributes":{
+                "description" : "Descrição",
+                "date" : "Data"
+            }
+        },
+        "expense_detail_data" : {
+            "attributes":{
+                "description" : "Descrição",
+                "quantity" : "Qtd",
+                "value" : "Valor"
+            }
+        }
+    },
+    "expense_company": {
+        "description":"Despesas da Empresa",
         "expense_data" : {
             "attributes":{
                 "description" : "Descrição",
