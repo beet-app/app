@@ -49,18 +49,12 @@
     },
     "contract": {
         "description":"Contratos",
-        "contract_data": {
-            "attributes":{
-                "type" : "Tipo",
-                "identification" :"Identificação"
-            }
-
-        },
         "contract_professional_data" : {
+            "description" : "Contrato Profissional",
             "attributes":{
+                "identification" : "Número do contrato",
                 "initial_date" : "Data inicial",
                 "final_date" : "Data final",
-                "identification" : "Número do contrato",
                 "federative_rights" : "Direitos Federativos",
                 "percentage_athlete" : "Porcentagem do Atleta (%)",
                 "percentage_representative" : "Porcentagem do Representante (%)",
@@ -68,28 +62,55 @@
                 "percentage_investor" : "Porcentagem do Investidor (%)",
                 "salary" : "Salário (R$)"
             }
-
         },
 
-        "imaging_contract" : {
+        "contract_imaging_data" : {
+            "description" : "Contrato de Imagem",
             "attributes":{
+                "identification" : "Número do contrato",
                 "initial_date" : "Data inicial",
                 "final_date" : "Data final",
                 "value" : "Valor (R$)",
                 "notes" : "Observações"
             }
-
         },
 
-        "representative_contract" : {
+        "contract_representative_data" : {
+            "description" : "Contrato de Representação",
             "attributes":{
+                "identification" : "Número do contrato",
                 "initial_date" : "Data inicial",
                 "final_date" : "Data final",
                 "notes" : "Observações"
             }
+        },
 
+        "contract_training_data" : {
+            "description" : "Contrato de Formação",
+            "attributes":{
+                "identification" : "Número do contrato",
+                "initial_date" : "Data inicial",
+                "final_date" : "Data final",
+                "percentage_athlete" : "Porcentagem do Atleta (%)",
+                "percentage_representative" : "Porcentagem do Representante (%)",
+                "percentage_club" : "Porcentagem do Clube (%)",
+                "professional_training" : "Formação Profissional (R$)",
+                "transport" : "Transporte (R$)",
+                "feeding" : "Alimentação (R$)",
+                "accommodation" : "Alojamento (R$)",
+                "clothing" : "Vestuário (R$)",
+                "health_care" : "Assistência Médica (R$)",
+                "dental_care" : "Assistência Odontológica (R$)",
+                "psychological_assistance" : "Assistência Psicológica (R$)",
+                "school_supplies" : "Material Escolar (R$)",
+                "sport_supplies" : "Material Esportivo (R$)",
+                "leisure" : "Recreação e Lazer (R$)",
+                "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
+                "computer_science_classes" : "Aulas de Informática (R$)"
         }
+      }
     },
+
     "person": {
         "description": "Atletas",
         "person_data": {
@@ -159,33 +180,6 @@
         "add" : "Adicionar"
     },
 
-    "training": {
-        "training_contract" : {
-            "attributes":{
-                "initial_date" : "Data inicial",
-                "final_date" : "Data final",
-                "number" : "Número do contrato",
-                "percentage_athlete" : "Porcentagem do Atleta (%)",
-                "percentage_representative" : "Porcentagem do Representante (%)",
-                "percentage_club" : "Porcentagem do Clube (%)",
-                "professional_training" : "Formação Profissional (R$)",
-                "transport" : "Transporte (R$)",
-                "feeding" : "Alimentação (R$)",
-                "accommodation" : "Alojamento (R$)",
-                "clothing" : "Vestuário (R$)",
-                "health_care" : "Assistência Médica (R$)",
-                "dental_care" : "Assistência Odontológica (R$)",
-                "psychological_assistance" : "Assistência Psicológica (R$)",
-                "school_supplies" : "Material Escolar (R$)",
-                "sport_supplies" : "Material Esportivo (R$)",
-                "leisure" : "Recreação e Lazer (R$)",
-                "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
-                "computer_science_classes" : "Aulas de Informática (R$)"
-            }
-        }
-
-
-    },
     "expense": {
         "description":"Despesas de Atletas",
         "expense_data" : {

@@ -25,7 +25,7 @@
                                 </div>
                                 <div layout="column" layout-align="start start" flex class="m-8">
                                     <h3>{{key | translate}}</h3>
-                                    <h4>{{value.identification}}</h4>
+                                    <h4>{{value.identification | translate}}</h4>
                                 </div>
                             </div>
 
@@ -42,7 +42,7 @@
 
         <div layout="column" flex class="fill-horizontall">
             <div layout="row" layout-wrap>
-                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in dataContract" label="{{attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}"></bt-attribute>
+                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in dataContract" label="{{attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex="{{attribute.size}}" tab-next></bt-attribute>
             </div>
         </div>
         <bt-button type="fab" label="Salvar dados do contrato" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
