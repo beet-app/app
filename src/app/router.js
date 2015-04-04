@@ -124,7 +124,7 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loca
             controller: "ContractController"
         })
         .state("contract/edit", {
-            url: "/contract/:uuid",
+            url: "/contract/params?:group&:uuid",
             templateUrl: "app/features/contract/contractView.html",
             controller: "ContractController"
         })

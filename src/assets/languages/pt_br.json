@@ -56,11 +56,11 @@
             }
 
         },
-        "professional_contract" : {
+        "contract_professional_data" : {
             "attributes":{
                 "initial_date" : "Data inicial",
                 "final_date" : "Data final",
-                "number" : "Número do contrato",
+                "identification" : "Número do contrato",
                 "federative_rights" : "Direitos Federativos",
                 "percentage_athlete" : "Porcentagem do Atleta (%)",
                 "percentage_representative" : "Porcentagem do Representante (%)",

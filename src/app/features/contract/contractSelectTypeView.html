@@ -1,0 +1,18 @@
+<md-dialog aria-label="Cadastro de Despesas" flex-gt-lg="30" flex-md="60" flex-sm="80">
+    <md-subheader class="md-sticky-no-effect color-bg-4 color-1 bold fill-horizontal">Selecione o tipo de contrato</md-subheader>
+    <md-content class="sticky-container">
+
+        <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="(key, item) in formData" ng-click="select(key)" flex-sm="100">
+            <div layout-align="center center" layout="row" class="fill-horizontal">
+                <bt-button type="button" label="{{key | translate}}" class="fill-horizontal"></bt-button>
+            </div>
+        </div>
+
+    </md-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">
+            Cancelar
+        </md-button>
+    </div>
+</md-dialog>

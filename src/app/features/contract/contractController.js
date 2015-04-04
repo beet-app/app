@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('ContractController', function($scope, $rootScope,$sce, $http, $stateParams, $translate, Common, GlobalService) {
+    .controller('ContractController', function($scope, $rootScope,$sce, $http, $stateParams, $translate, $mdDialog, Common, GlobalService) {
         $scope.loadingFeature = true;
         GlobalService.get('person').then(function(response){
             if (!response.error){
@@ -22,7 +22,6 @@
             $scope.loadingFeature = true;
             var obj = {person:uuid, company:$rootScope.session.user.company};
             GlobalService.getAllByFilteredAttributes("contract", obj).then(function (response){
-                //Common.openFeatureRightMenu("person", $scope.list);
 
                 $scope.loadingFeature = false;
                 $scope.mode = "listContract";
@@ -37,23 +36,25 @@
             });
         };
 
-        $scope.edit = function(uuid){
+        $scope.edit = function(attribute_group, uuid){
             $scope.loadingFeature = true;
-            GlobalService.getAttributes("contract", uuid).then(function(response){
+
+            var id = (Common.isEmpty(uuid)) ? 333 : uuid;
+            GlobalService.getAttributes("contract", id).then(function(response){
 
                 $scope.uuid = uuid;
                 $scope.loadingFeature = false;
                 $scope.selected = uuid;
                 if (!response.error){
                     $scope.mode = "edit";
-                    $scope.dataContract = response.data;
+                    $scope.dataContract = response.data[attribute_group];
                 }
             });
         };
 
         $scope.save = function(){
             var blnSave = true;
-            angular.forEach($scope.dataContract.contract_data, function(attribute){
+            angular.forEach($scope.dataContract, function(attribute){
                 if (blnSave){
                     if (attribute.required===1 && Common.isEmpty(attribute.value)){
                         Common.showMessage("Preencha o campo "+attribute.description+" !", "warning");
@@ -70,7 +71,7 @@
                     mode = "update";
                     objSave.uuid = $scope.uuid;
                 }
-                objSave.attribute = Common.getAttributeObj($scope.dataContract.contract_data);
+                objSave.attribute = Common.getAttributeObj($scope.dataContract);
                 objSave.person = $rootScope.personSelected;
                 objSave.company = $rootScope.session.user.company;
 
@@ -87,16 +88,49 @@
             }
         };
 
+        $scope.newContract = function($event){
+            $scope.showDialog($event);
+        };
+
+        $scope.showDialog = function($event){
+            $mdDialog.show({
+                targetEvent: $event,
+                locals: {
+                    formData:$scope.formData
+                },
+                controller: DialogController,
+                templateUrl:"app/features/contract/contractSelectTypeView.html"
+            }).then(function(attribute_group) {
+                $scope.edit(attribute_group);
+            });
+        };
+
         $scope.setFocus = function(id){
             $("#"+id).find("input").focus();
         };
+
+        function DialogController($scope, $mdDialog, formData) {
+            $scope.formData = formData;
+
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+
+            $scope.select = function(attribute_group){
+                $mdDialog.hide(attribute_group);
+            }
+        }
 
         if (Common.isEmpty($stateParams.uuid)){
             $scope.listPerson();
         }else if(!Common.isEmpty($stateParams.uuid) && !$rootScope.editContract){
             $scope.list($stateParams.uuid);
+
+            GlobalService.getAttributes("contract", 333).then(function(dataSet){
+                $scope.formData = dataSet.data;
+            });
         }
-        else if(!Common.isEmpty($stateParams.uuid) && $rootScope.editContract){
-            $scope.edit($stateParams.uuid);
+        else if(!Common.isEmpty($stateParams.uuid) && !Common.isEmpty($stateParams.group) && $rootScope.editContract){
+            $scope.edit($stateParams.group , $stateParams.uuid);
         }
     });
