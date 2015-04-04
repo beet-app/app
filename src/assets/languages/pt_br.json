@@ -53,7 +53,7 @@
             "description" : "Contrato Profissional",
             "attributes":{
                 "identification" : "Número do contrato",
-                "initial_date" : "Data inicial",
+                "start_date" : "Data inicial",
                 "final_date" : "Data final",
                 "federative_rights" : "Direitos Federativos",
                 "percentage_athlete" : "Porcentagem do Atleta (%)",
@@ -68,7 +68,7 @@
             "description" : "Contrato de Imagem",
             "attributes":{
                 "identification" : "Número do contrato",
-                "initial_date" : "Data inicial",
+                "start_date" : "Data inicial",
                 "final_date" : "Data final",
                 "value" : "Valor (R$)",
                 "notes" : "Observações"
@@ -79,7 +79,7 @@
             "description" : "Contrato de Representação",
             "attributes":{
                 "identification" : "Número do contrato",
-                "initial_date" : "Data inicial",
+                "start_date" : "Data inicial",
                 "final_date" : "Data final",
                 "notes" : "Observações"
             }
@@ -89,7 +89,7 @@
             "description" : "Contrato de Formação",
             "attributes":{
                 "identification" : "Número do contrato",
-                "initial_date" : "Data inicial",
+                "start_date" : "Data inicial",
                 "final_date" : "Data final",
                 "percentage_athlete" : "Porcentagem do Atleta (%)",
                 "percentage_representative" : "Porcentagem do Representante (%)",

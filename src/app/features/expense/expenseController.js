@@ -186,9 +186,7 @@
                 if (Common.isEmpty(response.error)) {
 
                     angular.forEach($scope.expense.detail, function(detail){
-                        console.log(detail.attributes.expense_detail_data.value);
                         detail.attributes.expense_detail_data.value = formatCurrency(detail.attributes.expense_detail_data.value);
-                        console.log(detail.attributes.expense_detail_data.value);
                         detail.attribute = Common.getNewAttributeObj($scope.formData.detail.expense_detail_data, detail);
                         delete detail.attributes;
                         detail.expense_person = response.data.uuid[0];

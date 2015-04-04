@@ -4,7 +4,7 @@
 
         <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="(key, item) in formData" ng-click="select(key)" flex-sm="100">
             <div layout-align="center center" layout="row" class="fill-horizontal">
-                <bt-button type="button" label="{{key | translate}}" class="fill-horizontal"></bt-button>
+                <bt-button type="button" label="{{'contract.' + key + '.description' | translate}}" class="fill-horizontal"></bt-button>
             </div>
         </div>
 
