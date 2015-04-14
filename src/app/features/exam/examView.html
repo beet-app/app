@@ -1,0 +1,63 @@
+<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
+
+    <div ng-if="mode=='list' && !loadingFeature" class="fill" layout="column" flex layout-align="start start">
+        <div layout="row" layout-wrap class="scrollable" style="padding-bottom:8px;">
+            <div layout="column" ui-sref="expense/edit({uuid: item.uuid})" ng-repeat="item in data" >
+
+                <bt-post-card ng-if="!listMode || listMode=='post_card'" item="item"></bt-post-card>
+                <bt-card ng-if="listMode=='card'" item="item"></bt-card>
+                <bt-simple-item ng-if="listMode=='simple_item'" item="item" class="fill-horizontal"></bt-simple-item>
+
+            </div>
+
+        </div>
+    </div>
+    <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
+
+        <div layout="row" layout-align="start center"  class="fill-horizontal h-64" style="background-color: #F5F5F5">
+            <div class="w-56" layout="row" layout-align="center center" ng-click="prev()">
+                <bt-button type="icon" label="Voltar" icon="navigation.arrow_back" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+            </div>
+            <div flex layout="row" layout-align="center center" class="bold">
+                {{formatDateToLabel(initialDate)}}
+            </div>
+            <div class="w-56" layout="row" layout-align="center center" ng-click="next()">
+                <bt-button type="icon" label="Avançar" icon="navigation.arrow_forward" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+            </div>
+        </div>
+
+        <div layout="column" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0" style="padding-left:0px;padding-right:0px">
+            <div layout="row" layout-align="start center" class="color-bg-1 fill-horizontal md-whiteframe-z1 scrollable" layout-wrap>
+                <div layout="row" layout-align="start center" flex class="fill-horizontal h-64 bold">
+                    <div flex="20" class="m-l-16 ">Data</div>
+                    <div flex="50">Descrição</div>
+                    <div flex="10">Valor</div>
+                    <div flex="20"></div>
+                </div>
+                <div layout="row" layout-align="start center"  class="fill-horizontal m-h-8  h-48" ng-show="visibleDate(item.attributes.expense_data.date)" ng-repeat="item in expenses">
+                    <div flex="20"class="m-l-16 ">{{item.attributes.expense_data.date | date:"dd/MM/yyyy"}}</div>
+                    <div flex="50">{{item.attributes.expense_data.description}}</div>
+                    <div flex="10">{{getExpenseValue(item) | currency : "R$" : 2}}</div>
+                    <div flex="10" layout="row" layout-align="center center">
+                        <bt-button type="icon" label="Remove" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                    </div>
+                    <div class="m-r-16" flex="10" layout="row" layout-align="start center" ng-click="editExpense(item, $event)">
+                        <bt-button type="icon" label="Editar" icon="content.create" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length==0">
+            <div layout="column" layout-align="center center" flex class="m-h-16 h-128 s-100 bold color-bg-1 md-whiteframe-z1">
+                Ainda não existem despesas cadastradas para este mês
+            </div>
+        </div>
+
+        <bt-button type="fab" label="Adicionar despesa" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="editExpense({}, $event)"></bt-button>
+
+    </div>
+
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/content.html'">
+    </div>
+</div>
