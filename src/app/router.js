@@ -128,6 +128,16 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loca
             templateUrl: "app/features/contract/contractView.html",
             controller: "ContractController"
         })
+        .state("exam", {
+            url: "/exam",
+            templateUrl: "app/features/exam/examView.html",
+            controller: "ExamController"
+        })
+        .state("exam/edit", {
+            url: "/exam/:uuid",
+            templateUrl: "app/features/exam/examView.html",
+            controller: "ExamController"
+        })
     ;
 });
 

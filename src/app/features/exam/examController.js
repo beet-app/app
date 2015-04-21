@@ -1,9 +1,11 @@
 ﻿BeetApp
     .controller('ExamController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q, $mdDialog) {
         $scope.loadingFeature = true;
+
         var now = new Date();
         var initialDate;
         var finalDate;
+
         if (initialDate == undefined){
             initialDate = now.getFullYear();
             if ((now.getMonth()+1).toString().length==1){
@@ -28,67 +30,17 @@
         $scope.finalDate = finalDate;
 
         $scope.list = function(){
-            //$rootScope._app.sidebar.right.unLoad();
-            GlobalService.get('exam').then(function(response){
-
-                if (!response.error){
-                    $scope.data = response.data;
-
-                    if (Common.isEmpty($stateParams.uuid)){
-                        $scope.loadingFeature = false;
-                        $scope.mode = "list";
-                    }else{
-                        var objFind = null;
-                        angular.forEach($scope.data, function(element){
-                            if (element.uuid==$stateParams.uuid){
-                                objFind = element;
-                            }
-                        });
-                        if (Common.isEmpty(objFind)){
-                            $scope.loadingFeature = false;
-                            $scope.mode = "list";
-                        }else{
-                            $scope.edit(objFind);
-                        }
-
-                    }
-                }
-            });
+            $scope.edit();
         };
 
-        $scope.edit = function(person){
+        $scope.edit = function(uuid){
             $scope.loadingFeature = true;
-            GlobalService.getAllAttributes('expense_person').then(function(attributeResponse){
-                GlobalService.getOne('expense_person', person.uuid).then(function(expenseResponse){
-                    //$rootScope._app.sidebar.right.load("expense", $scope.data);
-
-
-
-                    $scope.person = person;
-                    $scope.selected = person.uuid;
-
-                    $scope.expenses = expenseResponse.data;
-                    $scope.loadingFeature = false;
-
-                    $scope.mode = "edit";
-                    $scope.formData = attributeResponse.data;
-                });
+            uuid = (Common.isEmpty(uuid)) ? 333 : uuid;
+            GlobalService.getAttributes('exam', uuid).then(function(response){
+                $scope.loadingFeature = false;
+                $scope.mode = "edit";
+                $scope.formData = response.data;
             });
-        };
-
-
-        $scope.getExpenseValue = function(item){
-            var value = 0;
-            angular.forEach(item.detail, function(detail){
-                if (Common.isEmpty(detail.attributes.expense_detail_data.value)){
-                    detail.attributes.expense_detail_data.value = 0;
-                }
-                if (Common.isEmpty(detail.attributes.expense_detail_data.quantity)){
-                    detail.attributes.expense_detail_data.quantity = 1;
-                }
-                value += parseFloat(detail.attributes.expense_detail_data.value.replace(",",".")) * parseFloat(detail.attributes.expense_detail_data.quantity);
-            });
-            return value;
         };
 
         $scope.save = function(){
@@ -128,10 +80,11 @@
 
             }
         };
-        $scope.editExpense = function(expense, $event){
-            $scope.expense = expense;
-            if (Common.isEmpty(expense.uuid)){
-                $scope.expense = {
+
+        $scope.editExam = function(exam, $event){
+            $scope.exam = exam;
+            if (Common.isEmpty(exam.uuid)){
+                $scope.exam = {
                     "attributes":{
                         "exam_data":{}
                     },
@@ -146,19 +99,20 @@
             }
             $scope.showDialog($event);
         };
+
         $scope.showDialog = function($event){
             $mdDialog.show({
                 targetEvent: $event,
                 locals: {
-                    expense: $scope.expense,
+                    exam: $scope.exam,
                     formData:$scope.formData
                 },
                 controller: DialogController,
-                templateUrl:"app/features/expense/expenseEditView.html"
+                templateUrl:"app/features/exam/examEditView.html"
             }).then(function(blnSave) {
 
                 if (blnSave){
-                    save($scope.expense);
+                    save($scope.exam);
                 }
 
             });
@@ -178,9 +132,6 @@
             $scope.expense.attributes.expense_data.date = formatDate($scope.expense.attributes.expense_data.date);
             objSave.attribute = Common.getNewAttributeObj($scope.formData.expense_data, $scope.expense);
             objSave.person = $scope.person.uuid;
-
-
-
 
             GlobalService.save("expense_person", mode, objSave).then(function (response) {
 
@@ -208,10 +159,38 @@
                     $scope.list();
                 }
             });
-
-
-
         };
+
+        function DialogController($scope, $mdDialog, exam, formData, $timeout) {
+            $scope.formData = formData;
+            $scope.exam = exam;
+            $scope.save = function() {
+                $timeout(function(){
+                    $scope.$apply();
+                });
+                $mdDialog.hide(true);
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.add = function() {
+                $scope.exam.detail.push({
+                    "attributes":{
+                        "expense_detail_data":{}
+                    }
+                });
+            };
+            $scope.remove = function(index) {
+                $scope.exam.detail.splice(index, 1);
+            };
+        };
+
+        $scope.visibleDate = function(date){
+            var arrDate = date.split("-");
+            var arrInitialDate = $scope.initialDate.split("-");
+            return (arrDate[0] == arrInitialDate[0] && arrDate[1] == arrInitialDate[1]);
+        };
+
         function formatDate(date, format){
             if (format=="dd/mm/yyyy"){
                 var arr = date.split("-");
@@ -223,10 +202,9 @@
                 }else{
                     return date;
                 }
-
             }
+        };
 
-        }
         function formatCurrency(value){
             if (Common.isEmpty(value)){
                 value = "0";
@@ -241,120 +219,7 @@
                 value = value.substr(0, value.length-2) + "." + value.substr(value.length-2, value.length-1);
             }
             return value;
-        }
-
-        function DialogController($scope, $mdDialog, expense, formData, $timeout) {
-            $scope.formData = formData;
-            $scope.expense = expense;
-            $scope.save = function() {
-                $timeout(function(){
-                    $scope.$apply();
-                });
-                $mdDialog.hide(true);
-            };
-            $scope.cancel = function() {
-                $mdDialog.hide(false);
-            };
-            $scope.add = function() {
-                $scope.expense.detail.push({
-                    "attributes":{
-                        "expense_detail_data":{}
-                    }
-                });
-            };
-            $scope.remove = function(index) {
-                $scope.expense.detail.splice(index, 1);
-            };
-        }
-
-        $scope.formatDateToLabel = function(date){
-            var arrDate = date.split("-");
-            var arr = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-            return arr[arrDate[1]-1] + " / " + arrDate[0];
         };
 
-        $scope.visibleDate = function(date){
-            var arrDate = date.split("-");
-            var arrInitialDate = $scope.initialDate.split("-");
-            return (arrDate[0] == arrInitialDate[0] && arrDate[1] == arrInitialDate[1]);
-        };
-        $scope.next = function() {
-            var arr;
-
-            var initialDate = $scope.initialDate;
-            arr = initialDate.split("-");
-            if (parseInt(arr[1])==12){
-                arr[1] = "01";
-                arr[0] = (parseInt(arr[0]) + 1).toString();
-            }else{
-                arr[1] = (parseInt(arr[1]) + 1).toString();
-            }
-            initialDate = arr[0];
-            if ((arr[1]).toString().length==1){
-                initialDate = initialDate + "-" + "0" + (parseInt(arr[1])).toString();
-            }else{
-                initialDate = initialDate + "-" + (parseInt(arr[1])).toString();
-            }
-            initialDate = initialDate + "-01";
-
-
-            var finalDate = $scope.finalDate;
-            arr = finalDate.split("-");
-            if (parseInt(arr[1])==12){
-                arr[1] = "01";
-                arr[0] = (parseInt(arr[0]) + 1).toString();
-            }else{
-                arr[1] = (parseInt(arr[1]) + 1).toString();
-            }
-            finalDate = arr[0];
-            if ((arr[1]).toString().length==1){
-                finalDate = finalDate + "-" + "0" + (parseInt(arr[1])).toString();
-            }else{
-                finalDate = finalDate + "-" + (parseInt(arr[1])).toString();
-            }
-            finalDate = finalDate + "-01";
-
-            $scope.initialDate = initialDate;
-            $scope.finalDate = finalDate;
-        };
-        $scope.prev = function() {
-            var arr;
-
-            var initialDate = $scope.initialDate;
-            arr = initialDate.split("-");
-            if (parseInt(arr[1])==1){
-                arr[1] = "12";
-                arr[0] = (parseInt(arr[0]) - 1).toString();
-            }else{
-                arr[1] = (parseInt(arr[1]) - 1).toString();
-            }
-            initialDate = arr[0];
-            if ((arr[1]).toString().length==1){
-                initialDate = initialDate + "-" + "0" + (parseInt(arr[1])).toString();
-            }else{
-                initialDate = initialDate + "-" + (parseInt(arr[1])).toString();
-            }
-            initialDate = initialDate + "-01";
-
-
-            var finalDate = $scope.finalDate;
-            arr = finalDate.split("-");
-            if (parseInt(arr[1])==1){
-                arr[1] = "12";
-                arr[0] = (parseInt(arr[0]) - 1).toString();
-            }else{
-                arr[1] = (parseInt(arr[1]) - 1).toString();
-            }
-            finalDate = arr[0];
-            if ((arr[1]).toString().length==1){
-                finalDate = finalDate + "-" + "0" + (parseInt(arr[1])).toString();
-            }else{
-                finalDate = finalDate + "-" + (parseInt(arr[1])).toString();
-            }
-            finalDate = finalDate + "-01";
-
-            $scope.initialDate = initialDate;
-            $scope.finalDate = finalDate;
-        };
         $scope.list();
     });

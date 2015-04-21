@@ -1,18 +1,22 @@
 <md-dialog aria-label="Cadastro de Despesas" flex-gt-lg="50" flex-md="60" flex-sm="80">
-    <md-subheader class="md-sticky-no-effect color-bg-4 color-1 bold fill-horizontal">Cadastro de Despesa</md-subheader>
+    <md-subheader class="md-sticky-no-effect color-bg-4 color-1 bold fill-horizontal">Avaliação Coletiva</md-subheader>
     <md-content class="sticky-container">
 
         <div layout="column" flex class="fill-horizontal" style="background-color: #F5F5F5">
+
             <div layout="row" layout-wrap>
-                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.expense_data" label="{{'expense.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="expense.attributes.expense_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
-                <div class="w-56" layout="row" layout-align="start center" ng-if="expense.detail.length==0" ng-click="add()">
+
+                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.exam_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="exam.attributes.exam_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+                <div class="w-56" layout="row" layout-align="start center" ng-if="exam.detail.length==0" ng-click="add()">
                     <bt-button type="icon" label="Adicionar" icon="content.add" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
+
             </div>
 
         </div>
+
         <div layout="row" layout-align="start center" flex class="fill-horizontal s-120 h-64 bold">
-            Items
+            Atletas
         </div>
 
         <div layout="column" flex class="fill-horizontal scrollable">

@@ -173,7 +173,6 @@
         }
     },
 
-
     "buttons" : {
         "save" : "Salvar",
         "cancel" : "Cancelar",
@@ -209,6 +208,21 @@
                 "description" : "Descrição",
                 "quantity" : "Qtd",
                 "value" : "Valor"
+            }
+        }
+    },
+    "exam": {
+        "description":"Avaliação Coletiva",
+        "exam_data" : {
+            "attributes": {
+                "description" : "Descrição",
+                "initial_date" : "Data inicial",
+                "final_date" : "Data final"
+            }
+        },
+        "candidate_data" : {
+            "attributes" : {
+
             }
         }
     },
