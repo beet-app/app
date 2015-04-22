@@ -1,22 +1,5 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
-    <div ng-if="mode=='list' && !loadingFeature" layout="column" flex layout-align="start start" class="fill" layout-wrap>
-        <div ng-repeat="item in listContract" layout="row">
-
-            <div ng-repeat="item in item.attributes" layout="row" ui-sref="exam/edit({uuid : item.uuid})" class="md-whiteframe-z1 color-bg-1 pointer m-t-8 m-l-8 pointer" layout="column" style="width:360px;height:144px;" flex>
-                <div layout="column" layout-align="center center" style="height:144px;width:144px">
-                    <bt-avatar feature="contract" scale="100px" bt-class="face m-v-8 m-h-8"></bt-avatar>
-                </div>
-                <div layout="column" layout-align="start start" flex class="m-8">
-                    <h4>{{"contract."+ key + ".description" | translate}}</h4>
-                    <h4>{{value.identification | translate}}</h4>
-                </div>
-            </div>
-
-        </div>
-        <bt-button type="fab" label="Cadastrar avaliação coletiva" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="editExam({}, $event)"></bt-button>
-    </div>
-
     <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
 
         <div layout="column" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0" style="padding-left:0px;padding-right:0px">
@@ -47,7 +30,8 @@
             </div>
         </div>
 
-        <bt-button type="fab" label="Adicionar despesa" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="editExpense({}, $event)"></bt-button>
+
+        <bt-button type="fab" label="Cadastrar avaliação coletiva" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="editExam({}, $event)"></bt-button>
 
     </div>
 

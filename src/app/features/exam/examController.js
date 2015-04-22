@@ -82,6 +82,7 @@
         };
 
         $scope.editExam = function(exam, $event){
+            console.log("asdasdas");
             $scope.exam = exam;
             if (Common.isEmpty(exam.uuid)){
                 $scope.exam = {
@@ -159,7 +160,7 @@
                     $scope.list();
                 }
             });
-        };
+        }
 
         function DialogController($scope, $mdDialog, exam, formData, $timeout) {
             $scope.formData = formData;
@@ -183,7 +184,7 @@
             $scope.remove = function(index) {
                 $scope.exam.detail.splice(index, 1);
             };
-        };
+        }
 
         $scope.visibleDate = function(date){
             var arrDate = date.split("-");
@@ -203,7 +204,7 @@
                     return date;
                 }
             }
-        };
+        }
 
         function formatCurrency(value){
             if (Common.isEmpty(value)){
@@ -219,7 +220,7 @@
                 value = value.substr(0, value.length-2) + "." + value.substr(value.length-2, value.length-1);
             }
             return value;
-        };
+        }
 
         $scope.list();
     });
