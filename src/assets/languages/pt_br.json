@@ -220,9 +220,23 @@
                 "final_date" : "Data final"
             }
         },
-        "candidate_data" : {
+        "exam_detail_data" : {
             "attributes" : {
-
+                "name" : "Nome",
+                "birth_date": "Data de nascimento",
+                "position": {
+                    "description": "Posição",
+                    "instruction": "Selecione",
+                    "options": {
+                        "goalkeeper": "Goleiro",
+                        "defender": "Zagueiro",
+                        "left_back": "Lateral-esquerdo",
+                        "right_back": "Lateral-direito",
+                        "centre_midfielder": "Volante",
+                        "midfielder": "Meio Campo",
+                        "forward": "Atacante"
+                    }
+                }
             }
         }
     },

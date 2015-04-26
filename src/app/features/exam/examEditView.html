@@ -20,12 +20,12 @@
         </div>
 
         <div layout="column" flex class="fill-horizontal scrollable">
-            <div layout="row" class="" layout-wrap ng-repeat="detail in expense.detail">
-                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.detail.expense_detail_data" label="{{'expense.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="detail.attributes.expense_detail_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+            <div layout="row" class="" layout-wrap ng-repeat="detail in exam.detail">
+                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.detail.exam_detail_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="detail.attributes.exam_detail_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
                 <div class="w-56" layout="row" layout-align="start center" ng-click="remove($index)">
                     <bt-button type="icon" label="Remover" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
-                <div class="w-56" layout="row" layout-align="start center" ng-if="$index==expense.detail.length-1" ng-click="add()">
+                <div class="w-56" layout="row" layout-align="start center" ng-if="$index==exam.detail.length-1" ng-click="add()">
                     <bt-button type="icon" label="Adicionar" icon="content.add" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
             </div>

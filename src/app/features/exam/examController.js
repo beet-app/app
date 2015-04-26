@@ -82,17 +82,16 @@
         };
 
         $scope.editExam = function(exam, $event){
-            console.log("asdasdas");
             $scope.exam = exam;
             if (Common.isEmpty(exam.uuid)){
                 $scope.exam = {
                     "attributes":{
                         "exam_data":{}
                     },
-                    "candidates":[
+                    "detail":[
                         {
                             "attributes":{
-                                "candidate_data":{}
+                                "exam_detail_data":{}
                             }
                         }
                     ]
@@ -177,7 +176,7 @@
             $scope.add = function() {
                 $scope.exam.detail.push({
                     "attributes":{
-                        "expense_detail_data":{}
+                        "exam_detail_data":{}
                     }
                 });
             };
