@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService) {
+    .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService, $timeout) {
 
         $scope.companies = $rootScope.session.user.companies;
         function chooseCompany(company_uuid){
@@ -12,9 +12,10 @@
                     }
                 });
                 $("#company-select").fadeOut();
-                $rootScope.fullViewMode = true;
+
                 $rootScope.singleViewMode = false;
                 Common.goTo("main");
+                $rootScope.fullViewMode = true;
 
             });
         }
@@ -32,6 +33,6 @@
         }
 
         $scope.chooseCompany = function(company_uuid){
-            chooseCompany(company_uuid);
+            //chooseCompany(company_uuid);
         }
     });
