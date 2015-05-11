@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btPostCard", function (Common, $compile) {
         return {
             //replace: true,

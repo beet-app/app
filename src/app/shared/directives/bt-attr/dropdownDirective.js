@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .directive("btDropdown", function (Common, $compile) {
 
 

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btDate", function (Common, $compile, $timeout) {
 
 		function formatDate(date, format){

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .directive("btSimpletext", function (Common, $compile) {
 
 

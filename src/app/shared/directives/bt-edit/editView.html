@@ -1,0 +1,7 @@
+<div layout="row" class="fill-horizontal scrollable p-{{$root._app.defaults.padding}}" layout-wrap>
+
+    <bt-edit-toolbar description="$parent.formData[data.mirror]" class="fill-horizontal m-b-{{$root._app.defaults.padding}}"></bt-edit-toolbar>
+
+    <div ng-transclude class="fill-horizontal"></div>
+</div>
+<bt-button ng-click="$parent.save()" bt-class="md-fab-bottom-right" bt-theme="button.fab.save" label="Salvar"></bt-button>

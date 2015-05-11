@@ -1,0 +1,9 @@
+<div hide layout="{{orientation}}">
+    <div layout="row" layout-align="center center" class="m-r-8">{{label+'.description' | translate}}</div>
+    <md-radio-group layout="row" ng-model="ngModel">
+        <md-radio-button class="m-t-8 m-l-0" ng-repeat="option in options" value="{{option.value}}">{{label+'.options.'+option.value | translate}}</md-radio-button>
+    </md-radio-group>
+</div>
+<md-switch ng-model="ngModel" aria-label="Alternativa correta" class="bold s-90">
+    {{label+'.options.'+ngModel | translate}}
+</md-switch>

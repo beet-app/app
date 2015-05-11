@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .controller('LoginValidateController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, UserService, $state) {
 
     $rootScope.singleViewMode = true;

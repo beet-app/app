@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btAvatar", function (Common, $timeout) {
         return {
             replace: true,

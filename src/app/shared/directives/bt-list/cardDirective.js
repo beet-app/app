@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btCard", function (Common, $compile) {
 
 

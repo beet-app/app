@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('CompanyController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, GlobalService) {
         $rootScope.fullViewMode = false;
         $rootScope.singleViewMode = true;

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('ExamController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q, $mdDialog) {
         $scope.loadingFeature = true;
 

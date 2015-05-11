@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btMoney", function (Common, $compile, $timeout) {
 
 

@@ -31,25 +31,21 @@
 
 </head>
 
-<body ng-app="BeetApp" ng-controller="AppController">
+<body ng-app="MyApp" ng-controller="AppController">
 
 <div bt-theme="container" class="fill" id="container" layout="column" ng-if="fullViewMode" style="display:none;">
-
-    <!-- Header -->
-    <ng-include src="'app/shared/header/headerView.html'"></ng-include>
-    <!-- Header -->
 
     <div bt-theme="content" fill flex layout="row">
 
         <!-- Left Sidebar -->
-        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show="_app.sidebar.left.opened"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'"></md-sidenav>
+        <md-sidenav bt-theme="sidebar.left" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"  md-is-locked-open="$mdMedia('gt-md')"  ng-controller="LeftController" ng-include src="'app/shared/sidebar/leftView.html'"></md-sidenav>
         <!-- Left Sidebar -->
 
         <div flex layout="column">
 
-            <!-- Toolbar -->
-            <ng-include src="'app/shared/toolbar/toolbarView.html'"></ng-include>
-            <!-- Toolbar -->
+            <!-- Header -->
+            <ng-include src="'app/shared/header/headerView.html'"></ng-include>
+            <!-- Header -->
 
             <!-- Main -->
             <main bt-theme="main" class="relative" flex layout="column" ui-view=""></main>
@@ -57,7 +53,7 @@
         </div>
 
         <!-- Right Sidebar -->
-        <md-sidenav bt-theme="sidebar.right" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-controller="RightController" md-is-locked-open="$mdMedia('gt-lg')" ng-include src="'app/shared/sidebar/rightView.html'" ng-show="_app.sidebar.right.opened"></md-sidenav>
+        <md-sidenav layout="column" flex bt-theme="sidebar.right" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ng-controller="RightController" md-is-locked-open="$mdMedia('gt-lg')" ng-include src="'app/shared/sidebar/rightView.html'" ng-show="_app.sidebar.right.opened || !_fn.checkScreen('gt-md')"></md-sidenav>
         <!-- Right Sidebar -->
 
     </div>
@@ -77,8 +73,14 @@
 <ng-include src="'app/shared/loading/app.html'"></ng-include>
 <!-- Loading App -->
 
+<!-- Print Window -->
+<div id="printWindow" style="display:none;position:absolute">
+
+</div>
+<!-- Print Window -->
+
 <!-- Single View -->
-<div bt-theme="single_view" class="fill" id="single_view" ng-if="singleViewMode" layout="row" layout-align="center center"  ui-view="" style="display:none;"></div>
+<div bt-theme="single_view" class="fill" id="single_view" ng-if="singleViewMode" layout="row" layout-align="center center"  ui-view="" style=":none;"></div>
 <!-- Single View -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

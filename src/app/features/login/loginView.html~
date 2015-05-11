@@ -1,0 +1,49 @@
+ <div bt-theme="feature.login" id="login" layout="column" layout-align="start center">
+
+    <div bt-theme="feature.login.logo_box" fill layout="row" layout-align="center center">
+        <img bt-theme="feature.login.logo_box.image"  ng-click="stagingMode(3)"/>
+    </div>
+
+    <div bt-theme="feature.login.info_box" fill layout="row" layout-align="center center" ng-if="!loginMode">
+        <span bt-theme="feature.login.info_box.message" ng-if="rememberPasswordMode" translate="login.password_redefine_message"></span>
+        <span bt-theme="feature.login.info_box.message" ng-if="signUpMode" translate="login.sign_up_message"></span>
+    </div>
+
+     <div bt-theme="feature.login.social_box" fill layout="row" layout-align="center center" ng-if="!rememberPasswordMode">
+         <div flex layout="row" layout-align="end center" >
+             <img bt-theme="feature.login.social_box.google" ng-click="stagingMode(4)"/>
+         </div>
+         <div flex layout="row" layout-align="start center">
+             <img bt-theme="feature.login.social_box.facebook" />
+         </div>
+     </div>
+
+    <div fill layout="row" layout-align="center center">
+        <bt-attribute flex="80" data="emailData" label="{{'login.login_data.attributes.email' | translate}}" ng-model="emailData.value"></bt-attribute>
+    </div>
+    <div fill layout="row" layout-align="center center" ng-show="!rememberPasswordMode">
+        <bt-attribute flex="80" data="passwordData" label="{{'login.login_data.attributes.password' | translate}}" ng-model="passwordData.value"></bt-attribute>
+    </div>
+    <div fill layout="row" layout-align="center center" ng-show="signUpMode">
+        <bt-attribute flex="80" data="confirmPasswordData" label="{{'login.login_data.attributes.password_confirm' | translate}}" ng-model="confirmPasswordData.value"></bt-attribute>
+    </div>
+
+    <div fill layout="row" layout-align="center center">
+        <div bt-theme="feature.login.command_box" layout="row">
+            <div flex="70" layout="column" layout-align="start start" >
+                <div flex layout="column" layout-align="start start">
+                    <bt-button bt-theme="feature.login.command_box.sign_up" label="{{'login.sign_up' | translate}}" ng-click="showSignUp()" ng-if="!signUpMode && !rememberPasswordMode"></bt-button>
+                    <bt-button bt-theme="feature.login.command_box.login_problems" label="{{'login.login_problems' | translate}}" ng-click="showRememberPassword()" ng-if="!signUpMode && !rememberPasswordMode"></bt-button>
+                    <bt-button bt-theme="button.fab.back" label="{{'button.back' | translate}}"  ng-click="showLogin()" ng-if="signUpMode || rememberPasswordMode"></bt-button>
+                </div>
+            </div>
+            <div flex="30" layout="row" layout-align="end center">
+                <md-progress-circular md-mode="indeterminate" ng-if="checkingLogin"></md-progress-circular>
+                <bt-button bt-theme="button.fab.sign_in" label="{{'button.sign_in' | translate}}" ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" ng-click="checkLogin()"></bt-button>
+                <bt-button bt-theme="button.fab.send" label="{{'button.send' | translate}}" ng-if="rememberPasswordMode"  ng-click="sendPasswordLink()" ></bt-button>
+                <bt-button bt-theme="button.fab.add" label="{{'button.add' | translate}}" ng-if="signUpMode && !checkingLogin" ng-click="signUp()"></bt-button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btLaterality", function (Common, $compile) {
 
 

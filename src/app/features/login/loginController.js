@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('LoginController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, UserService, $state, btApp, viewMode) {
         $rootScope.fullViewMode = false;
         $rootScope.singleViewMode = true;
@@ -95,9 +95,9 @@
                         Common.goTo("company/select");
                     });
                 }else{
+                    Common.showMessage("Dados inválidos");
+                    $scope.passwordData.value = "";
                     $scope.checkingLogin = false;
-                    Common.showMessage("Dados incorretos!", "warning");
-                    return;
                 }
             });
         };
@@ -136,7 +136,7 @@
         /*
          STAGING MODE
          */
-        $scope.stagingModex = function(x){
+        $scope.stagingMode = function(x){
             if (x==1){
                 $scope.emailData.value = "gustavo.ferreira08@gmail.com";
                 $scope.passwordData.value = "123";

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btCpf", function (Common, $compile, $timeout) {
 
 

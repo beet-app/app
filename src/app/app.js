@@ -1,9 +1,9 @@
 ﻿"use strict";
-var BeetApp = angular.module("BeetApp", ["ngCookies","ngSanitize","ui.router","pascalprecht.translate","ngAnimate", "ngMaterial", "ngAnimate"]);
+var MyApp = angular.module("MyApp", ["ngCookies","ngSanitize","ui.router","pascalprecht.translate","ngAnimate", "ngMaterial", "ngAnimate"]);
 
-BeetApp
+MyApp
     .controller("AppController", function($scope, $rootScope, Common, UserService, CompanyService, btApp, $mdSidenav, $mdMedia, $state) {
-//PAREI NO "AINDA NAO TEM DESPESAS CADASTRADAS PARA ESTE MES"
+
 		$rootScope.fullViewMode = false;
 		$rootScope.singleViewMode = false;
 
@@ -24,14 +24,17 @@ BeetApp
                         Common.goTo("company/select");
                     }else{
 
-                        CompanyService.choose({company:user.company}).then(function(response){
-                            $rootScope.session.features = [];
-                            angular.forEach(response.data, function(feature){
-                                if (!Common.isEmpty(feature)){
-                                    $rootScope.session.features.push(feature);
+                        CompanyService.choose({company:user.company}).then(function(response) {
+
+                            angular.forEach($rootScope.session.user.companies, function(company){
+                                if (company.uuid==$rootScope.session.user.company){
+                                    $rootScope.session.user.current_company = company;
                                 }
                             });
-                            $rootScope.fullViewMode = true;
+
+                            btApp.loadFeatures(response.data).then(function () {
+                                $rootScope.fullViewMode = true;
+                            });
                         });
                     }
                 });
@@ -52,8 +55,8 @@ BeetApp
         });
     });
 
-BeetApp
-    .factory("btApp", function($rootScope, $q, Common, UserService, CompanyService, GlobalService, btFn,$timeout, $mdSidenav) {
+MyApp
+    .factory("btApp", function($rootScope, $q, Common, $state, UserService, CompanyService, GlobalService, btFn,$timeout, $mdSidenav) {
 
 
         var factory = {
@@ -62,83 +65,73 @@ BeetApp
                 var defer = $q.defer();
 
                 $rootScope._app = {
+                    defaults:{
+                        padding:"16"
+                    },
                     sidebar : {
                         left: {
                             opened: true,
-                            toogle : function(){
-                                if (btFn.checkScreen("gt-md")){
-                                    this.opened = !this.opened;
-                                }else{
-	                                if (!$mdSidenav('left').isOpen()){
-		                                setTimeout(function(){
-			                                $mdSidenav('left').open();
-		                                },200);
-	                                }else{
-		                                setTimeout(function(){
-			                                $mdSidenav('left').close();
-		                                },200);
-	                                }
-
-                                }
+                            open : function(){
+                                $mdSidenav('left').then(function(){
+                                    $mdSidenav('left').open();
+                                });
+                            },
+                            close : function(){
+                                $mdSidenav('left').then(function(){
+                                    $mdSidenav('left').close();
+                                });
                             }
                         },
                         right: {
                             opened:false,
                             toogle : function(item){
                                 if (this[item].selected){
-                                    this[item].selected = false;
-                                    if (btFn.checkScreen("gt-md")){
-                                        this.opened = false;
-                                    }else{
-                                        this.opened = false;
-                                        $mdSidenav('right').close()
-                                            .then(function(){
-
-                                            });
-                                    }
+                                    this.close(item);
                                 }else{
-                                    if (!this.opened){
-                                        if (btFn.checkScreen("gt-md")){
-                                            this.opened = true;
-                                        }else{
-                                            this.opened = true;
-                                            $timeout(function(){
-                                                $rootScope.$watch($mdSidenav('right').isOpen, function(opened){
-                                                    if (!opened){
-                                                        $rootScope._app.sidebar.right.opened = false;
-                                                        $rootScope._app.sidebar.right["feature"].selected = false;
-                                                        $rootScope._app.sidebar.right["notifications"].selected = false;
-                                                        $rootScope._app.sidebar.right["user"].selected = false;
-                                                    }
-                                                });
-
-	                                            $mdSidenav('right').open();
-	                                            setTimeout(function(){
-		                                            $mdSidenav('right').open();
-	                                            },300);
-
-                                            });
-
-                                        }
-                                    }
-                                    this["feature"].selected = false;
-                                    this["notifications"].selected = false;
-                                    this["user"].selected = false;
-                                    this[item].selected = true;
+                                    this.open(item);
                                 }
-
-
-
                             },
-                            load: function(feature, data){
+                            close : function(item){
+                                $rootScope._app.sidebar.right[item].selected = false;
+                                $rootScope._app.sidebar.right["feature"].selected = false;
+                                $rootScope._app.sidebar.right["notifications"].selected = false;
+                                $rootScope._app.sidebar.right["user"].selected = false;
+                                $rootScope._app.sidebar.right.opened = false;
+                                if (!btFn.checkScreen("gt-lg")){
+                                    $timeout(function(){
+                                        $mdSidenav('right').then(function(){
+                                            $mdSidenav('right').close();
+                                        });
+                                    });
+                                }
+                            },
+                            open : function(item){
+                                $mdSidenav('right').then(function(){
+                                    $rootScope.$watch($mdSidenav('right').isOpen, function(opened){
+                                        if (!opened && !btFn.checkScreen("gt-lg")){
+                                            $rootScope._app.sidebar.right.close(item);
+                                        }
+                                    });
+                                    $mdSidenav('right').open();
+                                    $rootScope._app.sidebar.right.opened = true;
+                                    $rootScope._app.sidebar.right["feature"].selected = false;
+                                    $rootScope._app.sidebar.right["notifications"].selected = false;
+                                    $rootScope._app.sidebar.right["user"].selected = false;
+                                    $rootScope._app.sidebar.right[item].selected = true;
+
+                                });
+                            },
+                            load: function(feature, data, action, description){
                                 this.feature = {
                                     selected:false,
                                     name:feature,
-                                    items:data
+                                    items:data,
+                                    action:action,
+                                    description:description
                                 };
-	                            if (btFn.checkScreen("gt-md")){
-		                            this.toogle("feature");
-	                            }
+                                if (btFn.checkScreen("gt-lg")){
+                                    this.toogle("feature");
+                                }
                             },
                             unLoad: function(feature, data){
                                 this.feature = {
@@ -160,22 +153,27 @@ BeetApp
                         }
                     },
                     feature : {
-                        change: function (feature) {
-	                        if (!btFn.checkScreen("gt-md")){
-		                        $rootScope._app.sidebar.left.toogle();
-	                        }
+                        change: function (feature, blnNoRedirect) {
+                            $rootScope.loadingFeature = true;
+                            if (!btFn.checkScreen("gt-md")){
+                                $rootScope._app.sidebar.left.close();
+                            }
                             $rootScope._app.sidebar.right.unLoad();
                             $rootScope._app.feature.current = feature;
-                            btFn.goTo(feature.attributes.sidebar.path);
+                            if (!blnNoRedirect){
+                                btFn.goTo(feature.description);
+                            }
+
                         }
                     }
                 };
-
-
-
-
-
                 $rootScope._fn = btFn;
+
+                if (btFn.checkScreen("gt-md")){
+                    $rootScope._app.defaults.padding = "32";
+                }
+
+
                 factory.loadDefaults().then(function(response){
                     defer.resolve(response);
                 });
@@ -192,6 +190,7 @@ BeetApp
 
                 GlobalService.getTheme("default").then(function(response){
                     $rootScope.theme = response.data;
+
                     GlobalService.getColor("default").then(function(response){
                         $rootScope.colors = response.data;
 
@@ -209,6 +208,36 @@ BeetApp
 
                 return defer.promise;
 
+            },
+            loadFeatures: function (features) {
+                var defer = $q.defer();
+
+
+
+                $rootScope.session.features = [];
+                $rootScope._app.feature.dict = {};
+                var currentPath;
+                angular.forEach(features, function(feature){
+                    if (!Common.isEmpty(feature)){
+                        $rootScope.session.features.push(feature);
+                        $rootScope._app.feature.dict[feature.description] = feature;
+                        currentPath = $state.current.name.split("/");
+                        currentPath = currentPath[0];
+                        if (currentPath==feature.description){
+                            $rootScope._app.feature.change(feature, true);
+                        }
+                    }
+
+                });
+
+
+
+
+                defer.resolve(true);
+
+
+                return defer.promise;
+
             }
         };
         return factory;
@@ -217,8 +246,8 @@ BeetApp
 
 
 
-BeetApp
-    .factory("btFn", function($rootScope, $q,$state, Common, UserService, CompanyService,$mdMedia, GlobalService, $translate, $timeout) {
+MyApp
+    .factory("btFn", function($rootScope, $q,$state, Common, UserService, CompanyService,$mdMedia,$mdToast, GlobalService, $translate, $timeout) {
 
 
         var factory = {
@@ -276,12 +305,48 @@ BeetApp
             checkScreen : function(screen){
                 return $mdMedia(screen);
             },
-            goTo : function (url){
-                $state.transitionTo(url);
+            goTo : function (url, data){
+                if (!data){
+                    data = {};
+                }
+                $state.transitionTo(url, data, {reload: true});
+            },
+            getLetterByIndex : function (index){
+                return(String.fromCharCode(index+64));
+            },
+            range : function(n) {
+                return new Array(n);
+            },
+            closeToast : function(){
+                $mdToast.hide();
+            },
+            limitString :function(str, length){
+                if (str.length>length){
+                    return str.substring(0,length-3)+"...";
+                }
+                return str;
+            },
+            stripTags : function(str){
+                return $("<div/>").html(str).text();
+            },
+            search : function(value) {
+                $(".filterable").each(function () {
+                    if ($(this).text().indexOf($("#txtSearch").val()) > -1) {
+                        $(this).parent().show();
+                    } else {
+                        $(this).parent().hide();
+                    }
+                });
+            },
+            getObjectByString: function(obj, text){
+                var arr = text.split(".");
+                for (var x=0; x<arr.length ; x++){
+                    obj = obj[arr[x]];
+                }
+                return obj;
             }
-
-
         };
+
         return factory;
 
     });

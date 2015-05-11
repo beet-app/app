@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .directive("btPassword", function (Common, $compile) {
 
 

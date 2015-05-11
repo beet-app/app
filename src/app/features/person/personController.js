@@ -1,40 +1,54 @@
-﻿BeetApp
+﻿MyApp
     .controller('PersonController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
-        $scope.loadingFeature = true;
+        $rootScope.loadingFeature = true;
+        var feature = "person";
+        function loadFeature(){
+            var d = $q.defer();
+
+            GlobalService.getAttributes('person', 333).then(function(attributeResponse){
+
+                $scope.attributeData = attributeResponse.data;
+
+                GlobalService.get(feature, $stateParams).then(function(response){
+                    $scope.data = response.data;
+                    $scope.listData = {
+                        fields:[
+                            {
+                                description:"attributes.person_data.name"
+                            }
+                        ],
+                        items:$scope.data,
+                        add: function($event){
+                            $scope.add($event);
+                        }
+                    };
+
+
+                    d.resolve(true);
+
+                });
+
+            });
+
+            return d.promise;
+        }
 
         $scope.list = function(){
             $rootScope._app.sidebar.right.unLoad();
-            GlobalService.get('person').then(function(response){
-
-                if (!response.error){
-                    $scope.data = response.data;
-
-                    if (Common.isEmpty($stateParams.uuid)){
-                        $scope.loadingFeature = false;
-                        $scope.mode = "list";
-                    }else{
-                        $scope.edit($stateParams.uuid);
-                    }
-                }
-            });
+            $scope.mode = "list";
         };
-
-        $scope.edit = function(uuid){
-            $scope.loadingFeature = true;
-	        var id = (Common.isEmpty(uuid)) ? 333 : uuid;
-
-
-            GlobalService.getAttributes('person', id).then(function(response){
-                $rootScope._app.sidebar.right.load("person", $scope.data);
-
-                $scope.uuid = uuid;
-                $scope.loadingFeature = false;
-                $scope.selected = uuid;
-                if (!response.error){
-                    $scope.mode = "edit";
-                    $scope.formData = response.data;
-                }
-            });
+        $scope.add = function(){
+            $scope.edit({});
+        };
+        $scope.edit = function(obj){
+            $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
+                $scope.edit(item);
+            },"name");
+            $scope.mode = "edit";
+            $scope.formData = {};
+            if (!Common.isEmpty(obj)){
+                $scope.formData = obj;
+            }
         };
 
         $scope.save = function(){
@@ -75,6 +89,17 @@
             }
         };
 
+        loadFeature().then(function(){
 
-        $scope.list();
+            if (Common.isEmpty($stateParams.id)) {
+                $rootScope.loadingFeature = false;
+                $scope.list();
+            }else{
+                GlobalService.getOne(feature, $stateParams.id).then(function(response){
+                    $rootScope.loadingFeature = false;
+                    $scope.edit(response.data);
+                });
+            }
+
+        });
     });

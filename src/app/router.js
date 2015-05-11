@@ -1,6 +1,6 @@
 ﻿"use strict";
 /*
- BeetApp.factory('errorInterceptor', ['$q', '$rootScope', '$location',
+ MyApp.factory('errorInterceptor', ['$q', '$rootScope', '$location',
  function ($q, $rootScope, $location) {
  return {
  request: function (config) {
@@ -24,7 +24,7 @@
  };
  }]);
  */
-BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+MyApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $httpProvider.defaults.withCredentials = true;
 
 

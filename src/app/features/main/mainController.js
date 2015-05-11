@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .controller('MainController', function($scope, $rootScope,$sce, $http, $location, $translate, Common) {
     setTimeout(function(){
       $("#loadingApp").hide();

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('ContractController', function($scope, $rootScope,$sce, $http, $stateParams, $translate, $mdDialog, Common, GlobalService) {
         $scope.loadingFeature = true;
         GlobalService.get('person').then(function(response){

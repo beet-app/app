@@ -1,7 +1,7 @@
  <div bt-theme="feature.login" id="login" layout="column" layout-align="start center">
 
     <div bt-theme="feature.login.logo_box" fill layout="row" layout-align="center center">
-        <img bt-theme="feature.login.logo_box.image"  ng-click="stagingMode(3)"/>
+        <img bt-theme="feature.login.logo_box.image" ng-click="stagingMode(1)"/>
     </div>
 
     <div bt-theme="feature.login.info_box" fill layout="row" layout-align="center center" ng-if="!loginMode">
@@ -27,7 +27,6 @@
     <div fill layout="row" layout-align="center center" ng-show="signUpMode">
         <bt-attribute flex="80" data="confirmPasswordData" label="{{'login.login_data.attributes.password_confirm' | translate}}" ng-model="confirmPasswordData.value"></bt-attribute>
     </div>
-
     <div fill layout="row" layout-align="center center">
         <div bt-theme="feature.login.command_box" layout="row">
             <div flex="70" layout="column" layout-align="start start" >

@@ -1,25 +1,39 @@
-﻿BeetApp
-    .factory('GlobalService', function(Gateway) {
+﻿MyApp
+    .factory('GlobalService', function(Gateway, Common) {
         var service = {
             getAttributes : function(feature, uuid){
                 uuid = (!uuid) ? "" : "/" + uuid;
                 return Gateway.get("/attribute/" + feature + uuid);
             },
+	        getAttributeFile : function(feature){
+		        return Gateway.getLocal("/app/features/" + feature + "/" + feature + "Attribute.json");
+	        },
 	        getAllAttributes : function(feature){
 		        var uuid =  "/sadsasdds";
 		        return Gateway.get("/attribute/" + feature + uuid);
 	        },
-            save : function(feature, mode, obj){
-                return Gateway.post("/"+feature+"/"+mode, obj);
+            save : function(feature, obj){
+	            if (Common.isEmpty(obj.id)){
+		            return Gateway.post("/"+feature+"/", obj);
+	            }else{
+		            return Gateway.put("/"+feature+"/"+obj.id+"/", obj);
+	            }
+
             },
             getAll : function(feature){
                 return Gateway.get("/"+feature+"/all");
             },
-            get : function(feature){
-                return Gateway.get("/"+feature);
+            get : function(feature, obj){
+	            var queryString = "";
+	            if (!Common.isEmpty(obj)){
+		            angular.forEach(obj, function(value, key){
+			            queryString += (queryString=="") ? "?" + key + "=" + value : "&" + key + "=" + value;
+		            });
+	            }
+                return Gateway.get("/"+feature+"/" + queryString);
             },
 	        getOne : function(feature, uuid){
-		        return Gateway.get("/"+feature+"/"+uuid);
+		        return Gateway.get("/"+feature+"/"+uuid+"/");
 	        },
             getAllByUser : function(feature, uuid){
                 uuid = (!uuid) ? "" : "/" + uuid;
@@ -33,7 +47,10 @@
             },
             getAllByFilteredAttributes : function(feature, obj){
                 return Gateway.post("/"+feature+"/all-by-attributes", obj);
-            }
+            },
+	        delete : function(feature, uuid){
+		        return Gateway.delete("/"+feature+"/"+uuid+"/");
+	        }
         };
         return service;
     });

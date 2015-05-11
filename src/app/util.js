@@ -1,5 +1,5 @@
 ﻿"use strict";
-BeetApp
+MyApp
     .factory("Common", ["$rootScope", "$mdToast", "$location","$state","$http","Config",function ($rootScope, $mdToast, $location, $state,$http, Config) {
         function formatElementName(strName){
             strName = strName.replace("dialog-","");

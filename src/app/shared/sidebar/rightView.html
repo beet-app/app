@@ -1,45 +1,44 @@
     <div flex layout-align="start center" layout="column" class="fill-horizontal">
-        <div class="m-r-8 fill-horizontal" style="height:60px" layout="row" layout-align="end center" hide-gt-md >
+        <div class="fill-horizontal color-bg-4 h-64 md-whiteframe-z1 p-h-32" layout="row" layout-align="end center" >
             <ng-include src="'app/shared/header/headerToolbarView.html'"></ng-include>
 
         </div>
-        <div layout-align="center center" layout="column" class="fill-horizontal h-64 s-110 bold color-bg-4 color-1">
-            <span ng-if="_app.sidebar.right.notifications.selected">Notificações</span>
-            <span ng-if="_app.sidebar.right.user.selected">Minha Conta</span>
-            <span ng-if="_app.sidebar.right.feature.selected">Listagem de Atletas</span>
-        </div>
-
-        <div flex layout-align="start center" layout="column" ng-if="_app.sidebar.right.feature.selected" class="fill-horizontal">
-
-            <md-content>
-                <md-list>
-                    <md-item ng-repeat="item in _app.sidebar.right.feature.items">
-                        <md-item-content ui-sref="{{_app.sidebar.right.feature.name}}/edit({uuid: item.uuid})" class="pointer fill-horizontal" ui-sref-active="bg-grey-light" ui-sref="{{sidebar.right.feature}}/edit({uuid: item.uuid})" ng-claick="executeAction(item)">
-                            <div class="md-tile-left">
-                                <bt-avatar feature="person" scale="48px" photo="{{item.uuid}}" bt-class="face"></bt-avatar>
-                            </div>
-                            <div class="md-tile-content m-l-8">
-                                <h3>{{item.attributes.person_data.name}}</h3>
-                                <h4 ng-if="item.attributes.technical_data.position">{{'person.technical_data.attributes.position.options.'+item.attributes.technical_data.position | translate}}</h4>
-                                <h4 ng-if="!item.attributes.technical_data.position">Sem Posição</h4>
-
-                                <p>
-                                    {{item.notes}}
-                                </p>
-                            </div>
-                        </md-item-content>
-                    </md-item>
-                </md-list>
-            </md-content>
-
-        </div>
-
-        <div layout-align="start start" layout="column" flex class="fill-horizontal" ng-if="_app.sidebar.right.user.selected">
+        <div layout-align="start start" layout="column" flex class="fill-horizontal" ng-if="_app.sidebar.right.feature.selected">
+            <div class="m-t-16 border-bottom" layout="row" layout-align="start center" fill ng-if="_app.sidebar.right.feature.items.length>0">
+                    <bt-icon class="m-l-16" icon="action.search" color="#757575" size="32"></bt-icon>
+                    <input type="text" style="width:100%;margin:16px;border:0;font-size:18px;border-radius:2px" placeholder="{{'global.search.type_your_search' | translate}}" id="txtSearch" ng-keyup="_fn.search(this.value)" />
+            </div>
             <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
-                <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row" ng-click="logout()">
-                    <div layout-align="center center" layout="row" class="fill-horizontal">
-                        <bt-button type="button" label="Desconectar" class="fill-horizontal" icon="action.exit_to_app" icon-color="black"></bt-button>
+                <div layout-align="start start" layout="column" class="m-t-8 fill-horizontal">
+                    <div class="pointer fill-horizontal h-56 p-h-16 border-bottom" layout-align="start center" layout="row"  ng-repeat="item in _app.sidebar.right.feature.items" ng-click="_app.sidebar.right.feature.action(item)" ng-if="_app.sidebar.right.opened">
+                        <bt-icon icon="{{_app.feature.dict[_app.sidebar.right.feature.name].attributes.sidebar.icon}}" color="{{_app.feature.dict[_app.sidebar.right.feature.name].attributes.sidebar.icon_color}}" size="32"></bt-icon>
+                        <label class="s-100 m-l-16 filterable">{{$root._fn.limitString($root._fn.stripTags(item[_app.sidebar.right.feature.description]), '30')}}</label>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div layout-align="start end" layout="column" flex class="fill-horizontal" ng-if="_app.sidebar.right.user.selected">
+            <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
+                <div layout-align="start start" layout="column" class="m-t-8 fill-horizontal">
+                    <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row" ng-click="logout()">
+                            <bt-button type="button" label="Desconectar" class="fill-horizontal" icon="action.exit_to_app" icon-color="black"></bt-button>
+
+                    </div>
+                </div>
+            </div>
+            <div layout-align="center center" layout="row" class="fill-horizontal h-64">
+                <div class="pointer" flex layout-align="center center" layout="row">
+                    <img src="assets/images/flags/pt_br.png" style="width:32px" ng-click="_fn.changeLanguage('pt_br')" />
+                </div>
+                <div class="pointer w-32" flex layout-align="center center" layout="row">
+                    <img src="assets/images/flags/en.png" style="width:32px" ng-click="_fn.changeLanguage('en')" />
+                </div>
+                <div class="pointer w-32" flex layout-align="center center" layout="row">
+                    <img src="assets/images/flags/es.png" style="width:32px" ng-click="_fn.changeLanguage('es')" />
+                </div>
+                <div class="pointer w-32" flex layout-align="center center" layout="row">
+                    <img src="assets/images/flags/普通話.png" style="width:32px" ng-click="_fn.changeLanguage('ch')" />
                 </div>
             </div>
         </div>

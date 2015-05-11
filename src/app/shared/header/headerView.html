@@ -1,18 +1,32 @@
-<div bt-theme="header" class="fill-horizontal md-whiteframe-z1" layout="row" ng-controller="HeaderController">
-    <div layout-align="start center" layout="row" flex>
-        <div class="w-256" layout-align="start center" layout="row" >
-            <img src="" class="m-l-8" bt-theme="header.logo">
-        </div>
-        <div flex class="m-l-8" layout="column" layout-align="start center" bt-theme="header.title" show-gt-md hide-sm hide-md>
-            <div class="fill-horizontal" layout="row" layout-align="start center" >
-                <label class="s-150 m-l-8" ng-show="_app.feature.current">{{_app.feature.current.attributes.sidebar.title+'.description' | translate}}</label>
-                <label class="s-150 m-l-8 " ng-show="!_app.feature.current">Página Principal</label>
-            </div>
-        </div>
-        <div flex hide-gt-md show-sm show-md>
-
-        </div>
-        <ng-include src="'app/shared/header/headerToolbarView.html'"></ng-include>
-
+<div layout="row" class="fill-horizontal h-64 p-h-{{_app.defaults.padding}} color-bg-4 md-whiteframe-z1">
+    <div layout="row" class="w-48 m-r-{{_app.defaults.padding}}" ng-click="_app.sidebar.left.open()" hide-gt-md layout-align="start center">
+        <bt-button type="icon" label="Menu" icon="navigation.menu" tooltip="false" icon-color="white" size="48" icon-size="32" bt-class=""></bt-button>
     </div>
+    <div layout="row" layout-align="start center" flex>
+        <bt-breadcrumb ng-if="!loadingFeature"></bt-breadcrumb>
+    </div>
+
+    <ng-include ng-show="!_app.sidebar.right.opened" hide-sm show-gt-sm class="h-64 w-192" src="'app/shared/header/headerToolbarView.html'"></ng-include>
+
+
+    <div hide bt-theme="header" class="fill-horizontal md-whiteframe-z1" layout="row" ng-controller="HeaderController">
+        <div layout-align="start center" layout="row" flex>
+            <div class="w-256" layout-align="start center" layout="row" >
+                <img src="" class="m-l-8" bt-theme="header.logo">
+            </div>
+            <div flex class="m-l-8" layout="column" layout-align="start center" bt-theme="header.title" show-gt-md hide-sm hide-md>
+                <div class="fill-horizontal" layout="row" layout-align="start center" >
+                    <label class="s-150 m-l-8" ng-show="_app.feature.current">{{_app.feature.current.attributes.sidebar.title+'.description' | translate}}</label>
+                    <label class="s-150 m-l-8 " ng-show="!_app.feature.current">Página Principal</label>
+                </div>
+            </div>
+            <div flex hide-gt-md show-sm show-md>
+
+            </div>
+            <input type="button" id="removeFocusField" style="width:0;background-color: #F5F5F5;border:0;"/>
+
+
+        </div>
+    </div>
+
 </div>

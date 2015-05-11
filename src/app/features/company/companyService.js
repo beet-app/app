@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .factory('CompanyService', function($http, Config, Gateway) {
       var service = {
         choose : function(obj){

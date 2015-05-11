@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btAttribute", function ($compile) {
 
         var linker = function(scope, element, attrs) {
@@ -21,7 +21,7 @@
 
 
     });
-BeetApp
+MyApp
 .directive('iconFill', function () {
   return {
     restrict: 'A',
@@ -37,7 +37,7 @@ BeetApp
     }
   };
 });
-BeetApp
+MyApp
   .directive('iconColor', function () {
     return {
       restrict: 'A',

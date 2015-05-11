@@ -1,0 +1,318 @@
+﻿{
+    "container": {
+        "style":{
+            "background-color": "color.grey.2",
+            "color": ""
+        }
+
+    },
+    "header": {
+        "style": {
+            "background-color": "color.grey.1",
+            "color": "yellow",
+            "height":"60px"
+        },
+        "logo": {
+            "style":{
+                "width":"60%"
+            },
+            "src": "assets/images/loading.png"
+        },
+        "title": {
+            "style":{
+                "color": "color.black"
+            }
+        },
+        "toolbar": {
+            "notifications": {
+                "icon": "social.notifications",
+                "icon-color": "color.grey",
+                "size": "48",
+                "icon-size": "28"
+            },
+            "settings": {
+                "icon": "action.settings",
+                "icon-color": "black",
+                "size": "48",
+                "icon-size": "28"
+            },
+            "account": {
+                "icon": "action.account_circle",
+                "icon-color": "color.grey",
+                "size": "48",
+                "icon-size": "32"
+            }
+        }
+    },
+    "content": {
+        "style":{
+            "background-color": "color.grey.2",
+            "color": "",
+            "margin-top":"0",
+            "margin-bottom":"0"
+        }
+
+    },
+    "main": {
+        "style":{
+            "background-color": "",
+            "color": "",
+            "margin-left":"0px",
+            "margin-right":"0px",
+            "margin-bottom":"0px"
+        }
+
+    },
+    "sidebar": {
+        "left": {
+            "logo": {
+                "style":{
+                    "width":"60%"
+                },
+                "src": "assets/images/loading.png"
+            },
+            "style":{
+                "background-color": "color.white",
+                "color": "color.black",
+                "width":"218px",
+                "margin-left":"0"
+            }
+        },
+        "right": {
+            "style":{
+                "background-color": "color.white",
+                "color": "color.black",
+                "width":"192px",
+                "margin-right":"0"
+            }
+        }
+    },
+    "footer":{
+        "style":{
+            "background-color": "color.black"
+        }
+    },
+    "single_view":{
+        "style":{
+            "background-color": "color.grey.2"
+        }
+    },
+    "loading":{
+        "style":{
+            "background-color": "color.grey.2"
+        },
+        "box":{
+            "style":{
+                "width":"256px",
+                "height":"256px"
+            },
+            "image":{
+                "src": "assets/images/loading.png",
+                "style":{
+                    "width":"60%",
+                    "height":"60%"
+                }
+            },
+            "preloader":{
+                "src": "assets/images/preloader.gif",
+                "style":{
+                    "width":"30%",
+                    "height":"30%"
+                }
+            }
+        }
+
+    },
+    "feature":{
+        "login":{
+            "style":{
+                "background-color":"color.white",
+                "border-radius":"8%"
+            },
+            "class":"md-whiteframe-z1",
+            "flex-sm":"80",
+            "flex-md":"50",
+            "flex-lg":"40",
+            "flex-gt-lg":"30",
+            "logo_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "height":"64px"
+                },
+                "image":{
+                    "style":{
+                        "width":"50%"
+                    },
+                    "src":"assets/images/loading.png"
+                }
+
+            },
+            "social_box":{
+                "style":{
+                    "margin-top" : "8px",
+                    "margin-bottom" : "8px",
+                    "height":"64px"
+                },
+                "google":{
+                    "style":{
+                        "width":"64px",
+                        "margin-right":"16px",
+                        "cursor":"pointer"
+                    },
+                    "src":"assets/images/google_plus.png"
+                },
+                "facebook":{
+                    "style":{
+                        "width":"64px",
+                        "margin-left":"16px",
+                        "cursor":"pointer"
+                    },
+                    "src":"assets/images/facebook.png"
+                }
+
+            },
+            "info_box":{
+                "style":{
+                    "margin-top" : "8px",
+                    "margin-bottom" : "8px",
+                    "height":"64px"
+                },
+                "message":{
+                    "flex":"80"
+                }
+            },
+            "command_box":{
+                "flex":"80",
+                "style":{
+                    "margin-top" : "24px",
+                    "margin-bottom" : "24px"
+                },
+                "sign_up":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                },
+                "login_problems":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                }
+            }
+        },
+        "login_validate":{
+            "style":{
+                "background-color":"color.white",
+                "border-radius":"8%"
+            },
+            "class":"md-whiteframe-z1",
+            "flex-sm":"80",
+            "flex-md":"50",
+            "flex-lg":"40",
+            "flex-gt-lg":"30",
+            "logo_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "height":"64px"
+                },
+                "image":{
+                    "style":{
+                        "width":"50%"
+                    },
+                    "src":"assets/images/loading.png"
+                }
+
+            },
+            "info_box":{
+                "style":{
+                    "margin-top" : "16px",
+                    "margin-bottom" : "16px",
+                    "margin-left" : "16px",
+                    "margin-right" : "16px",
+                    "height":"64px"
+                },
+                "message":{
+
+                }
+            },
+            "command_box":{
+                "flex":"80",
+                "style":{
+                    "margin-top" : "24px",
+                    "margin-bottom" : "24px"
+                },
+                "sign_up":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                },
+                "login_problems":{
+                    "bt-style":{
+                        "color":"color.grey.7",
+                        "font-size":"0.8em",
+                        "text-transform":"uppercase"
+                    }
+                }
+            }
+        }
+
+    },
+    "button":{
+        "fab":{
+            "add":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"content.add",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "back":{
+                "bt-style":{
+                    "background-color":"color.grey"
+                },
+                "icon":"navigation.arrow_back",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "save":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"action.done",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "send":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"content.send",
+                "type":"fab",
+                "icon-color":"color.white"
+            },
+            "sign_in":{
+                "bt-style":{
+                    "background-color":"color.green"
+                },
+                "icon":"action.done",
+                "type":"fab",
+                "icon-color":"color.white"
+            }
+
+        }
+
+    }
+}
+
+
+
+
+

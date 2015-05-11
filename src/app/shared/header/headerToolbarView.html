@@ -1,23 +1,15 @@
-<div class="w-192 m-r-8 relative" layout="row" layout-align="end center" hide-sm show-gt-sm>
-    <div ng-if="_app.sidebar.right.feature.items.length>0"  ng-click="_app.sidebar.right.toogle('feature')" class="w-64" layout="row" layout-align="center center">
-        <bt-button type="icon" label="Menu" icon="action.grade" icon-color="gold" size="48" icon-size="28" bt-class=""></bt-button>
-        <div ng-show="_app.sidebar.right.feature.selected" class="menu-right-arrow" style="left:14px"></div>
+<div class="w-192 h-64 relative" layout="row" layout-align="end center">
+    <div class="w-48 m-r-16" ng-if="_app.sidebar.right.feature.items.length>0"  ng-click="_app.sidebar.right.toogle('feature')" layout="row" layout-align="center center">
+        <bt-button type="icon" label="" icon="{{_app.feature.dict[_app.sidebar.right.feature.name].attributes.sidebar.icon}}" icon-color="white" size="48" icon-size="28" bt-class="" tooltip="false"></bt-button>
+        <div ng-show="_app.sidebar.right.feature.selected && (_app.sidebar.right.opened && !$mdMedia('gt-md'))" class="menu-right-arrow" style="left:23px"></div>
     </div>
-    <div class="w-64" layout="row" layout-align="center center"  ng-click="_app.sidebar.right.toogle('notifications')">
-        <bt-button type="icon" label="Menu" bt-theme="header.toolbar.notifications"></bt-button>
-        <div ng-show="_app.sidebar.right.notifications.selected" class="menu-right-arrow"  style="left:78px"></div>
+    <div class="w-48 m-r-16" layout="row" layout-align="center center"  ng-click="_app.sidebar.right.toogle('notifications')">
+        <bt-button type="icon" label="Notificações" bt-theme="header.toolbar.notifications"></bt-button>
+        <div ng-show="_app.sidebar.right.notifications.selected && (_app.sidebar.right.opened && !$mdMedia('gt-md'))" class="menu-right-arrow"  style="left:86px"></div>
     </div>
-    <div class="w-64" layout="row" layout-align="center center" ng-click="_app.sidebar.right.toogle('user')">
-        <bt-button type="icon" label="account" bt-theme="header.toolbar.account" >
+    <div class="w-48" layout="row" layout-align="center center" ng-click="_app.sidebar.right.toogle('user')">
+        <bt-button type="icon" label="Conta" bt-theme="header.toolbar.account" >
         </bt-button>
-        <div ng-show="_app.sidebar.right.user.selected" class="menu-right-arrow" style="left:142px;"></div>
-    </div>
-</div>
-
-<div class="w-64 relative" layout="row" layout-align="end center" show-sm hide-gt-sm>
-    <div class="w-64" layout="row" layout-align="center center" ng-click="_app.sidebar.right.toogle('user')">
-        <bt-button type="icon" label="account" bt-theme="header.toolbar.account" >
-        </bt-button>
-        <div ng-show="_app.sidebar.right.user.selected" class="menu-right-arrow" style="left:142px;"></div>
+        <div ng-show="_app.sidebar.right.user.selected && (_app.sidebar.right.opened && !$mdMedia('gt-md'))" class="menu-right-arrow" style="left:150px;"></div>
     </div>
 </div>

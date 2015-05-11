@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService, $timeout) {
 
         $scope.companies = $rootScope.session.user.companies;

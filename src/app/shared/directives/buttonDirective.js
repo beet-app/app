@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btButton", function (Common, $compile) {
         return {
             restrict: 'E',
@@ -6,6 +6,7 @@
                 btClass:'@',
                 btStyle:'@',
                 label:'@',
+                tooltip:'@',
                 type:'@',
                 icon:'@',
                 iconColor:'@',
@@ -56,3 +57,6 @@
         };
 
     });
+function removeFocus(){
+	$("#removeFocusField").focus();
+}

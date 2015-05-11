@@ -1,18 +1,9 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
-    <div ng-if="mode=='list' && !loadingFeature" class="fill" layout="column" flex layout-align="start start" class="fill">
-        <div layout="row" layout-wrap class="scrollable" style="padding-bottom:8px;">
-            <div layout="column" ui-sref="person/edit({uuid: item.uuid})" ng-repeat="item in data" >
-
-                <bt-post-card ng-if="!listMode || listMode=='post_card'" item="item"></bt-post-card>
-                <bt-card ng-if="listMode=='card'" item="item"></bt-card>
-                <bt-simple-item ng-if="listMode=='simple_item'" item="item" class="fill-horizontal"></bt-simple-item>
-
-            </div>
-            <bt-button type="fab" label="Cadastrar atleta" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="edit()"></bt-button>
-
-        </div>
+    <div ng-if="mode=='list' && !loadingFeature" fill flex layout="column" layout-align="start start">
+        <bt-list type="listMode" data="listData" layout="column" fill></bt-list>
     </div>
+
     <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
 
         <div layout="row" layout-align="start center"  class="fill-horizontal h-64" style="background-color: #F5F5F5">
@@ -40,6 +31,6 @@
 
     </div>
 
-    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/app.html'">
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/feature.html'">
     </div>
 </div>

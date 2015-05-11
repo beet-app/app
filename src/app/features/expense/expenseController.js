@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .controller('ExpenseController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q, $mdDialog) {
         $scope.loadingFeature = true;
         var now = new Date();

@@ -1,0 +1,19 @@
+<div layout="column">
+    <div class="s-100 bold m-v-8">{{label}}</div>
+    <div layout="row" class="color-1 fill-horizontal text-left">
+        <div style="width:160px">
+            <md-input-container  class="color-1 fill-horizontal text-left">
+                <label>Data</label>
+                <input id="{{data.group+'_'+ data.description}}_date" type="date" ng-model="date" tab-next/>
+            </md-input-container>
+        </div>
+        <div style="width:112px">
+            <md-input-container  class="color-1 fill-horizontal text-left">
+                <label>Hora</label>
+                <input id="{{data.group+'_'+ data.description}}_time" type="time" ng-model="time" tab-next/>
+            </md-input-container>
+        </div>
+    </div>
+    <input type="hidden" ng-model="ngModel">
+</div>
+

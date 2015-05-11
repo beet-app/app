@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .directive("btGender", function (Common, $compile) {
 
 

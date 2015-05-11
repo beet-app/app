@@ -5,8 +5,10 @@
         "choose_language" : "Escolha a linguagem"  ,
         "suggest_language" : "Sugira uma linguagem" ,
         "notifications"   : "Notificações",
-        "all_notifications"   : "Ver todas as notificações"
-
+        "all_notifications"   : "Ver todas as notificações",
+        "search":{
+            "type_your_search":"Digite sua busca"
+        }
     },
     "languages" : {
         "en" : "Inglês",

@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btIcon", function (Common, $timeout) {
         return {
             restrict: 'E',

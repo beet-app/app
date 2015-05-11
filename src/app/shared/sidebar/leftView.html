@@ -1,23 +1,12 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal">
-    <div layout-align="start center" layout="row" hide-gt-md style="height:60px" class="w-256">
-        <img id="testez2" class="m-l-8" bt-theme="sidebar.left.logo">
-    </div>
 
-
-    <div layout-align="center center" layout="row" class="fill-horizontal h-64 s-110 color-bg-4 color-1" >
-        <div layout="row" class="w-48" ng-click="_app.sidebar.left.toogle()">
-            <bt-button type="icon" label="Menu" icon="navigation.chevron_left" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
-        </div>
-        <div  layout="row" layout-align="start center" flex hide-gt-md>
-            <label class="s-110 m-l-8 color-1 bold" ng-show="session.currentFeature">{{session.currentFeature.attributes.sidebar.title+'.description' | translate}}</label>
-            <label class="s-110 m-l-8 color-1 bold" ng-show="!session.currentFeature">Página Principal</label>
-        </div>
-        <div  layout="row" layout-align="start center" flex show-gt-md hide-md hide-sm>
-            <label class="s-110 m-l-8 color-1 bold">Menu Principal</label>
+    <div layout-align="center center" layout="row" class="fill-horizontal h-64 md-whiteframe-z1 s-110 color-bg-4 color-1" >
+        <div  layout="row" layout-align="start center" flex >
+            <img id="testez22" class="m-l-16" bt-theme="sidebar.left.logo">
         </div>
     </div>
-    <div layout-align="start start" layout="column" flex class="fill-horizontal scrollable ">
-        <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in menuLeft" ng-click="_app.feature.change(menuLeftItem)">
+    <div layout-align="start start" layout="column" flex class="m-t-8 fill-horizontal">
+        <div class="pointer fill-horizontal h-56" layout-align="center center" layout="row"  ng-repeat="menuLeftItem in session.features" ng-click="_app.feature.change(menuLeftItem)" ng-if="menuLeftItem.attributes.sidebar">
             <div layout-align="center center" layout="row" class="fill-horizontal">
                 <bt-button type="button" label="{{menuLeftItem.attributes.sidebar.title+'.description' | translate}}" class="fill-horizontal" icon="{{menuLeftItem.attributes.sidebar.icon}}" icon-color="{{menuLeftItem.attributes.sidebar.icon_color}}"></bt-button>
             </div>

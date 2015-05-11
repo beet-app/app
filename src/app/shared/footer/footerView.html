@@ -1,3 +1,7 @@
-<div bt-theme="footer" class="fill-horizontal" hide id="footer">
+<div bt-theme="footer" class="fill-horizontal h-64 p-h-{{_app.defaults.padding}}"  id="footer" layout="row" layout-align="center center" show-sm hide-gt-sm>
+    <div layout="row" flex>
+        <img id="testez22" class="" bt-theme="footer.logo">
+    </div>
+    <ng-include ng-show="!_app.sidebar.right.opened" class="h-64 w-192" src="'app/shared/header/headerToolbarView.html'"></ng-include>
 
 </div>

@@ -1,0 +1,12 @@
+<div layout="row" layout-align="start center"  class="fill-horizontal md-whiteframe-z1 h-64" style="background-color: {{$root._app.feature.current.attributes.sidebar.icon_color}}" ng-if="$root._app.feature">
+    <div layout="column" class="w-64" layout-align="center center">
+        <bt-icon icon="{{$root._app.feature.current.attributes.sidebar.icon}}" size="32" label="" color="white"></bt-icon>
+    </div>
+    <div flex class="s-100 bold color-white" ng-bind="$root._fn.limitString($root._fn.stripTags(description), '60')">
+    </div>
+    <div layout="column" layout-align="center end">
+        <div layout="row" class="m-r-16"   layout-align="center center" ng-click="cancel()">
+            <bt-button type="icon" label="Cancelar" icon="content.clear" icon-color="white" size="48" icon-size="28" bt-class=""></bt-button>
+        </div>
+    </div>
+</div>

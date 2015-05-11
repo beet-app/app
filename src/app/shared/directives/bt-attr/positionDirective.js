@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive("btPosition", function (Common, $compile) {
 
 

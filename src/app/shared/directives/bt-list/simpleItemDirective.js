@@ -1,5 +1,5 @@
-﻿BeetApp
-    .directive("btSimpleItem", function (Common, $compile) {
+﻿MyApp
+    .directive("btSimpleItem", function (Common, $compile, $rootScope) {
 
 
         return {
@@ -7,9 +7,6 @@
             restrict: 'E',
             link: function(scope, element) {
 
-            },
-            scope: {
-                item:'='
             },
             templateUrl: Common.getDirectiveTemplateUrl("bt-list/simpleItem")
         };

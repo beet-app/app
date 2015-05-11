@@ -1,5 +1,5 @@
 ﻿"use strict";
-BeetApp
+MyApp
     .factory("Gateway", function($http, Config, $q) {
         var service = {
             post : function(path, obj){

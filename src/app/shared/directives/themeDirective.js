@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .directive('btTheme', ["$compile","Common",function ($compile, Common) {
         return {
             restrict: 'A',
@@ -7,7 +7,7 @@
                 var theme = Common.getTheme(attr.btTheme);
 
                 var check_value = function(v){
-                    if (typeof (v)!="object"){
+                    if (typeof (v)!="object" && typeof (v)!="boolean"){
                         if (v.indexOf("color.")>-1){
                             return Common.getColor(v.replace("color.",""));
                         }
@@ -35,10 +35,11 @@
                 });
 
                 object.removeAttribute("bt-theme");
+	            object.removeAttribute("ng-click");
 
                 if (object.nodeName=="BT-BUTTON"){
-                    element.html(object.outerHTML);
-                    $compile(element.contents())(scope);
+
+                    $compile(element)(scope);
                 }
             }
         };

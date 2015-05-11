@@ -1,11 +1,55 @@
-﻿BeetApp
-    .directive("btList", function ($compile) {
+﻿MyApp
+    .directive("btList", function ($compile, Common, $rootScope, GlobalService, $state, $timeout) {
 
         var linker = function(scope, element, attrs) {
+			if (Common.isEmpty(scope.type)){
+				scope.type = "simple-item"
+			}
+	        if (Common.isEmpty(scope.data.selection)){
+		        scope.data.selection = {};
+	        }
 
-            element.html("<bt-"+scope.type+"></bt-"+scope.type+">").show() ;
+	        if (Common.isEmpty(scope.data.selection.condition)){
+		        scope.data.selection.condition = function(){
+			        return true;
+		        }
+	        }
+	        if (Common.isEmpty(scope.data.visible)){
+		        scope.data.visible = function(){
+			        return true;
+		        }
+	        }
+	        if (!Common.isEmpty(scope.data.icon)){
+		        if (typeof(scope.data.icon =="string")){
+			        scope.data.icon = $rootScope._app.feature.dict[scope.data.icon].attributes.sidebar;
+		        }
+	        }
+
+	        scope.feature = $rootScope._app.feature;
+
+
+
+			scope.edit = function(obj){
+				$state.transitionTo(scope.feature.current.description+'/edit', {uuid:obj.uuid});
+			};
+	        scope.delete = function(obj){
+		        GlobalService.delete(scope.feature.current.description, obj.id).then(function(){
+			        Common.showMessage("Item deletado.");
+			        obj.deleted = true;
+
+
+
+		        });
+	        };
+
+
+
+            element.html("<bt-"+scope.type+" class='fill' layout='column' flex></bt-"+scope.type+">").show() ;
 
             $compile(element.contents())(scope);
+
+
+
         };
 
         return {

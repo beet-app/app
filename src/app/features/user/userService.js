@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
     .factory('UserService', function($http, Config, Gateway) {
         var service = {
             checkLogin : function(obj){

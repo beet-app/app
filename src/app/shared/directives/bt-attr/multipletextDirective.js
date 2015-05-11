@@ -1,4 +1,4 @@
-﻿BeetApp
+﻿MyApp
   .directive("btMultipletext", function (Common, $compile) {
 
 

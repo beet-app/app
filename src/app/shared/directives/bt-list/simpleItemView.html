@@ -1,8 +1,49 @@
-<div layout="row" class="md-whiteframe-z1 color-bg-1 pointer m-8 " style="width:600px;">
-    <div layout="column" class="w-64">
-        <img src="/assets/images/uploads/person/{{item.uuid}}.png" style="width:64px" />
+<div class="scrollable p-{{$root._app.defaults.padding}}" layout="column" fill flex>
+    <div class="p-b-{{$root._app.defaults.padding}}" layout="column" fill ng-if="data.items.length>0">
+        <div class="md-whiteframe-z1 bg-white" layout="row" layout-align="start center" fill>
+            <bt-icon class="m-l-16" icon="action.search" color="#757575" size="32"></bt-icon>
+            <input type="text" style="width:100%;margin:16px;border:0;font-size:18px;border-radius:2px" placeholder="{{'global.search.type_your_search' | translate}}" id="txtSearch" ng-keyup="data.search()" />
+        </div>
     </div>
-    <div layout="column" layout-align="start center" flex class="s-110 bold">
-        {{item.attributes.person_data.name}}
+
+
+    <div layout="column" fill flex ng-if="data.items.length>0" id="simplelist">
+        <div class="md-whiteframe-z1" layout="column" fill>
+
+            <div layout="row" class="color-bg-1 pointer fill-horizontal h-auto h-m-64 border-bottom" ng-repeat="item in data.items" ng-show="!item.deleted && data.visible(item)">
+                <div layout="column" class="w-64" layout-align="center center">
+                    <bt-icon ng-if="!data.icon" icon="{{feature.current.attributes.sidebar.icon}}" size="32" label="" color="{{feature.current.attributes.sidebar.icon_color}}"></bt-icon>
+                    <bt-icon ng-if="data.icon" icon="{{data.icon.icon}}" size="32" label="" color="{{data.icon.icon_color}}"></bt-icon>
+                </div>
+
+                <div ng-if="data.selection.multiple" layout="row" layout-align="center center" class="w-64">
+                    <md-checkbox ng-if="data.selection.condition(item);" ng-model="item.selected" aria-label="Select" ng-click="data.selection.click(item)">
+                    </md-checkbox>
+                </div>
+                <div layout="row" layout-align="start center" flex class="s-110 filterable" ng-repeat="field in data.fields" ng-bind="$root._fn.limitString($root._fn.stripTags($root._fn.getObjectByString(item, field.description)), '80')">
+                </div>
+                <div class="w-64" layout="row" layout-align="center center" ng-repeat="command in data.commands" ng-click="command.click(item)">
+                    <bt-button type="icon" ng-if="command.feature" label="{{command.feature + '.description' | translate}}" icon="{{feature.dict[command.feature].attributes.sidebar.icon}}" icon-color="#BDBDBD" size="48" icon-size="32"></bt-button>
+                    <bt-button type="icon" ng-if="!command.feature" label="{{'global.buttons.' + command.label | translate}}" icon="{{command.icon}}" icon-color="{{command.iconColor}}" size="48" icon-size="32"></bt-button>
+                </div>
+                <div class="w-64" layout="row" layout-align="center center" ng-click="edit(item)"  ng-if="data.showEdit!=false">
+                    <bt-button type="icon" label="{{'global.buttons.edit' | translate}}" icon="content.create" icon-color="#64B5F6" size="48" icon-size="32"></bt-button>
+                </div>
+                <div class="w-64 m-r-8" layout="row" layout-align="center center" ng-click="delete(item)"  ng-if="data.showDelete!=false">
+                    <bt-button type="icon" label="{{'global.buttons.delete' | translate}}" icon="action.delete" icon-color="#E57373" size="48" icon-size="32"></bt-button>
+                </div>
+            </div>
+        </div>
     </div>
+    <div layout="column" layout-align="center center" fill flex ng-if="data.noResults || data.items.length==0">
+        <div fill layout="row" layout-align="center center">
+            <bt-icon icon="{{feature.current.attributes.sidebar.icon}}" color="#757575" size="192"></bt-icon>
+        </div>
+        <div class="s-120 m-t-16 bold" fill layout="row" layout-align="center center" style="color:#757575">
+            <span ng-if="data.noResults">Nenhum registro foi encontrado.</span>
+            <span class="m-b-16" ng-if="data.items.length==0">Ainda não existem dados cadastrados.</span>
+        </div>
+    </div>
+    <bt-button ng-show="data.add" bt-theme="button.fab.add" label="Add" bt-class="md-fab-bottom-right"  ng-click="data.add($event)"></bt-button>
+
 </div>

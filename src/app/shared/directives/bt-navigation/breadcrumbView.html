@@ -1,0 +1,7 @@
+<div layout="row" layout-align="start center">
+    <bt-icon icon="action.home" size="24" color="white" ui-sref="main" class="pointer"></bt-icon>
+    <div layout="row" layout-align="start center" ng-show="item.feature.description!='main'" ng-repeat="item in data">
+        <bt-icon icon="navigation.chevron_right" size="24" color="white" class="m-l-8" ></bt-icon>
+        <label class="s-110 color-1 bold m-l-8 pointer" translate="{{item.feature.description+'.description'}}" ng-click="changeFeature(item)"></label>
+    </div>
+</div>
