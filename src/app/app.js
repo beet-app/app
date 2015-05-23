@@ -165,6 +165,11 @@ MyApp
                             }
 
                         }
+                    },
+                    logout : function(){
+                        UserService.logout().then(function(){
+                            Common.goTo("login");
+                        });
                     }
                 };
                 $rootScope._fn = btFn;
@@ -212,10 +217,10 @@ MyApp
             loadFeatures: function (features) {
                 var defer = $q.defer();
 
-
-
+                //features.push({"uuid": "2d8e184d-5ae0-4044-ba3c-3a018358a811","description": "main","order": 1});
                 $rootScope.session.features = [];
                 $rootScope._app.feature.dict = {};
+
                 var currentPath;
                 angular.forEach(features, function(feature){
                     if (!Common.isEmpty(feature)){

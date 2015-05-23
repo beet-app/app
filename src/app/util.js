@@ -148,7 +148,7 @@ MyApp
             showMessage: function(text, type) {
                 $mdToast.show({
                     template: "<md-toast class='color-bg-4'>"+text+"</md-toast>",
-                    hideDelay: 1000,
+                    hideDelay: 2500,
                     position:"bottom right"
                 });
             },

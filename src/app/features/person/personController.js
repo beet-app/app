@@ -4,8 +4,11 @@
         var feature = "person";
         function loadFeature(){
             var d = $q.defer();
-
-            GlobalService.getAttributes('person', 333).then(function(attributeResponse){
+            var id=333;
+            if (!Common.isEmpty($stateParams.uuid)) {
+                id = $stateParams.uuid;
+            }
+            GlobalService.getAttributes('person', id).then(function(attributeResponse){
 
                 $scope.attributeData = attributeResponse.data;
 
@@ -38,16 +41,17 @@
             $scope.mode = "list";
         };
         $scope.add = function(){
-            $scope.edit({});
+            $scope.edit();
         };
         $scope.edit = function(obj){
             $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
                 $scope.edit(item);
             },"name");
             $scope.mode = "edit";
-            $scope.formData = {};
+            $scope.formData = $scope.attributeData;
             if (!Common.isEmpty(obj)){
-                $scope.formData = obj;
+                $scope.uuid = obj.uuid;
+
             }
         };
 
@@ -79,10 +83,17 @@
 
                     if (Common.isEmpty(response.error)) {
                         Common.showMessage("Atleta cadastrado com sucesso !", "success");
-                        Common.goTo("person");
+                        loadFeature().then(function(){
+                            $scope.loadingFeature = false;
+                            Common.goTo("person");
+                            $scope.list();
+                        });
+
 
                     } else {
                         alert("Ocorreu um erro ao cadastrar o atleta.");
+                        $scope.loadingFeature = false;
+                        Common.goTo("person");
                     }
                 });
 
@@ -91,13 +102,16 @@
 
         loadFeature().then(function(){
 
-            if (Common.isEmpty($stateParams.id)) {
+            if (Common.isEmpty($stateParams.uuid)) {
                 $rootScope.loadingFeature = false;
                 $scope.list();
             }else{
-                GlobalService.getOne(feature, $stateParams.id).then(function(response){
-                    $rootScope.loadingFeature = false;
-                    $scope.edit(response.data);
+
+                angular.forEach($scope.data, function(item) {
+                    if (item.uuid=$stateParams.uuid) {
+                        $scope.edit(item);
+                        $rootScope.loadingFeature = false;
+                    }
                 });
             }
 

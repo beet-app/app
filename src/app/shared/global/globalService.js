@@ -12,12 +12,9 @@
 		        var uuid =  "/sadsasdds";
 		        return Gateway.get("/attribute/" + feature + uuid);
 	        },
-            save : function(feature, obj){
-	            if (Common.isEmpty(obj.id)){
-		            return Gateway.post("/"+feature+"/", obj);
-	            }else{
-		            return Gateway.put("/"+feature+"/"+obj.id+"/", obj);
-	            }
+            save : function(feature, mode, obj){
+		            return Gateway.post("/"+feature+"/"+mode, obj);
+
 
             },
             getAll : function(feature){

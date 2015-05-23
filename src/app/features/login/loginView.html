@@ -9,7 +9,7 @@
         <span bt-theme="feature.login.info_box.message" ng-if="signUpMode" translate="login.sign_up_message"></span>
     </div>
 
-     <div bt-theme="feature.login.social_box" fill layout="row" layout-align="center center" ng-if="!rememberPasswordMode">
+     <div bt-theme="feature.login.social_box" hide fill layout="row" layout-align="center center" ng-if="!rememberPasswordMode">
          <div flex layout="row" layout-align="end center" >
              <img bt-theme="feature.login.social_box.google" ng-click="stagingMode(4)"/>
          </div>
@@ -31,16 +31,28 @@
         <div bt-theme="feature.login.command_box" layout="row">
             <div flex="70" layout="column" layout-align="start start" >
                 <div flex layout="column" layout-align="start start">
-                    <bt-button bt-theme="feature.login.command_box.sign_up" label="{{'login.sign_up' | translate}}" ng-click="showSignUp()" ng-if="!signUpMode && !rememberPasswordMode"></bt-button>
-                    <bt-button bt-theme="feature.login.command_box.login_problems" label="{{'login.login_problems' | translate}}" ng-click="showRememberPassword()" ng-if="!signUpMode && !rememberPasswordMode"></bt-button>
-                    <bt-button bt-theme="button.fab.back" label="{{'button.back' | translate}}"  ng-click="showLogin()" ng-if="signUpMode || rememberPasswordMode"></bt-button>
+                    <div ng-click="showSignUp()" ng-if="!signUpMode && !rememberPasswordMode">
+                        <bt-button bt-theme="feature.login.command_box.sign_up" label="{{'login.sign_up' | translate}}"></bt-button>
+                    </div>
+                    <div ng-click="showRememberPassword()" ng-if="!signUpMode && !rememberPasswordMode">
+                        <bt-button bt-theme="feature.login.command_box.login_problems" label="{{'login.login_problems' | translate}}"></bt-button>
+                    </div>
+                    <div ng-click="showLogin()" ng-if="signUpMode || rememberPasswordMode">
+                        <bt-button bt-theme="button.fab.back" label="{{'button.back' | translate}}" ></bt-button>
+                    </div>
                 </div>
             </div>
             <div flex="30" layout="row" layout-align="end center">
                 <md-progress-circular md-mode="indeterminate" ng-if="checkingLogin"></md-progress-circular>
-                <bt-button bt-theme="button.fab.sign_in" label="{{'button.sign_in' | translate}}" ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" ng-click="checkLogin()"></bt-button>
-                <bt-button bt-theme="button.fab.send" label="{{'button.send' | translate}}" ng-if="rememberPasswordMode"  ng-click="sendPasswordLink()" ></bt-button>
-                <bt-button bt-theme="button.fab.add" label="{{'button.add' | translate}}" ng-if="signUpMode && !checkingLogin" ng-click="signUp()"></bt-button>
+                <div ng-if="!signUpMode && !rememberPasswordMode && !checkingLogin" ng-click="checkLogin()">
+                    <bt-button bt-theme="button.fab.sign_in" label="{{'button.sign_in' | translate}}" ></bt-button>
+                </div>
+                <div ng-if="rememberPasswordMode"  ng-click="sendPasswordLink()">
+                    <bt-button bt-theme="button.fab.send" label="{{'button.send' | translate}}"  ></bt-button>
+                </div>
+                <div ng-if="signUpMode && !checkingLogin" ng-click="signUp()">
+                    <bt-button bt-theme="button.fab.add" label="{{'button.add' | translate}}"></bt-button>
+                </div>
             </div>
         </div>
     </div>

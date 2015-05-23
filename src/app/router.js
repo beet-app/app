@@ -57,7 +57,12 @@ MyApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locati
         .state("index", {
             url: "/login",
             templateUrl: "app/features/login/loginView.html",
-            controller: "LoginController"
+            controller: "LoginController",
+            resolve:{
+                viewMode:  function(){
+                    return "login";
+                }
+            }
         })
         .state("user/validate", {
             url: "/user/validate/:uuid",

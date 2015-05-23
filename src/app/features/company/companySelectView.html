@@ -1,27 +1,22 @@
-<div id="company-select" class="fill" style="display:none;" layout="column" layout-align="center center">
-<div class="md-whiteframe-z2 color-bg-1 col-xs-10 col-sm-6 col-md-4 col-lg-3 text-center p-15" layout="column" layout-align="center center">
-  <div class="row">
-    <div class="col-xs-12 col-xs-offset-0 text-center m-t-15">
-      <span class="s-150">Escolha a Empresa</span>
-    </div>
-
+<div bt-theme="feature.login" id="company-select" layout="column" layout-align="center center">
+  <div fill class="h-96 m-b-16" layout="row" layout-align="center center" ng-if="!loadingAccount">
+    <span class="s-120 bold" >Escolha a Empresa</span>
   </div>
-  <hr>
-  <div class="row m-v-15 fill" ng-repeat="company in companies" layout="row" layout-align="start center" ng-click="chooseCompany(company.uuid)">
-    <div class="col-xs-2 col-lg-3 text-left">
-      <bt-avatar company="{{company.uuid}}" feature="company" class="img-responsive pointer"></bt-avatar>
-      <!--<img src="{{company.url}}" class="img-responsive"></img>-->
+
+  <div ng-if="!loadingAccount" class="h-64 m-b-16" fill ng-repeat="company in companies" layout="row" layout-align="start center" ng-click="chooseCompany(company.uuid)">
+    <div class="w-64 m-h-16">
+      <bt-icon ng-if="company.attributes.corporate_data" icon="social.location_city" size="64" label="" color="#FF9800"></bt-icon>
+      <bt-icon ng-if="company.attributes.individual_data" icon="social.person" size="64" label="" color="#2196F3"></bt-icon>
     </div>
-    <div class="col-xs-10 col-lg-9 text-left" >
-      <span class="s-130 pointer" ng-if="company.attributes.corporate_data">{{company.attributes.corporate_data.name}}</span>
-      <span class="s-130 pointer" ng-if="company.attributes.individual_data">{{company.attributes.individual_data.name}}</span>
+    <div flex>
+      <span class="s-120 pointer" ng-if="company.attributes.individual_data">{{company.attributes.individual_data.name}}</span>
+      <span class="s-120 pointer" ng-if="company.attributes.corporate_data">{{company.attributes.corporate_data.name}}</span>
     </div>
   </div>
 
-  <div class="row fill-horizontal m-v-15">
-    <div class="col-xs-8 text-left">
-    </div>
+  <div class="h-256" fill layout="row" layout-align="center center" ng-if="loadingAccount">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
 </div>
-<bt-button type="fab" label="Voltar" icon="glyphicon glyphicon-arrow-left" bt-class="c-white color-bg-4 md-fab-bottom-left"  ui-sref="login"></bt-button>
-</div>
+
+<bt-button bt-theme="button.fab.back" bt-class="md-fab-bottom-left" label="{{'button.back' | translate}}" ng-if="!loadingAccount" ui-sref="login"></bt-button>

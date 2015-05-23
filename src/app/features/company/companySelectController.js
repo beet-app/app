@@ -1,27 +1,30 @@
 ﻿MyApp
-    .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService, $timeout) {
+    .controller('CompanySelectController', function($scope, $rootScope,$sce, $http, $location, $translate, Common, CompanyService, $timeout, btApp) {
 
         $scope.companies = $rootScope.session.user.companies;
+
         function chooseCompany(company_uuid){
-            CompanyService.choose({company:company_uuid}).then(function(response){
-                $rootScope.session.user.company = company_uuid;
-                $rootScope.session.features = [];
-                angular.forEach(response.data, function(feature){
-                    if (!Common.isEmpty(feature)){
-                        $rootScope.session.features.push(feature);
-                    }
+                $scope.loadingAccount = true;
+                CompanyService.choose({company:company_uuid}).then(function(response) {
+
+                    btApp.loadFeatures(response.data).then(function () {
+                        $rootScope.session.user.company = company_uuid;
+
+                        //$("#company-select").fadeOut();
+                        //$("#container").hide();
+
+                        $timeout(function(){
+                            Common.goTo("main");
+
+                        });
+
+                    });
                 });
-                $("#company-select").fadeOut();
-
-                $rootScope.singleViewMode = false;
-                Common.goTo("main");
-                $rootScope.fullViewMode = true;
-
-            });
         }
         if (Common.isEmpty($scope.companies)){
             $scope.companies = [];
         }
+
         if ($scope.companies.length===0){
             Common.goTo("company/create");
         }else if($scope.companies.length===1){
@@ -33,6 +36,6 @@
         }
 
         $scope.chooseCompany = function(company_uuid){
-            //chooseCompany(company_uuid);
+            chooseCompany(company_uuid);
         }
     });
