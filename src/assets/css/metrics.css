@@ -19,6 +19,9 @@
 .h-32 {
   height:32px;
 }
+.h-36 {
+    height:36px;
+}
 .h-48 {
   height:48px;
 }
@@ -310,6 +313,7 @@
   margin-top:32px;
   margin-bottom:32px;
 }
+
 .s-70 {
   font-size: 0.7em;
 }
@@ -369,6 +373,9 @@
 .w-32 {
   width:32px;
   min-width:32px;
+}
+.w-36 {
+  width: 36px;
 }
 .w-48 {
   width:48px;
