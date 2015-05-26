@@ -12,6 +12,7 @@
             <div layout-align="start start" layout="column" class="m-t-8 fill-horizontal">
                 <div class="pointer fill-horizontal h-56 p-h-16 border-bottom" layout-align="start center" layout="row"  ng-repeat="item in _app.sidebar.right.feature.items" ng-click="_app.sidebar.right.feature.action(item)" ng-if="_app.sidebar.right.opened">
                     <bt-icon icon="{{_app.feature.dict[_app.sidebar.right.feature.name].attributes.sidebar.icon}}" color="{{_app.feature.dict[_app.sidebar.right.feature.name].attributes.sidebar.icon_color}}" size="32"></bt-icon>
+                    <label class="s-100 m-l-16 filterable">{{$root._fn.limitString($root._fn.stripTags(item.attributes.person_data[_app.sidebar.right.feature.description]), '30')}}</label>
                 </div>
             </div>
         </div>
