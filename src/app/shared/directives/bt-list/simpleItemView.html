@@ -20,7 +20,7 @@
                     <md-checkbox ng-if="data.selection.condition(item);" ng-model="item.selected" aria-label="Select" ng-click="data.selection.click(item)">
                     </md-checkbox>
                 </div>
-                <div layout="row" layout-align="start center" flex class="s-110 filterable" ng-repeat="field in data.fields" ng-bind="$root._fn.limitString($root._fn.stripTags($root._fn.getObjectByString(item, field.description)), '80')">
+                <div layout="row" layout-align="start center" flex class="s-110 filterable" ng-click="edit(item)" ng-repeat="field in data.fields" ng-bind="$root._fn.limitString($root._fn.stripTags($root._fn.getObjectByString(item, field.description)), '80')">
                 </div>
                 <div class="w-64" layout="row" layout-align="center center" ng-repeat="command in data.commands" ng-click="command.click(item)">
                     <bt-button type="icon" ng-if="command.feature" label="{{command.feature + '.description' | translate}}" icon="{{feature.dict[command.feature].attributes.sidebar.icon}}" icon-color="#BDBDBD" size="48" icon-size="32"></bt-button>
