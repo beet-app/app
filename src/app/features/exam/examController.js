@@ -30,7 +30,14 @@
         $scope.finalDate = finalDate;
 
         $scope.list = function(){
-            $scope.edit();
+            $scope.loadingFeature = true;
+            GlobalService.get('exam').then(function(response){
+                $scope.loadingFeature = false;
+                $scope.mode = "list";
+                if (!response.error){
+                    $scope.list = response.data;
+                }
+            });
         };
 
         $scope.edit = function(uuid){
@@ -81,44 +88,6 @@
             }
         };
 
-        $scope.editExam = function(exam, $event){
-            $scope.exam = exam;
-            if (Common.isEmpty(exam.uuid)){
-                $scope.exam = {
-                    "attributes":{
-                        "exam_data":{}
-                    },
-                    "detail":[
-                        {
-                            "attributes":{
-                                "exam_detail_data":{}
-                            }
-                        }
-                    ]
-                };
-            }
-            $scope.showDialog($event);
-        };
-
-        $scope.showDialog = function($event){
-            $mdDialog.show({
-                targetEvent: $event,
-                locals: {
-                    exam: $scope.exam,
-                    formData:$scope.formData
-                },
-                controller: DialogController,
-                templateUrl:"app/features/exam/examEditView.html"
-            }).then(function(blnSave) {
-
-                if (blnSave){
-                    save($scope.exam);
-                }
-
-            });
-        };
-
-
         function save(obj){
             $scope.loadingFeature = true;
             var blnSave = true;
@@ -159,30 +128,6 @@
                     $scope.list();
                 }
             });
-        }
-
-        function DialogController($scope, $mdDialog, exam, formData, $timeout) {
-            $scope.formData = formData;
-            $scope.exam = exam;
-            $scope.save = function() {
-                $timeout(function(){
-                    $scope.$apply();
-                });
-                $mdDialog.hide(true);
-            };
-            $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-            $scope.add = function() {
-                $scope.exam.detail.push({
-                    "attributes":{
-                        "exam_detail_data":{}
-                    }
-                });
-            };
-            $scope.remove = function(index) {
-                $scope.exam.detail.splice(index, 1);
-            };
         }
 
         $scope.visibleDate = function(date){

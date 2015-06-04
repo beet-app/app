@@ -1,40 +1,51 @@
 <div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
 
-    <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="fill">
+    <div ng-if="mode=='list'" layout="column" flex layout-align="start start" class="fill" layout-wrap>
+        <div ng-repeat="item in listContract" layout="row">
 
-        <div layout="column" layout-align="center center" class="fill-horizontal" ng-if="expenses.length>0" style="padding-left:0px;padding-right:0px">
-            <div layout="row" layout-align="start center" class="color-bg-1 fill-horizontal md-whiteframe-z1 scrollable" layout-wrap>
-                <div layout="row" layout-align="start center" flex class="fill-horizontal h-64 bold">
-                    <div flex="20" class="m-l-16 ">Data</div>
-                    <div flex="50">Descrição</div>
-                    <div flex="10">Valor</div>
-                    <div flex="20"></div>
+            <div ng-repeat="(key, value) in item.attributes" layout="row" ui-sref="contract/edit({group : key, uuid : item.uuid})" class="md-whiteframe-z1 color-bg-1 pointer m-t-8 m-l-8 pointer" layout="column" style="width:360px;height:144px;" flex>
+                <div layout="column" layout-align="center center" style="height:144px;width:144px">
+                    <bt-avatar feature="contract" scale="100px" bt-class="face m-v-8 m-h-8"></bt-avatar>
                 </div>
-                <div layout="row" layout-align="start center"  class="fill-horizontal m-h-8  h-48" ng-show="visibleDate(item.attributes.expense_data.date)" ng-repeat="item in expenses">
-                    <div flex="20"class="m-l-16 ">{{item.attributes.expense_data.date | date:"dd/MM/yyyy"}}</div>
-                    <div flex="50">{{item.attributes.expense_data.description}}</div>
-                    <div flex="10">{{getExpenseValue(item) | currency : "R$" : 2}}</div>
-                    <div flex="10" layout="row" layout-align="center center">
-                        <bt-button type="icon" label="Remove" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
-                    </div>
-                    <div class="m-r-16" flex="10" layout="row" layout-align="start center" ng-click="editExpense(item, $event)">
-                        <bt-button type="icon" label="Editar" icon="content.create" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
-                    </div>
+                <div layout="column" layout-align="start start" flex class="m-8">
+                    <h4>{{"contract."+ key + ".description" | translate}}</h4>
+                    <h4>{{value.identification | translate}}</h4>
+                </div>
+            </div>
+
+        </div>
+        <bt-button type="fab" label="Cadastrar avaliação coletiva" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="edit()"></bt-button>
+    </div>
+
+    <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
+
+        <div layout="column" flex class="fill-horizontall">
+            <div layout="row" layout-wrap>
+                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.exam_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="exam.attributes.exam_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+            </div>
+        </div>
+
+        <div layout="row" layout-align="start center" flex class="fill-horizontal s-120 h-64 bold m-l-12">
+            Atletas
+        </div>
+
+        <div layout="column" flex class="fill-horizontal scrollable">
+            <div layout="row" class="" layout-wrap>
+                <bt-attribute class="m-8 m-l-12" layout="row" ng-repeat="attribute in formData.detail.exam_detail_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="detail.attributes.exam_detail_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+                <div class="w-56" layout="row" layout-align="start center" ng-click="remove($index)">
+                    <bt-button type="icon" label="Remover" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
+                </div>
+                <div class="w-56" layout="row" layout-align="start center" ng-if="$index==exam.detail.length-1" ng-click="add()">
+                    <bt-button type="icon" label="Adicionar" icon="content.add" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
                 </div>
             </div>
         </div>
 
-        <div layout="row" layout-align="center center" class="fill-horizontal" ng-if="expenses.length==0">
-            <div layout="column" layout-align="center center" flex class="m-h-16 h-128 s-100 bold color-bg-1 md-whiteframe-z1">
-                Ainda não existem despesas cadastradas para este mês
-            </div>
-        </div>
-
-
-        <bt-button type="fab" label="Cadastrar avaliação coletiva" icon="content.add" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right" ng-click="editExam({}, $event)"></bt-button>
+        <bt-button type="fab" label="Salvar avaliação coletiva" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
 
     </div>
 
     <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/content.html'">
     </div>
+
 </div>
