@@ -1,8 +1,8 @@
 ﻿MyApp
-    .controller('ExamController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
+    .controller('CandidateController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
 
         $rootScope.loadingFeature = true;
-        var feature = "person";
+        var feature = "candidate";
 
         function loadFeature(){
             var d = $q.defer();

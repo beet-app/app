@@ -4,31 +4,15 @@
         <bt-list type="listMode" data="listData" layout="column" fill></bt-list>
     </div>
 
-    <div ng-if="mode=='edit'" layout="column" flex layout-align="start start" class="fill">
+    <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="scrollable fill p-{{_app.defaults.padding}}">
 
-        <div layout="column" flex class="fill-horizontall">
-            <div layout="row" layout-wrap>
-                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.exam_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="exam.attributes.exam_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
+        <div layout="column" flex class="fill-horizontal">
+            <div layout="row" layout-align="start center"  class="md-whiteframe-z1 fill-horizontal h-64 m-b-{{_app.defaults.padding}}" style="background-color: #F5F5F5">
+                <bt-attribute class="m-8" layout="row" ng-repeat="attribute in formData.exam_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
             </div>
         </div>
 
-        <div layout="row" layout-align="start center" flex class="fill-horizontal s-120 h-64 bold m-l-12">
-            Atletas
-        </div>
-
-        <div layout="column" flex class="fill-horizontal scrollable">
-            <div layout="row" class="" layout-wrap>
-                <bt-attribute class="m-8 m-l-12" layout="row" ng-repeat="attribute in formData.detail.exam_detail_data" label="{{'exam.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="detail.attributes.exam_detail_data[attribute.description]" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
-                <div class="w-56" layout="row" layout-align="start center" ng-click="remove($index)">
-                    <bt-button type="icon" label="Remover" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-                <div class="w-56" layout="row" layout-align="start center" ng-if="$index==exam.detail.length-1" ng-click="add()">
-                    <bt-button type="icon" label="Adicionar" icon="content.add" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-            </div>
-        </div>
-
-        <bt-button type="fab" label="Salvar avaliaÃ§Ã£o coletiva" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
+        <bt-button type="fab" label="Salvar avaliação coletiva" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
 
     </div>
 

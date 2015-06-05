@@ -2,7 +2,7 @@
     .controller('ExamController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
 
         $rootScope.loadingFeature = true;
-        var feature = "person";
+        var feature = "exam";
 
         function loadFeature(){
             var d = $q.defer();
@@ -61,7 +61,7 @@
 
                     if (Common.isEmpty(response.error)) {
                         Common.showMessage("Avaliação cadastrada com sucesso!", "success");
-                        Common.goTo("exam/candidate", {uuid: response.data.uuid});
+                        Common.goTo("candidate/exam", {uuid: response.data.uuid});
 
                     } else {
                         alert("Ocorreu um erro ao cadastrar a avaliação.");
