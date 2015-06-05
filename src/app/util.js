@@ -59,8 +59,11 @@ MyApp
                 }
 
             },
-            goTo : function (url){
-                $state.transitionTo(url);
+            goTo : function (url, data){
+                if (!data){
+                    data = {};
+                }
+                $state.transitionTo(url, data, {reload: true});
             },
             isEmpty : function (value){
                 if (value===null){

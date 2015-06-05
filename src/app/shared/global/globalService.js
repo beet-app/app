@@ -14,8 +14,6 @@
 	        },
             save : function(feature, mode, obj){
 		            return Gateway.post("/"+feature+"/"+mode, obj);
-
-
             },
             getAll : function(feature){
                 return Gateway.get("/"+feature+"/all");

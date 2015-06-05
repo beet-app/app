@@ -143,6 +143,16 @@ MyApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locati
             templateUrl: "app/features/exam/examView.html",
             controller: "ExamController"
         })
+        .state("candidate", {
+            url: "/exam",
+            templateUrl: "app/features/exam/examView.html",
+            controller: "ExamController"
+        })
+        .state("candidate/exam", {
+            url: "candidate/exam/:uuid",
+            templateUrl: "app/features/candidate/candidateView.html",
+            controller: "CandidateController"
+        })
     ;
 });
 
