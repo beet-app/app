@@ -22,6 +22,20 @@
                                 description:"attributes.exam_data.initial_date"
                             }
                         ],
+                        commands:[
+                            {
+                                label:"candidate",
+                                icon:"social.person_add",
+                                iconColor:"#000000",
+                                click:function(obj){
+                                    $rootScope._app.feature.change($rootScope._app.feature.dict["candidate"], true);
+
+                                     Common.goTo("candidate/exam", {uuid:obj.uuid});
+
+                                }
+                            }
+
+                        ],
                         items:$scope.data,
                         add: function($event){
                             $scope.add($event);

@@ -137,14 +137,14 @@
          STAGING MODE
          */
         $scope.stagingMode = function(x){
-            if (x==1){
+            if (x==3){
                 $scope.emailData.value = "gustavo.ferreira08@gmail.com";
                 $scope.passwordData.value = "123";
             }else if(x==2){
                 $scope.emailData.value = "thiagokroger@gmail.com";
                 $scope.passwordData.value = "123";
-            }else if(x==3){
-                $scope.emailData.value = "gustavo@beet.cc";
+            }else if(x==1){
+                $scope.emailData.value = "gustavo@beet.com.br";
                 $scope.passwordData.value = "123";
             }else if(x==4){
                 $scope.emailData.value = "thiago@beet.cc";
