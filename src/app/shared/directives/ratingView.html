@@ -1,0 +1,7 @@
+<div layout="row" fill>
+	<div class="p-h-8 pointer" ng-repeat="level in levels track by $index" ng-click="rate($index + 1)" ng-mouseover="showHover($index)" ng-mouseleave="clearHover()">
+		<bt-icon ng-show="$index>=data.score && !hover[$index]" icon="toogle.star_border" color="gold" size="32"></bt-icon>
+        <bt-icon ng-show="$index<data.score || hover[$index]" icon="toogle.star" color="gold" size="32"></bt-icon>
+	</div>
+
+</div>

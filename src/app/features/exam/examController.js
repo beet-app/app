@@ -24,6 +24,17 @@
                         ],
                         commands:[
                             {
+                                label:"rating",
+                                icon:"action.swap_vert",
+                                iconColor:"#000000",
+                                click:function(obj){
+                                    $rootScope._app.feature.change($rootScope._app.feature.dict["rating"], true);
+
+                                     Common.goTo("exam/rating/view", {uuid:obj.uuid});
+
+                                }
+                            },
+                            {
                                 label:"candidate",
                                 icon:"social.person_add",
                                 iconColor:"#000000",

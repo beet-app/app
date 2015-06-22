@@ -1,0 +1,46 @@
+<div layout-align="start start" layout="column" flex class="fill-horizontal md-whiteframe-z1">
+
+    <div ng-if="mode=='list' && !loadingFeature" fill flex layout="column" layout-align="start start">
+        <bt-list type="listMode" data="listData" layout="column" fill></bt-list>
+    </div>
+
+    <div ng-if="mode=='view' && !loadingFeature" fill flex layout="column" layout-align="start start">
+
+        <div class="scrollable p-{{_app.defaults.padding}}" layout="column" fill flex>
+            <div layout="column" fill flex ng-if="ratingData.length>0" id="simplelist">
+                <div class="md-whiteframe-z1" layout="column" fill>
+
+                    <div layout="row" class="color-bg-1 pointer fill-horizontal h-auto h-m-64 border-bottom" ng-repeat="item in ratingData | orderBy:'attributes.candidate_data.name'" >
+                        <div layout="column" class="w-64" layout-align="center center">
+                            <bt-icon icon="social.person" size="32"  color="#000000"></bt-icon>
+                        </div>
+
+                        <div layout="row" layout-align="start center" flex class="s-110 filterable">
+                            {{_fn.limitString(_fn.stripTags(item.attributes.candidate_data.name), '80')}} ({{'candidate.candidate_data.attributes.position.options.'+item.attributes.candidate_data.position | translate}})
+                        </div>
+
+                        <div class=" m-r-8" layout="row" layout-align="center center">
+                            <rating data="item" action="rating.action"></rating>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" layout-align="center center" fill flex ng-if="ratingData.length==0">
+                <div fill layout="row" layout-align="center center">
+                    <bt-icon icon="{{feature.current.attributes.sidebar.icon}}" color="#757575" size="192"></bt-icon>
+                </div>
+                <div class="s-120 m-t-16 bold" fill layout="row" layout-align="center center" style="color:#757575">
+                    <span ng-if="data.noResults">Nenhum registro foi encontrado.</span>
+                    <span class="m-b-16" ng-if="data.items.length==0">Ainda não existem dados cadastrados.</span>
+                </div>
+            </div>
+            <bt-button ng-show="data.add" bt-theme="button.fab.add" label="Add" bt-class="md-fab-bottom-right"  ng-click="data.add($event)"></bt-button>
+
+        </div>
+
+    </div>
+
+    <div ng-if="loadingFeature" layout="column" flex layout-align="center center" class="fill"  ng-include src="'app/shared/loading/content.html'">
+    </div>
+
+</div>
