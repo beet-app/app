@@ -1,12 +1,7 @@
 ﻿MyApp
-    .directive("rating", function (Common, $compile, $rootScope, $state) {
+    .directive("btRating", function (Common, $compile) {
         return {
             restrict: 'E',
-            scope: {
-                data:"=",
-                action:"=",
-                size:"@"
-            },
             link: function(scope, element) {
                 if (Common.isEmpty(scope.data.score)){
                     scope.data.score = 0;
@@ -25,11 +20,10 @@
                     scope.hover = new Array(scope.size);
                 };
                 scope.rate = function(level){
-                    scope.data.score = level;
-                    scope.action(scope.data);
+                    scope.ngModel = level;
                 };
             },
-            templateUrl: Common.getDirectiveTemplateUrl("rating")
+            templateUrl: Common.getDirectiveTemplateUrl("bt-attr/rating")
         };
 
     });

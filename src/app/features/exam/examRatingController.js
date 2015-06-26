@@ -6,46 +6,49 @@
 
         function loadFeature(){
             var d = $q.defer();
-                GlobalService.get(feature, $stateParams).then(function(response){
+            GlobalService.getAttributes("exam_detail", 333).then(function(attributeResponse) {
+                $scope.attributeData = attributeResponse.data;
+                GlobalService.get(feature, $stateParams).then(function (response) {
                     $scope.data = response.data;
                     $scope.listData = {
-                        fields:[
+                        fields: [
                             {
-                                description:"attributes.exam_data.initial_date"
+                                description: "attributes.exam_data.initial_date"
                             }
                         ],
-                        commands:[
+                        commands: [
                             {
-                                label:"rating",
-                                icon:"action.swap_vert",
-                                iconColor:"#000000",
-                                click:function(obj){
+                                label: "rating",
+                                icon: "action.swap_vert",
+                                iconColor: "#000000",
+                                click: function (obj) {
                                     $scope.view(obj.uuid);
                                 }
                             }
 
                         ],
-                        items:$scope.data
+                        items: $scope.data
                     };
                     d.resolve(true);
                 });
-
+            });
             return d.promise;
         }
 
         $scope.rating = {
-            action:function(trip){
+            action:function(candidate){
                 var obj = {
-                    _id:trip._id,
-                    score:trip.score
+                    candidate_uuid:candidate.uuid,
+                    exam_uuid:$stateParams.uuid,
+                    score:candidate.score
                 };
 
-                TripService.update(obj).then(function(response){
+                CandidateService.rate(obj).then(function(response){
 
                     if (!Common.isError(response)){
 
                     }else{
-
+                        candidate.score = null;
                     }
 
                 });
@@ -56,6 +59,11 @@
         $scope.list = function(){
             $rootScope._app.sidebar.right.unLoad();
             $scope.mode = "list";
+        };
+
+        $scope.save = function(){
+
+            //console.log($scope.ratingData);
         };
 
         $scope.view = function(uuid){

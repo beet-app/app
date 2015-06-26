@@ -65,6 +65,14 @@ MyApp
                 }
                 $state.transitionTo(url, data, {reload: true});
             },
+            isError : function (obj){
+                if (!this.isEmpty(obj)){
+                    if (!this.isEmpty(obj.error)) {
+                            return true;
+                    }
+                }
+                return false;
+            },
             isEmpty : function (value){
                 if (value===null){
                     return true;

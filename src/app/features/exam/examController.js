@@ -12,8 +12,6 @@
             }
             GlobalService.getAttributes(feature, id).then(function(attributeResponse){
 
-                $scope.attributeData = attributeResponse.data;
-
                 GlobalService.get(feature, $stateParams).then(function(response){
                     $scope.data = response.data;
                     $scope.listData = {
