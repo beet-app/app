@@ -3,11 +3,11 @@
         return {
             restrict: 'E',
             link: function(scope, element) {
-                if (Common.isEmpty(scope.data.score)){
-                    scope.data.score = 0;
-                }
                 if (Common.isEmpty(scope.size)){
                     scope.size = 5;
+                }
+                if (Common.isEmpty(scope.ngModel)){
+                    scope.ngModel = 0;
                 }
                 scope.levels = new Array(scope.size);
                 scope.hover = new Array(scope.size);

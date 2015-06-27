@@ -63,13 +63,13 @@
 
         $scope.save = function(){
 
-            //console.log($scope.ratingData);
+            console.log($scope.ratingData);
         };
 
         $scope.view = function(uuid){
             $scope.mode = "view";
             $rootScope.loadingFeature = true;
-            CandidateService.getByExam(uuid).then(function(response){
+            GlobalService.getAllByFeature("exam_detail","exam",uuid).then(function(response){
                 $scope.ratingData = response.data;
 
                 $rootScope.loadingFeature = false;

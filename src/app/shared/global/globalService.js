@@ -18,6 +18,9 @@
             getAll : function(feature){
                 return Gateway.get("/"+feature+"/all");
             },
+            getAllByFeature : function(feature, feature_name, feature_uuid){
+                return Gateway.get("/find/"+feature+"/"+feature_name+"/"+feature_uuid);
+            },
             get : function(feature, obj){
 	            var queryString = "";
 	            if (!Common.isEmpty(obj)){
