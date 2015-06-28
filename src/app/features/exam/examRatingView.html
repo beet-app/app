@@ -16,11 +16,11 @@
                         </div>
 
                         <div layout="row" layout-align="start center" flex class="s-110 filterable">
-                            {{_fn.limitString(_fn.stripTags(item.attributes.candidate_data.name), '80')}} ({{'candidate.candidate_data.attributes.position.options.'+item.attributes.candidate_data.position | translate}})
+                            {{_fn.limitString(_fn.stripTags(item.candidate.attributes.candidate_data.name), '80')}} ({{'candidate.candidate_data.attributes.position.options.'+item.candidate.attributes.candidate_data.position | translate}})
                         </div>
 
                         <div class=" m-r-8" layout="row" layout-align="center center">
-                            <bt-attribute class="" layout="row" ng-repeat="attribute in attributeData.exam_detail_data"  data="attribute" ng-model="item.score" flex></bt-attribute>
+                            <bt-attribute class="" layout="row" data="attributeData.exam_detail_data[0]" ng-model="item.attributes.exam_detail_data.rating" flex></bt-attribute>
                         </div>
                     </div>
                 </div>

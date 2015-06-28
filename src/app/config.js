@@ -24,10 +24,10 @@ MyApp
       getApiUrl : function () {
         //return "http://beetapi.herokuapp.com/api";
         //return "http://192.168.16.58:1313/api";
-        //return "http://api.beet.com.br/api";
+        return "http://api.beet.com.br/api";
           //return "http://192.168.25.32:1313/api";
           //return "http://192.168.16.127:1313/api";
-          return "http://localhost:1313/api";
+          //return "http://localhost:1313/api";
       },
       getUploadUrl : function () {
         return "https://s3-us-west-2.amazonaws.com/upload.beet.com.br";

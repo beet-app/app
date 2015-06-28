@@ -62,8 +62,37 @@
         };
 
         $scope.save = function(){
+            $scope.loadingFeature = true;
+            arrData = $scope.ratingData;
+            arrSave = [];
+            for (var x=0 ; x<arrData.length ; x++){
+                var objSave = {
+                   uuid: arrData[x].uuid,
+                   attribute:[
+                        {
+                            uuid:"f073bc09-b072-48d4-a072-b0f358f8307e",
+                            value:arrData[x].attributes.exam_detail_data.rating
+                        }
+                    ]
+                };
+                arrSave.push(objSave);
+            }
 
-            console.log($scope.ratingData);
+            GlobalService.save("exam_detail", "save", arrSave).then(function (response) {
+
+                if (Common.isEmpty(response.error)) {
+                    Common.showMessage("Atleta(s) avaliado(s) com sucesso !", "success");
+                    Common.goTo("exam");
+
+
+                } else {
+                    alert("Ocorreu um erro ao processar os dados.");
+
+                    Common.goTo("exam");
+                }
+            });
+
+
         };
 
         $scope.view = function(uuid){
