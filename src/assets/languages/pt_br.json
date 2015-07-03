@@ -1,6 +1,5 @@
 ﻿{
     "global": {
-
         "choose_company"  : "Escolha a companhia:" ,
         "choose_language" : "Escolha a linguagem"  ,
         "suggest_language" : "Sugira uma linguagem" ,
@@ -8,6 +7,12 @@
         "all_notifications"   : "Ver todas as notificações",
         "search":{
             "type_your_search":"Digite sua busca"
+        },
+        "buttons" : {
+            "rating" : "Avaliar",
+            "candidate" : "Candidatos",
+            "edit" : "Alterar",
+            "delete" : "Excluir"
         }
     },
     "languages" : {
