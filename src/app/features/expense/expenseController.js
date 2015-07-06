@@ -59,7 +59,9 @@
             $scope.loadingFeature = true;
             GlobalService.getAllAttributes('expense_person').then(function(attributeResponse){
                 GlobalService.getOne('expense_person', person.uuid).then(function(expenseResponse){
-                    $rootScope._app.sidebar.right.load("expense", $scope.data);
+                    $rootScope._app.sidebar.right.load("expense", $scope.data, function(item){
+                        Common.goTo("expense-person/edit", {uuid:item.uuid});
+                    },"name");
 
 
 

@@ -44,8 +44,10 @@
             $scope.edit();
         };
         $scope.edit = function(obj){
+            console.log($scope.data);
             $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
-                $scope.edit(item);
+                console.log(item);
+                Common.goTo("person/edit", {uuid:item.uuid});
             },"name");
             $scope.mode = "edit";
             $scope.formData = $scope.attributeData;

@@ -161,7 +161,7 @@ MyApp
                             $rootScope._app.sidebar.right.unLoad();
                             $rootScope._app.feature.current = feature;
                             if (!blnNoRedirect){
-                                btFn.goTo(feature.description);
+                                btFn.goTo(feature.description.replace("_","-"));
                             }
 
                         }

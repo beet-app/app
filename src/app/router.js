@@ -98,8 +98,8 @@ MyApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locati
             controller: "PersonController"
         })
 
-        .state("expense", {
-            url: "/expense",
+        .state("expense-person", {
+            url: "/expense-person",
             templateUrl: "app/features/expense/expenseView.html",
             controller: "ExpenseController"
         })
