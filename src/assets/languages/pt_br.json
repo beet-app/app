@@ -274,6 +274,7 @@
             "attributes" : {
                 "name" : "Nome",
                 "birth_date": "Data de nascimento",
+                "indication" : "Indicação",
                 "position": {
                     "description": "Posição",
                     "instruction": "Selecione",
