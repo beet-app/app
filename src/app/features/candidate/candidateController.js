@@ -23,6 +23,16 @@
                             }
                         ],
                         items:$scope.data,
+                        editFeature: {
+                            path : "candidate/exam",
+                            main_param : "candidate_uuid",
+                            params:[
+                                {
+                                    param:"uuid",
+                                    value:$stateParams.uuid
+                                }
+                            ]
+                        },
                         add: function($event){
                             $scope.add($event);
                         }
