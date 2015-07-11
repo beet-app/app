@@ -7,10 +7,10 @@
         function loadFeature(){
             var d = $q.defer();
             var id = 333;
-            if (!Common.isEmpty($stateParams.uuid)) {
-                id = $stateParams.uuid;
+            if (!Common.isEmpty($stateParams.candidate_uuid)) {
+                id = $stateParams.candidate_uuid;
             }
-            GlobalService.getAttributes(feature, 333).then(function(attributeResponse){
+            GlobalService.getAttributes(feature, id).then(function(attributeResponse){
 
                 $scope.attributeData = attributeResponse.data;
 
@@ -25,7 +25,7 @@
                         items:$scope.data,
                         editFeature: {
                             path : "candidate/exam",
-                            main_param : "candidate_uuid",
+                            mainParam : "candidate_uuid",
                             params:[
                                 {
                                     param:"uuid",
@@ -88,8 +88,8 @@
         };
         $scope.edit = function(obj){
             /*$rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
-                $scope.edit(item);
-            },"name");*/
+             $scope.edit(item);
+             },"name");*/
             $scope.mode = "edit";
             $scope.formData = $scope.attributeData;
             if (!Common.isEmpty(obj)){
@@ -99,10 +99,18 @@
 
         loadFeature().then(function(){
 
+            if (Common.isEmpty($stateParams.candidate_uuid)) {
                 $rootScope.loadingFeature = false;
                 $scope.list();
+            }else{
+                angular.forEach($scope.data, function(item) {
+                    if (item.uuid === $stateParams.candidate_uuid) {
+                        $scope.edit(item);
+                        $rootScope.loadingFeature = false;
+                    }
+                });
+            }
 
-            
         });
     });
 
