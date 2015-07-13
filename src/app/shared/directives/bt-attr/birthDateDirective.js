@@ -3,8 +3,12 @@
 
 		function formatDate(date, format){
 			if (format=="dd/mm/yyyy"){
-				arr = date.split("-");
-				return arr[2] + "/" + arr[1] + "/" + arr[0];
+				if (date.split("/").length!=3){
+					arr = date.split("-");
+					return arr[2] + "/" + arr[1] + "/" + arr[0];
+				}else{
+					return date;
+				}
 			}else{
 				arr = date.split("/");
 				return arr[2] + "-" + arr[1] + "-" + arr[0];
@@ -44,6 +48,9 @@
 
 							var value = $("#" + scope.data.group + '_' + scope.data.description).val();
 							if (!Common.isEmpty(value)){
+								console.log(value);
+								console.log(formatDate(value, "dd/mm/yyyy"));
+
 								$("#" + scope.data.group + '_' + scope.data.description).val(formatDate(value, "dd/mm/yyyy"));
 							}
 

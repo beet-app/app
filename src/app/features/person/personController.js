@@ -46,7 +46,6 @@
         $scope.edit = function(obj){
             console.log($scope.data);
             $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
-                console.log(item);
                 Common.goTo("person/edit", {uuid:item.uuid});
             },"name");
             $scope.mode = "edit";
@@ -110,7 +109,7 @@
             }else{
 
                 angular.forEach($scope.data, function(item) {
-                    if (item.uuid=$stateParams.uuid) {
+                    if (item.uuid==$stateParams.uuid) {
                         $scope.edit(item);
                         $rootScope.loadingFeature = false;
                     }

@@ -3,7 +3,7 @@
         <ng-include src="'app/shared/header/headerToolbarView.html'"></ng-include>
 
     </div>
-    <div layout-align="start start" layout="column" flex class="fill-horizontal" ng-if="_app.sidebar.right.feature.selected">
+    <div layout-align="start start" layout="row" flex class="fill-horizontal scrollable" ng-if="_app.sidebar.right.feature.selected" layout-wrap>
         <div class="m-t-16 border-bottom" layout="row" layout-align="start center" fill ng-if="_app.sidebar.right.feature.items.length>0">
             <bt-icon class="m-l-16" icon="action.search" color="#757575" size="32"></bt-icon>
             <input type="text" style="width:100%;margin:16px;border:0;font-size:18px;border-radius:2px" placeholder="{{'global.search.type_your_search' | translate}}" id="txtSearch" ng-keyup="_fn.search(this.value)" />

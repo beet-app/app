@@ -1,4 +1,4 @@
-<div class="scrollable p-{{$root._app.defaults.padding}}" layout="column" fill flex>
+<div class="scrollable p-{{$root._app.defaults.padding}}" layout="row" fill flex layout-wrap>
     <div class="p-b-{{$root._app.defaults.padding}}" layout="column" fill ng-if="data.items.length>0">
         <div class="md-whiteframe-z1 bg-white" layout="row" layout-align="start center" fill>
             <bt-icon class="m-l-16" icon="action.search" color="#757575" size="32"></bt-icon>
@@ -7,7 +7,7 @@
     </div>
 
 
-    <div layout="column" fill flex ng-if="data.items.length>0" id="simplelist">
+    <div layout="column" fill ng-if="data.items.length>0" id="simplelist">
         <div class="md-whiteframe-z1" layout="column" fill>
 
             <div layout="row" class="color-bg-1 pointer fill-horizontal h-auto h-m-64 border-bottom" ng-repeat="item in data.items | orderBy:'attributes.person_data.name'" ng-show="!item.deleted && data.visible(item)">
