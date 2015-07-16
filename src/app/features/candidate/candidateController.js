@@ -80,7 +80,7 @@
         };
 
         $scope.list = function(){
-            $rootScope._app.sidebar.right.unLoad();
+            //$rootScope._app.sidebar.right.unLoad();
             $scope.mode = "list";
         };
         $scope.add = function(){
@@ -113,4 +113,3 @@
 
         });
     });
-
