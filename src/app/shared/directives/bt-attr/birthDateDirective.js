@@ -13,7 +13,6 @@
 				arr = date.split("/");
 				return arr[2] + "-" + arr[1] + "-" + arr[0];
 			}
-
 		}
 		return {
 			//replace: true,
@@ -44,13 +43,8 @@
 						 });
 						 */
 						$timeout(function () {
-
-
 							var value = $("#" + scope.data.group + '_' + scope.data.description).val();
 							if (!Common.isEmpty(value)){
-								console.log(value);
-								console.log(formatDate(value, "dd/mm/yyyy"));
-
 								$("#" + scope.data.group + '_' + scope.data.description).val(formatDate(value, "dd/mm/yyyy"));
 							}
 
@@ -64,11 +58,9 @@
 								$(this).val(v);
 							});
 						});
-
 					}
 				}
 			},
 			templateUrl: Common.getDirectiveTemplateUrl("bt-attr/text")
 		};
-
 	});
