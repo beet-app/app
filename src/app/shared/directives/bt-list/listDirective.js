@@ -1,7 +1,7 @@
 ﻿MyApp
-    .directive("btList", function ($compile, Common, $rootScope, GlobalService, $state, $timeout) {
+    .directive("btList", function ($compile, Common, $rootScope, GlobalService, $state, $mdDialog) {
 
-        var linker = function(scope, element, attrs) {
+        var linker = function(scope, element) {
             if (Common.isEmpty(scope.type)){
                 scope.type = "simple-item"
             }
@@ -47,9 +47,25 @@
             };
 
             scope.delete = function(obj){
-                GlobalService.delete(scope.feature.current.description, obj.id).then(function(){
-                    Common.showMessage("Item deletado.");
+                GlobalService.delete(scope.feature.current.description, obj.uuid).then(function(){
+                    Common.showMessage("Item removido com sucesso.");
                     obj.deleted = true;
+                });
+            };
+
+            scope.delete = function(ev, obj){
+                var confirm = $mdDialog.confirm()
+                    .parent(angular.element(document.body))
+                    .title('Deseja realmente remover este item?')
+                    //.content(obj.description)
+                    .ok('Sim')
+                    .cancel('Não')
+                    .targetEvent(ev);
+                $mdDialog.show(confirm).then(function() {
+                    GlobalService.delete(scope.feature.current.description, obj.uuid).then(function(){
+                        Common.showMessage("Item removido com sucesso.");
+                        obj.deleted = true;
+                    });
                 });
             };
 

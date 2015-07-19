@@ -37,6 +37,18 @@ MyApp
                         d.resolve({error:data});
                     });
                 return d.promise;
+            },
+            delete : function(path){
+                var d = $q.defer();
+
+                $http.delete(Config.getApiUrl() + path)
+                    .success(function(data) {
+                        d.resolve(data);
+                    })
+                    .error(function(data) {
+                        d.resolve({error:data});
+                    });
+                return d.promise;
             }
         };
         return service;

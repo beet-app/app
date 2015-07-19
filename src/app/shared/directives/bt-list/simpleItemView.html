@@ -29,7 +29,7 @@
                 <div class="w-64" layout="row" layout-align="center center" ng-click="edit(item)"  ng-if="data.showEdit!=false">
                     <bt-button type="icon" label="{{'global.buttons.edit' | translate}}" icon="content.create" icon-color="#64B5F6" size="48" icon-size="32"></bt-button>
                 </div>
-                <div class="w-64 m-r-8" layout="row" layout-align="center center" ng-click="delete(item)"  ng-if="data.showDelete!=false">
+                <div class="w-64 m-r-8" layout="row" layout-align="center center" ng-click="delete($event, item)" ng-if="data.showDelete!=false">
                     <bt-button type="icon" label="{{'global.buttons.delete' | translate}}" icon="action.delete" icon-color="#E57373" size="48" icon-size="32"></bt-button>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                 return Gateway.post("/"+feature+"/all-by-attributes", obj);
             },
 	        delete : function(feature, uuid){
-		        return Gateway.delete("/"+feature+"/"+uuid+"/");
+		        return Gateway.delete("/"+feature+"/"+uuid);
 	        }
         };
         return service;
