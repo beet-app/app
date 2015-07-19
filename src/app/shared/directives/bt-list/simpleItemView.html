@@ -10,7 +10,7 @@
     <div layout="column" fill ng-if="data.items.length>0" id="simplelist">
         <div class="md-whiteframe-z1" layout="column" fill>
 
-            <div layout="row" class="color-bg-1 pointer fill-horizontal h-auto h-m-64 border-bottom" ng-repeat="item in data.items | orderBy:'attributes.person_data.name'" ng-show="!item.deleted && data.visible(item)">
+            <div layout="row" class="color-bg-1 pointer fill-horizontal h-auto h-m-64 border-bottom" ng-repeat="item in data.items | orderBy:data.fieldSort" ng-show="!item.deleted && data.visible(item)">
                 <div layout="column" class="w-64" layout-align="center center">
                     <bt-icon ng-if="!data.icon" icon="{{feature.current.attributes.sidebar.icon}}" size="32" label="" color="{{feature.current.attributes.sidebar.icon_color}}"></bt-icon>
                     <bt-icon ng-if="data.icon" icon="{{data.icon.icon}}" size="32" label="" color="{{data.icon.icon_color}}"></bt-icon>

@@ -20,6 +20,7 @@
                                 description:"attributes.person_data.name"
                             }
                         ],
+                        fieldSort : "attributes.person_data.name",
                         items:$scope.data,
                         add: function($event){
                             $scope.add($event);

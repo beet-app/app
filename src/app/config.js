@@ -22,8 +22,8 @@ MyApp
     .factory("Config", ["$rootScope",function () {
         var factory = {
             getApiUrl : function () {
-                //return "http://api.beet.com.br/api";
-                return "http://localhost:1313/api";
+                return "http://api.beet.com.br/api";
+                //return "http://localhost:1313/api";
             },
             getUploadUrl : function () {
                 return "https://s3-us-west-2.amazonaws.com/upload.beet.com.br";
