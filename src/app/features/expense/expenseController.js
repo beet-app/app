@@ -27,7 +27,7 @@
         $scope.finalDate = finalDate;
 
         $scope.list = function(){
-            $rootScope._app.sidebar.right.unLoad();
+            //$rootScope._app.sidebar.right.unLoad();
             GlobalService.get('person').then(function(response){
 
                 if (!response.error){
@@ -59,9 +59,9 @@
             $scope.loadingFeature = true;
             GlobalService.getAllAttributes('expense_person').then(function(attributeResponse){
                 GlobalService.getOne('expense_person', person.uuid).then(function(expenseResponse){
-                    $rootScope._app.sidebar.right.load("expense", $scope.data, function(item){
+                    /*$rootScope._app.sidebar.right.load("expense", $scope.data, function(item){
                         Common.goTo("expense-person/edit", {uuid:item.uuid});
-                    },"name");
+                    },"name");*/
 
 
 
