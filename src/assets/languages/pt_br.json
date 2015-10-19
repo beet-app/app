@@ -290,5 +290,77 @@
                 }
             }
         }
+    },
+  "home": {
+    "description":"Home",
+    "movie_data" : {
+      "description":"Dados do Vídeo",
+      "attributes" : {
+        "name" : "Nome",
+        "birth_date": "Data de nascimento",
+        "indication" : "Indicação",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
+        }
+      }
     }
+  },
+  "movie": {
+    "description":"Vídeos",
+    "movie_data" : {
+      "description":"Dados do Vídeo",
+      "attributes" : {
+        "name" : "Nome",
+        "birth_date": "Data de nascimento",
+        "indication" : "Indicação",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
+        }
+      }
+    }
+  },
+  "category": {
+    "description":"Categorias",
+    "category_data" : {
+      "description":"Dados do Categoria",
+      "attributes" : {
+        "name" : "Nome",
+        "birth_date": "Data de nascimento",
+        "indication" : "Indicação",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
+        }
+      }
+    }
+  }
 }

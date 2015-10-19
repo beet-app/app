@@ -98,6 +98,38 @@ MyApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locati
             controller: "PersonController"
         })
 
+
+
+        .state("movie", {
+            url: "/movie",
+            templateUrl: "app/features/movie/movieView.html",
+            controller: "MovieController"
+        })
+        .state("movie/edit", {
+            url: "/movie/:uuid",
+            templateUrl: "app/features/movie/movieView.html",
+            controller: "MovieController"
+        })
+
+        .state("category", {
+            url: "/category",
+            templateUrl: "app/features/category/categoryView.html",
+            controller: "CategoryController"
+        })
+        .state("category/edit", {
+            url: "/category/:uuid",
+            templateUrl: "app/features/category/categoryView.html",
+            controller: "CategoryController"
+        })
+
+        .state("home", {
+            url: "/main",
+            templateUrl: "app/features/main/mainView.html",
+            controller: "MainController"
+        })
+
+
+
         .state("expense-person", {
             url: "/expense-person",
             templateUrl: "app/features/expense/expenseView.html",
