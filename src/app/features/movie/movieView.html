@@ -6,28 +6,16 @@
 
     <div ng-if="mode=='edit' && !loadingFeature" layout="column" flex layout-align="start start" class="scrollable fill p-{{_app.defaults.padding}}">
 
-        <div layout="row" layout-align="start center"  class="md-whiteframe-z1 fill-horizontal h-64 m-b-{{_app.defaults.padding}}" style="background-color: #F5F5F5">
-            <div class="">
-                <bt-avatar feature="person" photo="{{selected}}" scale="48px" bt-class="face m-8" />
-            </div>
-            <div layout="column" layout-align="center end" flex>
-                <div layout="row" class="m-r-16"   layout-align="center center">
-                    <bt-button type="icon" label="Procurar" icon="content.clear" icon-color="black" size="48" icon-size="28" bt-class=""></bt-button>
-                </div>
-            </div>
-        </div>
-
         <md-tabs md-selected="selectedIndex" flex md-stretch-tabs="always" class="md-whiteframe-z1 color-bg-1" fill>
-            <md-tab ng-repeat="(key, group) in formData" label="{{'person.'+key+'.description' | translate}}">
+            <md-tab ng-repeat="(key, group) in formData" label="{{'movie.'+key+'.description' | translate}}">
                 <div layout="column" flex class="fill-horizontal">
-                    <div layout="row" layout-wrap>
-                        <bt-attribute class="m-8" layout="row" ng-repeat="attribute in group" label="{{'person.'+attribute.group+'.attributes.'+attribute.description | translate}}" data="attribute" ng-model="attribute.value" flex-sm="100" flex-gt-sm="{{attribute.size}}"></bt-attribute>
-                    </div>
+                    <bt-attribute class="m-8" layout="column" ng-repeat="attribute in group" label="{{'movie.'+attribute.group+'.attributes.'+attribute.description | translate}}"
+                                  data="attribute" ng-model="attribute.value" flex-sm="100"></bt-attribute>
                 </div>
             </md-tab>
         </md-tabs>
 
-        <bt-button type="fab" label="Salvar dados do atleta" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
+        <bt-button type="fab" label="Salvar vídeo" icon="action.done" icon-color="white" bt-class="color-bg-4 c-white md-fab-bottom-right"  ng-click="save()"></bt-button>
 
     </div>
 

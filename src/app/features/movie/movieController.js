@@ -1,14 +1,14 @@
 MyApp
     .controller('MovieController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
         $rootScope.loadingFeature = true;
-        var feature = "person";
+        var feature = "movie";
         function loadFeature(){
             var d = $q.defer();
             var id=333;
             if (!Common.isEmpty($stateParams.uuid)) {
                 id = $stateParams.uuid;
             }
-            GlobalService.getAttributes('person', id).then(function(attributeResponse){
+            GlobalService.getAttributes(feature, id).then(function(attributeResponse){
 
                 $scope.attributeData = attributeResponse.data;
 
@@ -17,37 +17,34 @@ MyApp
                     $scope.listData = {
                         fields:[
                             {
-                                description:"attributes.person_data.name"
+                                description:"attributes.movie_data.name"
                             }
                         ],
-                        fieldSort : "attributes.person_data.name",
+                        fieldSort : "attributes.movie_data.name",
                         items:$scope.data,
                         add: function($event){
                             $scope.add($event);
                         }
                     };
 
-
                     d.resolve(true);
-
                 });
-
             });
 
             return d.promise;
         }
 
         $scope.list = function(){
-            $rootScope._app.sidebar.right.unLoad();
+            //$rootScope._app.sidebar.right.unLoad();
             $scope.mode = "list";
         };
         $scope.add = function(){
             $scope.edit();
         };
         $scope.edit = function(obj){
-            $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
-                Common.goTo("person/edit", {uuid:item.uuid});
-            },"name");
+            /*$rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
+                Common.goTo("movie/edit", {uuid:item.uuid});
+            },"name");*/
             $scope.mode = "edit";
             $scope.formData = $scope.attributeData;
             if (!Common.isEmpty(obj)){
@@ -59,7 +56,7 @@ MyApp
         $scope.save = function(){
             $scope.loadingFeature = true;
             var blnSave = true;
-            angular.forEach($scope.data.person_data, function(attribute){
+            angular.forEach($scope.data.movie_data, function(attribute){
                 if (blnSave){
                     if (attribute.required===1 && Common.isEmpty(attribute.value)){
                         $scope.loadingFeature = false;
@@ -80,21 +77,21 @@ MyApp
                 objSave.attribute = Common.getAttributeObj($scope.formData);
                 objSave.company = Common.isEmpty($rootScope.session.user.company) ? $rootScope.session.user.companies[0].uuid : $rootScope.session.user.company;
 
-                GlobalService.save("person", mode, objSave).then(function (response) {
+                GlobalService.save(feature, mode, objSave).then(function (response) {
 
                     if (Common.isEmpty(response.error)) {
-                        Common.showMessage("Atleta cadastrado com sucesso !", "success");
+                        Common.showMessage("Vídeo cadastrado com sucesso!", "success");
                         loadFeature().then(function(){
                             $scope.loadingFeature = false;
-                            Common.goTo("person");
+                            Common.goTo("movie");
                             $scope.list();
                         });
 
 
                     } else {
-                        alert("Ocorreu um erro ao cadastrar o atleta.");
+                        alert("Ocorreu um erro ao cadastrar o vídeo.");
                         $scope.loadingFeature = false;
-                        Common.goTo("person");
+                        Common.goTo("movie");
                     }
                 });
 

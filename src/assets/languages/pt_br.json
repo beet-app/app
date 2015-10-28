@@ -1,296 +1,296 @@
 ﻿{
-    "global": {
-        "choose_company"  : "Escolha a companhia:" ,
-        "choose_language" : "Escolha a linguagem"  ,
-        "suggest_language" : "Sugira uma linguagem" ,
-        "notifications"   : "Notificações",
-        "all_notifications"   : "Ver todas as notificações",
-        "search":{
-            "type_your_search":"Digite sua busca"
-        },
-        "buttons" : {
-            "rating" : "Avaliar",
-            "candidate" : "Candidatos",
-            "edit" : "Alterar",
-            "delete" : "Excluir"
-        }
+  "global": {
+    "choose_company"  : "Escolha a companhia:" ,
+    "choose_language" : "Escolha a linguagem"  ,
+    "suggest_language" : "Sugira uma linguagem" ,
+    "notifications"   : "Notificações",
+    "all_notifications"   : "Ver todas as notificações",
+    "search":{
+      "type_your_search":"Digite sua busca"
     },
-    "languages" : {
-        "en" : "Inglês",
-        "es" : "Espanhol",
-        "pt_br" : "Portugûes(BR)"
+    "buttons" : {
+      "rating" : "Avaliar",
+      "candidate" : "Candidatos",
+      "edit" : "Alterar",
+      "delete" : "Excluir"
+    }
+  },
+  "languages" : {
+    "en" : "Inglês",
+    "es" : "Espanhol",
+    "pt_br" : "Portugûes(BR)"
+  },
+  "login" : {
+    "login_data": {
+      "attributes":{
+        "email" : "E-mail",
+        "password" :"Senha",
+        "password_confirm" :"Confirmar Senha"
+      }
     },
-    "login" : {
-        "login_data": {
-            "attributes":{
-                "email" : "E-mail",
-                "password" :"Senha",
-                "password_confirm" :"Confirmar Senha"
-            }
-        },
-        "sign_up":"Cadastre-se",
-        "login_problems":"Problemas com o Login ?",
-        "sign_up_message":"Digite seu e-mail e senha para se cadastrar no Beet.",
-        "password_redefine_message" : "Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha."
+    "sign_up":"Cadastre-se",
+    "login_problems":"Problemas com o Login ?",
+    "sign_up_message":"Digite seu e-mail e senha para se cadastrar no Beet.",
+    "password_redefine_message" : "Digite o endereço de e-mail que você utiliza para fazer login no Beet. Vamos lhe enviar instruções para redefinir sua senha."
+  },
+  "login_validate" : {
+    "user_validated": "Seu cadastro foi efetuado com sucesso! Clique no botão abaixo para acessar sua conta.",
+    "user_not_found": "Usuário não foi encontrado ou já foi ativado."
+  },
+  "company" : {
+    "individual_data": {
+      "description":"Pessoa Física",
+      "attributes":{
+        "name" : "Nome",
+        "cpf" :"CPF"
+      }
     },
-    "login_validate" : {
-        "user_validated": "Seu cadastro foi efetuado com sucesso! Clique no botão abaixo para acessar sua conta.",
-        "user_not_found": "Usuário não foi encontrado ou já foi ativado."
-    },
-    "company" : {
-        "individual_data": {
-            "description":"Pessoa Física",
-            "attributes":{
-                "name" : "Nome",
-                "cpf" :"CPF"
-            }
-        },
-        "corporate_data": {
-            "description":"Pessoa Jurídica",
-            "attributes":{
-                "name" : "Razão social",
-                "corporate_name" :"Nome fantasia",
-                "cnpj" :"CNPJ"
-            }
-        }
-    },
-    "contract": {
-        "description":"Contratos",
-        "contract_professional_data" : {
-            "description" : "Contrato Profissional",
-            "attributes":{
-                "identification" : "Número do contrato",
-                "start_date" : "Data inicial",
-                "final_date" : "Data final",
-                "federative_rights" : "Direitos Federativos",
-                "percentage_athlete" : "Porcentagem do Atleta (%)",
-                "percentage_representative" : "Porcentagem do Representante (%)",
-                "percentage_club" : "Porcentagem do Clube (%)",
-                "percentage_investor" : "Porcentagem do Investidor (%)",
-                "salary" : "Salário (R$)"
-            }
-        },
-
-        "contract_imaging_data" : {
-            "description" : "Contrato de Imagem",
-            "attributes":{
-                "identification" : "Número do contrato",
-                "start_date" : "Data inicial",
-                "final_date" : "Data final",
-                "value" : "Valor (R$)",
-                "notes" : "Observações"
-            }
-        },
-
-        "contract_representative_data" : {
-            "description" : "Contrato de Representação",
-            "attributes":{
-                "identification" : "Número do contrato",
-                "start_date" : "Data inicial",
-                "final_date" : "Data final",
-                "notes" : "Observações"
-            }
-        },
-
-        "contract_training_data" : {
-            "description" : "Contrato de Formação",
-            "attributes":{
-                "identification" : "Número do contrato",
-                "start_date" : "Data inicial",
-                "final_date" : "Data final",
-                "percentage_athlete" : "Porcentagem do Atleta (%)",
-                "percentage_representative" : "Porcentagem do Representante (%)",
-                "percentage_club" : "Porcentagem do Clube (%)",
-                "professional_training" : "Formação Profissional (R$)",
-                "transport" : "Transporte (R$)",
-                "feeding" : "Alimentação (R$)",
-                "accommodation" : "Alojamento (R$)",
-                "clothing" : "Vestuário (R$)",
-                "health_care" : "Assistência Médica (R$)",
-                "dental_care" : "Assistência Odontológica (R$)",
-                "psychological_assistance" : "Assistência Psicológica (R$)",
-                "school_supplies" : "Material Escolar (R$)",
-                "sport_supplies" : "Material Esportivo (R$)",
-                "leisure" : "Recreação e Lazer (R$)",
-                "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
-                "computer_science_classes" : "Aulas de Informática (R$)"
-        }
+    "corporate_data": {
+      "description":"Pessoa Jurídica",
+      "attributes":{
+        "name" : "Razão social",
+        "corporate_name" :"Nome fantasia",
+        "cnpj" :"CNPJ"
+      }
+    }
+  },
+  "contract": {
+    "description":"Contratos",
+    "contract_professional_data" : {
+      "description" : "Contrato Profissional",
+      "attributes":{
+        "identification" : "Número do contrato",
+        "start_date" : "Data inicial",
+        "final_date" : "Data final",
+        "federative_rights" : "Direitos Federativos",
+        "percentage_athlete" : "Porcentagem do Atleta (%)",
+        "percentage_representative" : "Porcentagem do Representante (%)",
+        "percentage_club" : "Porcentagem do Clube (%)",
+        "percentage_investor" : "Porcentagem do Investidor (%)",
+        "salary" : "Salário (R$)"
       }
     },
 
-    "person": {
-        "description": "Atletas",
-        "person_data": {
-            "description": "Dados Pessoais",
-            "attributes": {
-                "name": "Nome",
-                "gender": {
-                    "description": "Sexo",
-                    "options": {
-                        "male": "Masculino",
-                        "female": "Feminino"
-                    }
-                },
-                "cpf": "CPF",
-                "rg": "RG",
-                "postcode": "CEP",
-                "street": "Rua",
-                "number": "Número",
-                "complement": "Complemento",
-                "neighborhood": "Bairro",
-                "city": "Cidade",
-                "state": "Estado",
-                "birth_date": "Data de nascimento",
-                "mail": "E-mail",
-                "education": "Escolaridade",
-                "video_link": "Link do vídeo",
-                "origin": "Naturalidade"
-            }
-        },
-        "technical_data": {
-            "description": "Dados Técnicos",
-            "attributes": {
-                "height": "Altura (cm)",
-                "current_team": "Clube atual",
-                "shoe_size": "Número da chuteira",
-                "number_glove": "Número da luva",
-                "position": {
-                    "description": "Posição",
-                    "instruction": "Selecione",
-                    "options": {
-                        "goalkeeper": "Goleiro",
-                        "defender": "Zagueiro",
-                        "left_back": "Lateral-esquerdo",
-                        "right_back": "Lateral-direito",
-                        "centre_midfielder": "Volante",
-                        "midfielder": "Meio Campo",
-                        "forward": "Atacante"
-                    }
-                },
-                "laterality": {
-                    "description": "Lateralidade",
-                    "instruction": "Selecione",
-                    "options": {
-                        "right_handed": "Destro",
-                        "left_handed": "Canhoto",
-                        "two_handed": "Ambidestro"
-                    }
-                }
-            }
-        }
+    "contract_imaging_data" : {
+      "description" : "Contrato de Imagem",
+      "attributes":{
+        "identification" : "Número do contrato",
+        "start_date" : "Data inicial",
+        "final_date" : "Data final",
+        "value" : "Valor (R$)",
+        "notes" : "Observações"
+      }
     },
 
-    "buttons" : {
-        "save" : "Salvar",
-        "cancel" : "Cancelar",
-        "add" : "Adicionar"
+    "contract_representative_data" : {
+      "description" : "Contrato de Representação",
+      "attributes":{
+        "identification" : "Número do contrato",
+        "start_date" : "Data inicial",
+        "final_date" : "Data final",
+        "notes" : "Observações"
+      }
     },
 
-    "expense": {
-        "description":"Despesas de Atletas",
-        "expense_data" : {
-            "attributes":{
-                "description" : "Descrição",
-                "date" : "Data"
-            }
+    "contract_training_data" : {
+      "description" : "Contrato de Formação",
+      "attributes":{
+        "identification" : "Número do contrato",
+        "start_date" : "Data inicial",
+        "final_date" : "Data final",
+        "percentage_athlete" : "Porcentagem do Atleta (%)",
+        "percentage_representative" : "Porcentagem do Representante (%)",
+        "percentage_club" : "Porcentagem do Clube (%)",
+        "professional_training" : "Formação Profissional (R$)",
+        "transport" : "Transporte (R$)",
+        "feeding" : "Alimentação (R$)",
+        "accommodation" : "Alojamento (R$)",
+        "clothing" : "Vestuário (R$)",
+        "health_care" : "Assistência Médica (R$)",
+        "dental_care" : "Assistência Odontológica (R$)",
+        "psychological_assistance" : "Assistência Psicológica (R$)",
+        "school_supplies" : "Material Escolar (R$)",
+        "sport_supplies" : "Material Esportivo (R$)",
+        "leisure" : "Recreação e Lazer (R$)",
+        "foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
+        "computer_science_classes" : "Aulas de Informática (R$)"
+      }
+    }
+  },
+
+  "person": {
+    "description": "Atletas",
+    "person_data": {
+      "description": "Dados Pessoais",
+      "attributes": {
+        "name": "Nome",
+        "gender": {
+          "description": "Sexo",
+          "options": {
+            "male": "Masculino",
+            "female": "Feminino"
+          }
         },
-        "expense_detail_data" : {
-            "attributes":{
-                "description" : "Descrição",
-                "quantity" : "Qtd",
-                "value" : "Valor"
-            }
-        }
+        "cpf": "CPF",
+        "rg": "RG",
+        "postcode": "CEP",
+        "street": "Rua",
+        "number": "Número",
+        "complement": "Complemento",
+        "neighborhood": "Bairro",
+        "city": "Cidade",
+        "state": "Estado",
+        "birth_date": "Data de nascimento",
+        "mail": "E-mail",
+        "education": "Escolaridade",
+        "video_link": "Link do vídeo",
+        "origin": "Naturalidade"
+      }
     },
-    "expense_company": {
-        "description":"Despesas da Empresa",
-        "expense_data" : {
-            "attributes":{
-                "description" : "Descrição",
-                "date" : "Data"
-            }
+    "technical_data": {
+      "description": "Dados Técnicos",
+      "attributes": {
+        "height": "Altura (cm)",
+        "current_team": "Clube atual",
+        "shoe_size": "Número da chuteira",
+        "number_glove": "Número da luva",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
         },
-        "expense_detail_data" : {
-            "attributes":{
-                "description" : "Descrição",
-                "quantity" : "Qtd",
-                "value" : "Valor"
-            }
+        "laterality": {
+          "description": "Lateralidade",
+          "instruction": "Selecione",
+          "options": {
+            "right_handed": "Destro",
+            "left_handed": "Canhoto",
+            "two_handed": "Ambidestro"
+          }
         }
+      }
+    }
+  },
+
+  "buttons" : {
+    "save" : "Salvar",
+    "cancel" : "Cancelar",
+    "add" : "Adicionar"
+  },
+
+  "expense": {
+    "description":"Despesas de Atletas",
+    "expense_data" : {
+      "attributes":{
+        "description" : "Descrição",
+        "date" : "Data"
+      }
     },
-    "exam": {
-        "description":"Avaliação Coletiva",
-        "exam_data" : {
-            "attributes": {
-                "description" : "Descrição",
-                "initial_date" : "Data inicial",
-                "final_date" : "Data final"
-            }
-        },
-        "exam_detail_data" : {
-            "attributes" : {
-                "name" : "Nome",
-                "birth_date": "Data de nascimento",
-                "position": {
-                    "description": "Posição",
-                    "instruction": "Selecione",
-                    "options": {
-                        "goalkeeper": "Goleiro",
-                        "defender": "Zagueiro",
-                        "left_back": "Lateral-esquerdo",
-                        "right_back": "Lateral-direito",
-                        "centre_midfielder": "Volante",
-                        "midfielder": "Meio Campo",
-                        "forward": "Atacante"
-                    }
-                }
-            }
+    "expense_detail_data" : {
+      "attributes":{
+        "description" : "Descrição",
+        "quantity" : "Qtd",
+        "value" : "Valor"
+      }
+    }
+  },
+  "expense_company": {
+    "description":"Despesas da Empresa",
+    "expense_data" : {
+      "attributes":{
+        "description" : "Descrição",
+        "date" : "Data"
+      }
+    },
+    "expense_detail_data" : {
+      "attributes":{
+        "description" : "Descrição",
+        "quantity" : "Qtd",
+        "value" : "Valor"
+      }
+    }
+  },
+  "exam": {
+    "description":"Avaliação Coletiva",
+    "exam_data" : {
+      "attributes": {
+        "description" : "Descrição",
+        "initial_date" : "Data inicial",
+        "final_date" : "Data final"
+      }
+    },
+    "exam_detail_data" : {
+      "attributes" : {
+        "name" : "Nome",
+        "birth_date": "Data de nascimento",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
         }
-    },
-    "user": {
-        "user_data" : {
-            "name" : "Nome",
-            "gender" : {
-                "description":"Sexo",
-                "selection" : {
-                    "male" : "Masculino",
-                    "female" : "Feminino"
-                }
-            },
-            "cpf" : "CPF",
-            "postcode" : "CEP",
-            "street" : "Rua",
-            "complement" : "Complemento",
-            "neighborhood" : "Bairro",
-            "city" : "Cidade",
-            "state" : "Estado",
-            "birth_date" : "Data de Nascimento"
+      }
+    }
+  },
+  "user": {
+    "user_data" : {
+      "name" : "Nome",
+      "gender" : {
+        "description":"Sexo",
+        "selection" : {
+          "male" : "Masculino",
+          "female" : "Feminino"
         }
-    },
-    "candidate": {
-        "description":"Candidatos",
-        "candidate_data" : {
-            "description":"Dados do Candidato",
-            "attributes" : {
-                "name" : "Nome",
-                "birth_date": "Data de nascimento",
-                "indication" : "Indicação",
-                "position": {
-                    "description": "Posição",
-                    "instruction": "Selecione",
-                    "options": {
-                        "goalkeeper": "Goleiro",
-                        "defender": "Zagueiro",
-                        "left_back": "Lateral-esquerdo",
-                        "right_back": "Lateral-direito",
-                        "centre_midfielder": "Volante",
-                        "midfielder": "Meio Campo",
-                        "forward": "Atacante"
-                    }
-                }
-            }
+      },
+      "cpf" : "CPF",
+      "postcode" : "CEP",
+      "street" : "Rua",
+      "complement" : "Complemento",
+      "neighborhood" : "Bairro",
+      "city" : "Cidade",
+      "state" : "Estado",
+      "birth_date" : "Data de Nascimento"
+    }
+  },
+  "candidate": {
+    "description":"Candidatos",
+    "candidate_data" : {
+      "description":"Dados do Candidato",
+      "attributes" : {
+        "name" : "Nome",
+        "birth_date": "Data de nascimento",
+        "indication" : "Indicação",
+        "position": {
+          "description": "Posição",
+          "instruction": "Selecione",
+          "options": {
+            "goalkeeper": "Goleiro",
+            "defender": "Zagueiro",
+            "left_back": "Lateral-esquerdo",
+            "right_back": "Lateral-direito",
+            "centre_midfielder": "Volante",
+            "midfielder": "Meio Campo",
+            "forward": "Atacante"
+          }
         }
-    },
+      }
+    }
+  },
   "home": {
     "description":"Home",
     "movie_data" : {
@@ -320,25 +320,12 @@
     "movie_data" : {
       "description":"Dados do Vídeo",
       "attributes" : {
-        "name" : "Nome",
-        "birth_date": "Data de nascimento",
-        "indication" : "Indicação",
-        "position": {
-          "description": "Posição",
-          "instruction": "Selecione",
-          "options": {
-            "goalkeeper": "Goleiro",
-            "defender": "Zagueiro",
-            "left_back": "Lateral-esquerdo",
-            "right_back": "Lateral-direito",
-            "centre_midfielder": "Volante",
-            "midfielder": "Meio Campo",
-            "forward": "Atacante"
-          }
-        }
+        "name": "Nome",
+        "description": "Descrição"
       }
     }
   },
+
   "category": {
     "description":"Categorias",
     "category_data" : {

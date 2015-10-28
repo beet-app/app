@@ -1,14 +1,14 @@
 MyApp
     .controller('CategoryController', function($scope, $rootScope, $sce, $http, $stateParams, $translate, Common, GlobalService, btFn, $q) {
         $rootScope.loadingFeature = true;
-        var feature = "person";
+        var feature = "category";
         function loadFeature(){
             var d = $q.defer();
             var id=333;
             if (!Common.isEmpty($stateParams.uuid)) {
                 id = $stateParams.uuid;
             }
-            GlobalService.getAttributes('person', id).then(function(attributeResponse){
+            /*GlobalService.getAttributes('category', id).then(function(attributeResponse){
 
                 $scope.attributeData = attributeResponse.data;
 
@@ -17,10 +17,10 @@ MyApp
                     $scope.listData = {
                         fields:[
                             {
-                                description:"attributes.person_data.name"
+                                description:"attributes.category_data.name"
                             }
                         ],
-                        fieldSort : "attributes.person_data.name",
+                        fieldSort : "attributes.category_data.name",
                         items:$scope.data,
                         add: function($event){
                             $scope.add($event);
@@ -32,13 +32,12 @@ MyApp
 
                 });
 
-            });
+            });*/
 
             return d.promise;
         }
 
         $scope.list = function(){
-            $rootScope._app.sidebar.right.unLoad();
             $scope.mode = "list";
         };
         $scope.add = function(){
@@ -46,7 +45,7 @@ MyApp
         };
         $scope.edit = function(obj){
             $rootScope._app.sidebar.right.load(feature, $scope.data, function(item){
-                Common.goTo("person/edit", {uuid:item.uuid});
+                Common.goTo("category/edit", {uuid:item.uuid});
             },"name");
             $scope.mode = "edit";
             $scope.formData = $scope.attributeData;
@@ -59,7 +58,7 @@ MyApp
         $scope.save = function(){
             $scope.loadingFeature = true;
             var blnSave = true;
-            angular.forEach($scope.data.person_data, function(attribute){
+            angular.forEach($scope.data.category_data, function(attribute){
                 if (blnSave){
                     if (attribute.required===1 && Common.isEmpty(attribute.value)){
                         $scope.loadingFeature = false;
@@ -80,13 +79,13 @@ MyApp
                 objSave.attribute = Common.getAttributeObj($scope.formData);
                 objSave.company = Common.isEmpty($rootScope.session.user.company) ? $rootScope.session.user.companies[0].uuid : $rootScope.session.user.company;
 
-                GlobalService.save("person", mode, objSave).then(function (response) {
+                GlobalService.save("category", mode, objSave).then(function (response) {
 
                     if (Common.isEmpty(response.error)) {
                         Common.showMessage("Atleta cadastrado com sucesso !", "success");
                         loadFeature().then(function(){
                             $scope.loadingFeature = false;
-                            Common.goTo("person");
+                            Common.goTo("category");
                             $scope.list();
                         });
 
@@ -94,7 +93,7 @@ MyApp
                     } else {
                         alert("Ocorreu um erro ao cadastrar o atleta.");
                         $scope.loadingFeature = false;
-                        Common.goTo("person");
+                        Common.goTo("category");
                     }
                 });
 
